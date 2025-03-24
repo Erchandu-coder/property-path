@@ -96,7 +96,7 @@
                                         <a class="dropdown-item" href="{{route('profile.edit')}}">
                                             Update Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('profile.updatePassword')}}">
                                             Change Password </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">

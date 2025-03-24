@@ -7,6 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Auth;
+
 
 class PasswordController extends Controller
 {
@@ -19,11 +21,19 @@ class PasswordController extends Controller
             'current_password' => ['required', 'current_password'],
             'password' => ['required', Password::defaults(), 'confirmed'],
         ]);
-
+        // dd($validated);
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
+        // Log out the user
+        Auth::logout();
 
-        return back()->with('status', 'password-updated');
+        // Invalidate the session
+        $request->session()->invalidate();
+
+        // Regenerate CSRF token
+        $request->session()->regenerateToken();
+
+        returnredirect()->route('login')->with('status', 'password-updated');
     }
 }
