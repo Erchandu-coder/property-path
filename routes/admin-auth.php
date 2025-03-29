@@ -36,9 +36,12 @@ Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(functio
 
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
 
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     // Route::get('dashboard', AdminController::class)->name('admin.dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('admin.dashboard');
+    // })->name('dashboard');
     
     Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
 
