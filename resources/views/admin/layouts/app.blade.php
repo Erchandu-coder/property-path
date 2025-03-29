@@ -262,7 +262,7 @@
                             <a class="nav-link" href="#">Status</a>
                         </li>
                         <li class="nav-item nav-logout d-none d-md-block">
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">Logout</button>
                             </form>
