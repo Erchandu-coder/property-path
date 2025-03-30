@@ -35,7 +35,7 @@
                             <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
-                            <span class="font-weight-semibold mb-1 mt-2 text-center">{{$user->name}}</span>
+                            <span class="font-weight-semibold mb-1 mt-2 text-center">{{ Auth::user()->name }}</span>
                             <span class="text-secondary icon-sm text-center">online</span>
                         </div>
                     </a>
@@ -56,19 +56,19 @@
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                         aria-controls="ui-basic">
                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                        <span class="menu-title">Property List</span>
+                        <span class="menu-title">Area Management</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/buttons.html">Add Property</a>
+                                <a class="nav-link" href="{{route('admin.states')}}">Add States</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Area</a>
+                                <a class="nav-link" href="pages/ui-features/dropdowns.html">Add City</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">All Property</a>
+                                <a class="nav-link" href="pages/ui-features/typography.html">Add District & Pin Code</a>
                             </li>
                         </ul>
                     </div>
@@ -76,22 +76,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="pages/icons/mdi.html">
                         <i class="mdi mdi-contacts menu-icon"></i>
-                        <span class="menu-title">Icons</span>
+                        <span class="menu-title">All Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="pages/forms/basic_elements.html">
-                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                        <span class="menu-title">Forms</span>
+                        <i class="mdi mdi-chart-bar menu-icon"></i>
+                        <span class="menu-title">Orders</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="pages/charts/chartjs.html">
-                        <i class="mdi mdi-chart-bar menu-icon"></i>
-                        <span class="menu-title">Charts</span>
+                        <i class="mdi mdi-table-large menu-icon"></i>
+                        <span class="menu-title">List Property</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="pages/tables/basic-table.html">
                         <i class="mdi mdi-table-large menu-icon"></i>
                         <span class="menu-title">Tables</span>
@@ -103,7 +103,7 @@
                         <i class="mdi mdi-file-document-box menu-icon"></i>
                         <span class="menu-title">Documentation</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- partial -->
@@ -288,8 +288,19 @@
                 </div>
             </nav>
             @yield('content')
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                        bootstrapdash.com
+                        2020</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                            href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from
+                        Bootstrapdash.com</span>
+                </div>
+            </footer>
         </div>
-        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

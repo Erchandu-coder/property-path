@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+
     public function dashboard()
     {
-        $user = Auth::user();
-        return view('admin.dashboard', compact('user'));
+        return view('admin.dashboard');
+    }
+
+    public function states()
+    {
+        return view('admin.states');
     }
 
 }

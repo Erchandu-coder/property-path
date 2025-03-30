@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('content')  
+@section('content')
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper pb-0">
@@ -33,8 +33,7 @@
                                 <h3 class="font-weight-bold mb-0">$32,409</h3>
                             </div>
                             <div>
-                                <div
-                                    class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
+                                <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
                                     <div class="d-flex mr-5">
                                         <button type="button" class="btn btn-social-icon btn-outline-sales">
                                             <i class="mdi mdi-inbox-arrow-down"></i>
@@ -46,8 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex mr-3 mt-2 mt-sm-0">
-                                        <button type="button"
-                                            class="btn btn-social-icon btn-outline-sales profit">
+                                        <button type="button" class="btn btn-social-icon btn-outline-sales profit">
                                             <i class="mdi mdi-cash text-info"></i>
                                         </button>
                                         <div class="pl-2">
@@ -136,8 +134,7 @@
             <div class="col-sm-4 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body p-0">
-                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_1.jpg"
-                            alt="" />
+                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_1.jpg" alt="" />
                     </div>
                     <div class="card-body px-3 text-dark">
                         <div class="d-flex justify-content-between">
@@ -157,8 +154,7 @@
             <div class="col-sm-4 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body p-0">
-                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_2.jpg"
-                            alt="" />
+                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_2.jpg" alt="" />
                     </div>
                     <div class="card-body px-3 text-dark">
                         <div class="d-flex justify-content-between">
@@ -178,8 +174,7 @@
             <div class="col-sm-4 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body p-0">
-                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_3.jpg"
-                            alt="" />
+                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_3.jpg" alt="" />
                     </div>
                     <div class="card-body px-3 text-dark">
                         <div class="d-flex justify-content-between">
@@ -402,8 +397,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a class="text-black font-13 d-block pt-2 pb-2 pb-lg-0 font-weight-bold pl-4"
-                            href="#">Show more</a>
+                        <a class="text-black font-13 d-block pt-2 pb-2 pb-lg-0 font-weight-bold pl-4" href="#">Show
+                            more</a>
                     </div>
                 </div>
             </div>
@@ -576,8 +571,8 @@
             <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
                 <div class="card color-card-wrapper">
                     <div class="card-body">
-                        <img class="img-fluid card-top-img w-100"
-                            src="../admin-assets/images/dashboard/img_5.jpg" alt="" />
+                        <img class="img-fluid card-top-img w-100" src="../admin-assets/images/dashboard/img_5.jpg"
+                            alt="" />
                         <div class="d-flex flex-wrap justify-content-around color-card-outer">
                             <div class="col-6 p-0 mb-4">
                                 <div class="color-card primary m-auto">
@@ -613,23 +608,4 @@
             </div>
         </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2020</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                    href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a>
-                from Bootstrapdash.com</span>
-        </div>
-
-        <div>
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> Distributed By: <a
-                    href="https://themewagon.com/" target="_blank">Themewagon</a></span>
-        </div>
-    </footer>
-    <!-- partial -->
-</div>
-<!-- main-panel ends -->
-@endsection
+    @endsection
