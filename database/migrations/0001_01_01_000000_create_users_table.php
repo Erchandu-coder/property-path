@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('pincode')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
-            $table->enum('role', ['super_admin', 'admin', 'user'])->default('user');
+            $table->enum('status', ['Active', 'Deactive'])->default('Active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

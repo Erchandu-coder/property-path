@@ -44,22 +44,10 @@
                     <a class="nav-link d-block" href="index.html">
                         <img class="sidebar-brand-logo" src="../admin-assets/images/logo.svg" alt="" />
                         <img class="sidebar-brand-logomini" src="../admin-assets/images/logo-mini.svg" alt="" />
-                        <div class="small font-weight-light pt-1">Responsive Dashboard</div>
                     </a>
-                    <form class="d-flex align-items-center" action="#">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                            </div>
-                            <input type="text" class="form-control border-0" placeholder="Search" />
-                        </div>
-                    </form>
-                </li>
-                <li class="pt-2 pb-1">
-                    <span class="nav-item-head">Template Pages</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('admin.dashboard')}}">
                         <i class="mdi mdi-compass-outline menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -67,20 +55,20 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                         aria-controls="ui-basic">
-                        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                        <span class="menu-title">UI Elements</span>
+                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                        <span class="menu-title">Property List</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                                <a class="nav-link" href="pages/ui-features/buttons.html">Add Property</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
+                                <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Area</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+                                <a class="nav-link" href="pages/ui-features/typography.html">All Property</a>
                             </li>
                         </ul>
                     </div>
