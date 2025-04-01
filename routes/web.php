@@ -32,4 +32,6 @@ require __DIR__.'/admin-auth.php';
 
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
     Route::get('states', [AdminController::class, 'states'])->name('states');
+    Route::get('cities', [AdminController::class, 'cities'])->name('cities');
+
 });

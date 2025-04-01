@@ -20,4 +20,8 @@ class AdminController extends Controller
         return view('admin.states');
     }
 
+    public function cities()
+    {
+        return view('admin.cities');
+    }
 }

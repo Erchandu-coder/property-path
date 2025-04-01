@@ -65,7 +65,7 @@
                                 <a class="nav-link" href="{{route('admin.states')}}">Add States</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/dropdowns.html">Add City</a>
+                                <a class="nav-link" href="{{route('admin.cities')}}">Add City</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pages/ui-features/typography.html">Add District & Pin Code</a>
