@@ -3,10 +3,10 @@
       <div class="main-panel">
           <div class="content-wrapper">
               <div class="page-header">
-            <h3 class="page-title">All States</h3>
+            <h3 class="page-title">All District & Pin Code</h3>
             <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <button type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text" data-toggle="modal" data-target="#Modal">
-                  <i class="mdi mdi-plus-circle"></i> Add States</button>
+                  <i class="mdi mdi-plus-circle"></i> Add District</button>
               </div>
           </div>
           <div class="row">
@@ -16,7 +16,7 @@
                   <form class="form-sample">
                     <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Add State</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">All District & Pin Code</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -27,7 +27,39 @@
                           <div class="form-group row">
                             <label class="col-sm-4 col-form-label">State Name</label>
                             <div class="col-sm-8">
+                              <select class="form-control">
+                                  <option>Select</option>
+                                  <option>Maharastra</option>
+                                  <option>Gujrat</option>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">City Name</label>
+                            <div class="col-sm-8">
+                              <select class="form-control">
+                                  <option>Select</option>
+                                  <option>A</option>
+                                  <option>B</option>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">District</label>
+                            <div class="col-sm-8">
                               <input type="text" class="form-control" placeholder="State Name"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Pin Code</label>
+                            <div class="col-sm-8">
+                              <input type="text" class="form-control" placeholder="Pin Code"/>
                             </div>
                           </div>
                         </div>
@@ -61,6 +93,9 @@
                           <tr>
                             <th>S.No</th>
                             <th>State Name</th>
+                            <th>City Name</th>
+                            <th>District</th>
+                            <th>Pin Code</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
@@ -69,23 +104,32 @@
                           <tr>
                             <td>1</td>
                             <td>Gujrat</td>
+                            <td>Nasik</td>
+                            <td>Nasik</td>
+                            <td>123456</td>
                             <td>Enable</td>
                             <td>Enable</td>
                           </tr>
                           <tr>
                             <td>1</td>
                             <td>Gujrat</td>
+                            <td>Nasik</td>
+                            <td>Nasik</td>
+                            <td>123456</td>
                             <td>Enable</td>
                             <td>Enable</td>
                           </tr>
                           <tr>
                             <td>1</td>
                             <td>Gujrat</td>
+                            <td>Nasik</td>
+                            <td>Nasik</td>
+                            <td>123456</td>
                             <td>Enable</td>
                             <td>Enable</td>
                           </tr>
                          </tbody>
-                      </table>
+                        </table>
                     </div>
                   </div>
                 </div>

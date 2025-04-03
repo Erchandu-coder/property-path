@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../admin-assets/css/demo_1/style.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../admin-assets/images/favicon.png" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
 </head>
 
 <body>
@@ -68,7 +69,7 @@
                                 <a class="nav-link" href="{{route('admin.cities')}}">Add City</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Add District & Pin Code</a>
+                                <a class="nav-link" href="{{route('admin.district')}}">Add District & Pin Code</a>
                             </li>
                         </ul>
                     </div>
@@ -324,6 +325,9 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="../admin-assets/js/dashboard.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script> -->
     <!-- End custom js for this page -->
 </body>
 

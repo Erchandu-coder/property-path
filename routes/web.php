@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AreaController;
 
 
 Route::get('/welcome', function () {
@@ -31,7 +32,9 @@ require __DIR__.'/admin-auth.php';
 
 
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
-    Route::get('states', [AdminController::class, 'states'])->name('states');
-    Route::get('cities', [AdminController::class, 'cities'])->name('cities');
+    Route::get('states', [AreaController::class, 'states'])->name('states');
+    Route::get('cities', [AreaController::class, 'cities'])->name('cities');
+    Route::get('district', [AreaController::class, 'district'])->name('district');
+
 
 });

@@ -15,13 +15,4 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function states()
-    {
-        return view('admin.states');
-    }
-
-    public function cities()
-    {
-        return view('admin.cities');
-    }
 }
