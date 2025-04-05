@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('pin_code');
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-            $table->enum('status',['active','deactive'])->default('active');
+            $table->boolean('status')->default(1)->comment('1 = active, 0 = deactive');
             $table->timestamps();
         });
     }

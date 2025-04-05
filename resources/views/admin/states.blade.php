@@ -13,7 +13,7 @@
             <!-- Modal -->
               <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form class="form-sample">
+                  <form class="form-sample" id="addState">
                     <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">Add State</h5>
@@ -27,26 +27,15 @@
                           <div class="form-group row">
                             <label class="col-sm-4 col-form-label">State Name</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" placeholder="State Name"/>
+                              <input type="text" class="form-control" name="state_name" id="state_name" placeholder="State Name"/>
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-12">
-                          <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Status</label>
-                            <div class="col-sm-8">
-                              <select class="form-control">
-                                <option>Active</option>
-                                <option>Deactive</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                       </div>
+                      </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Submit</button>
+                      <button type="button" class="btn btn-primary" id="submit">Submit</button>
                     </div>
                   </form>  
                   </div>
@@ -93,3 +82,8 @@
         </div>
     </div>
     @endsection
+    @push('scripts')
+    $(document).ready(function(){
+
+    });
+    @endpush;

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('states', function (Blueprint $table) {
             $table->id();
             $table->string('state_name');
-            $table->enum('status',['active','deactive'])->default('active');
+            $table->boolean('status')->default(1)->comment('1 = active, 0 = deactive'); // 1 = active, 0 = deactive
             $table->timestamps();
         });
     }
