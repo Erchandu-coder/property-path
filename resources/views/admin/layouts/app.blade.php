@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Plus Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../admin-assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../admin-assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../admin-assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{asset('admin-assets/vendors/mdi/css/materialdesignicons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin-assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin-assets/vendors/css/vendor.bundle.base.css')}}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="../admin-assets/vendors/jquery-bar-rating/css-stars.css" />
-    <link rel="stylesheet" href="../admin-assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{asset('admin-assets/vendors/jquery-bar-rating/css-stars.css')}}" />
+    <link rel="stylesheet" href="{{asset('admin-assets/vendors/font-awesome/css/font-awesome.min.css')}}" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../admin-assets/css/demo_1/style.css" />
+    <link rel="stylesheet" href="{{asset('admin-assets/css/demo_1/style.css')}}" />
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../admin-assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{asset('admin-assets/images/favicon.png')}}" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
 </head>
 
@@ -32,7 +32,7 @@
                 <li class="nav-item nav-profile border-bottom">
                     <a href="#" class="nav-link flex-column">
                         <div class="nav-profile-image">
-                            <img src="../admin-assets/images/faces/face1.jpg" alt="profile" />
+                            <img src="{{asset('admin-assets/images/faces/face1.jpg')}}" alt="profile" />
                             <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
@@ -43,8 +43,8 @@
                 </li>
                 <li class="nav-item pt-3">
                     <a class="nav-link d-block" href="index.html">
-                        <img class="sidebar-brand-logo" src="../admin-assets/images/logo.svg" alt="" />
-                        <img class="sidebar-brand-logomini" src="../admin-assets/images/logo-mini.svg" alt="" />
+                        <img class="sidebar-brand-logo" src="{{asset('admin-assets/images/logo.svg')}}" alt="" />
+                        <img class="sidebar-brand-logomini" src="{{asset('admin-assets/images/logo-mini.svg')}}" alt="" />
                     </a>
                 </li>
                 <li class="nav-item">
@@ -63,13 +63,13 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.states')}}">Add States</a>
+                                <a class="nav-link" href="{{route('admin.createStates')}}">Add States</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.cities')}}">Add City</a>
+                                <a class="nav-link" href="{{route('admin.createcities')}}">Add City</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.district')}}">Add District & Pin Code</a>
+                                <a class="nav-link" href="{{route('admin.createdistrict')}}">Add District & Pin Code</a>
                             </li>
                         </ul>
                     </div>
@@ -141,7 +141,7 @@
                     </button>
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                         <a class="navbar-brand brand-logo-mini" href="index.html"><img
-                                src="../admin-assets/images/logo-mini.svg" alt="logo" /></a>
+                                src="{{asset('admin-assets/images/logo-mini.svg')}}" alt="logo" /></a>
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -155,7 +155,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                        <img src="../admin-assets/images/faces/face1.jpg" alt="image"
+                                        <img src="{{asset('admin-assets/images/faces/face1.jpg')}}" alt="image"
                                             class="profile-pic">
                                     </div>
                                     <div
@@ -168,7 +168,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                        <img src="../admin-assets/images/faces/face6.jpg" alt="image"
+                                        <img src="{{asset('admin-assets/images/faces/face6.jpg')}}" alt="image"
                                             class="profile-pic">
                                     </div>
                                     <div
@@ -181,7 +181,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                        <img src="../admin-assets/images/faces/face7.jpg" alt="image"
+                                        <img src="{{asset('admin-assets/images/faces/face7.jpg')}}" alt="image"
                                             class="profile-pic">
                                     </div>
                                     <div
@@ -305,26 +305,26 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../admin-assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="{{asset('admin-assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../admin-assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-    <script src="../admin-assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="../admin-assets/vendors/flot/jquery.flot.js"></script>
-    <script src="../admin-assets/vendors/flot/jquery.flot.resize.js"></script>
-    <script src="../admin-assets/vendors/flot/jquery.flot.categories.js"></script>
-    <script src="../admin-assets/vendors/flot/jquery.flot.fillbetween.js"></script>
-    <script src="../admin-assets/vendors/flot/jquery.flot.stack.js"></script>
+    <script src="{{asset('admin-assets/vendors/jquery-bar-rating/jquery.barrating.min.js')}}"></script>
+    <script src="{{asset('admin-assets/vendors/chart.js/Chart.min.js')}}"></script>
+    <script src="{{asset('admin-assets/vendors/flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('admin-assets/vendors/flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{asset('admin-assets/vendors/flot/jquery.flot.categories.js')}}"></script>
+    <script src="{{asset('admin-assets/vendors/flot/jquery.flot.fillbetween.js')}}"></script>
+    <script src="{{asset('admin-assets/vendors/flot/jquery.flot.stack.js')}}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../admin-assets/js/off-canvas.js"></script>
-    <script src="../admin-assets/js/hoverable-collapse.js"></script>
-    <script src="../admin-assets/js/misc.js"></script>
-    <script src="../admin-assets/js/settings.js"></script>
-    <script src="../admin-assets/js/todolist.js"></script>
+    <script src="{{asset('admin-assets/js/off-canvas.js')}}"></script>
+    <script src="{{asset('admin-assets/js/hoverable-collapse.js')}}"></script>
+    <script src="{{asset('admin-assets/js/misc.js')}}"></script>
+    <script src="{{asset('admin-assets/js/settings.js')}}"></script>
+    <script src="{{asset('admin-assets/js/todolist.js')}}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="../admin-assets/js/dashboard.js"></script>
+    <script src="{{asset('admin-assets/js/dashboard.js')}}"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script> -->

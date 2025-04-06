@@ -32,9 +32,12 @@ require __DIR__.'/admin-auth.php';
 
 
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
-    Route::get('states', [AreaController::class, 'states'])->name('states');
-    Route::get('cities', [AreaController::class, 'cities'])->name('cities');
-    Route::get('district', [AreaController::class, 'district'])->name('district');
+    Route::get('state/create', [AreaController::class, 'createStates'])->name('createStates');
+
+    Route::post('state/store', [AreaController::class, 'storStates'])->name('storStates');
+
+    Route::get('cities/create', [AreaController::class, 'createcities'])->name('createcities');
+    Route::get('district/create', [AreaController::class, 'createdistrict'])->name('createdistrict');
 
 
 });

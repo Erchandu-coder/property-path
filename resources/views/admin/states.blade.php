@@ -1,89 +1,92 @@
 @extends('admin.layouts.app')
 @section('content')
-      <div class="main-panel">
-          <div class="content-wrapper">
-              <div class="page-header">
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
             <h3 class="page-title">All States</h3>
-            <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
-                <button type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text" data-toggle="modal" data-target="#Modal">
-                  <i class="mdi mdi-plus-circle"></i> Add States</button>
-              </div>
-          </div>
-          <div class="row">
-            <!-- Modal -->
-              <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form class="form-sample" id="addState">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Add State</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">State Name</label>
-                            <div class="col-sm-8">
-                              <input type="text" class="form-control" name="state_name" id="state_name" placeholder="State Name"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" id="submit">Submit</button>
-                    </div>
-                  </form>  
-                  </div>
-                </div>
-              </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th>S.No</th>
-                            <th>State Name</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Gujrat</td>
-                            <td>Enable</td>
-                            <td>Enable</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>Gujrat</td>
-                            <td>Enable</td>
-                            <td>Enable</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>Gujrat</td>
-                            <td>Enable</td>
-                            <td>Enable</td>
-                          </tr>
-                         </tbody>
-                      </table>
+                    <div class="card-body">
+                        @if(session('success'))
+                            <script>alert("{{ session('success') }}");</script>
+                        @endif
+
+                        <form class="form-sample" method="post" action="{{route('admin.storStates')}}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">State Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="state_name"
+                                                placeholder="State Name"/>
+                                                @error('state_name')
+                                                    <div class="text text-danger">{{ $message }}</div>
+                                                @enderror
+                                        </div>
+                                    </div>
+                                    <!-- @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif -->
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group row">
+                                        <div class="col-sm-3" style="padding-top: 5px;">
+                                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>State Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Gujrat</td>
+                                        <td>Enable</td>
+                                        <td>Enable</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Gujrat</td>
+                                        <td>Enable</td>
+                                        <td>Enable</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Gujrat</td>
+                                        <td>Enable</td>
+                                        <td>Enable</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     @endsection
-    @push('scripts')
-    $(document).ready(function(){
-
-    });
-    @endpush;
