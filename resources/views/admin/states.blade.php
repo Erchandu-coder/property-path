@@ -9,10 +9,19 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        @if(session('success'))
-                            <script>alert("{{ session('success') }}");</script>
+                        @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         @endif
-
+                        @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
                         <form class="form-sample" method="post" action="{{route('admin.storStates')}}">
                             @csrf
                             <div class="row">
@@ -21,10 +30,10 @@
                                         <label class="col-sm-3 col-form-label">State Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" name="state_name"
-                                                placeholder="State Name"/>
-                                                @error('state_name')
-                                                    <div class="text text-danger">{{ $message }}</div>
-                                                @enderror
+                                                placeholder="State Name" />
+                                            @error('state_name')
+                                            <div class="text text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <!-- @if ($errors->any())
@@ -62,25 +71,16 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                @php $i = 1; @endphp
                                 <tbody>
+                                    @foreach($result as $results)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Gujrat</td>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $results->state_name }}</td>
                                         <td>Enable</td>
                                         <td>Enable</td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Gujrat</td>
-                                        <td>Enable</td>
-                                        <td>Enable</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Gujrat</td>
-                                        <td>Enable</td>
-                                        <td>Enable</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -90,3 +90,8 @@
         </div>
     </div>
     @endsection
+    @push('scripts')
+    <script>
+    // Your JavaScript here
+    </script>
+    @endpush

@@ -11,18 +11,24 @@ class AreaController extends Controller
 {
     public function createStates()
     {
-        return view('admin.states');
+        $result = State::where('status', 1)->get();
+        return view('admin.states', compact('result'));
     }
 
     public function storStates(Request $request)
     {
-        $str = $request->validate([
-            'state_name' => 'required|max:255',
+        $request->validate([
+            'state_name' => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/', 'max:255'],
         ]);
         $state_name = filter_var($request->state_name, FILTER_SANITIZE_STRING);
-        $data = new State;
-        $data->state_name = $state_name;
-        $data->save();
+        try {
+            $data = new State;
+            $data->state_name = $state_name;
+            $data->save();
+            return redirect()->back()->with('success', 'State added successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+        }
         // dd($request->all());
     }
     public function createcities()
