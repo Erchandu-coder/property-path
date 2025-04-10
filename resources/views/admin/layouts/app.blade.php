@@ -73,9 +73,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.createcities')}}">Add City</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.createdistrict')}}">Add District & Pin Code</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </li>

@@ -95,7 +95,14 @@
                                                 data-offstyle="danger" data-id="{{ $citie->id }}"
                                                 {{ $citie->status == '1' ? 'checked' : '' }}>
                                         </td>
-                                        <td>Enable</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-rounded btn-icon">
+                                                <i class="mdi mdi mdi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                                                <i class="mdi mdi mdi-delete"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                    @endforeach 
                                 </tbody>

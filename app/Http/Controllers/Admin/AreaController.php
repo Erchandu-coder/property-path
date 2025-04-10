@@ -92,6 +92,8 @@ class AreaController extends Controller
     }
     public function createdistrict()
     {
-        return view('admin.district');
+        $states = State::where('status', 1)->get();
+        $cities = City::where('status', 1)->get();
+        return view('admin.district', compact(['states', 'cities']));
     }
 }

@@ -28,9 +28,10 @@
                             <label class="col-sm-4 col-form-label">State Name</label>
                             <div class="col-sm-8">
                               <select class="form-control">
-                                  <option>Select</option>
-                                  <option>Maharastra</option>
-                                  <option>Gujrat</option>
+                                  <option value="">Select</option>
+                                  @foreach($states as $state)
+                                  <option value="{{$state->id}}">{{$state->state_name}}</option>
+                                  @endforeach
                                 </select>
                             </div>
                           </div>
@@ -40,16 +41,17 @@
                             <label class="col-sm-4 col-form-label">City Name</label>
                             <div class="col-sm-8">
                               <select class="form-control">
-                                  <option>Select</option>
-                                  <option>A</option>
-                                  <option>B</option>
+                                  <option value="">Select</option>
+                                  @foreach($cities as $citie)
+                                  <option value="{{$citie->id}}">{{$citie->city_name}}</option>
+                                  @endforeach
                                 </select>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">District</label>
+                            <label class="col-sm-4 col-form-label">Area Name</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" placeholder="State Name"/>
                             </div>
