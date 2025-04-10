@@ -11,7 +11,7 @@ class AreaController extends Controller
 {
     public function createStates()
     {
-        $result = State::get();
+        $result = State::paginate(10);
         return view('admin.states', compact('result'));
     }
 

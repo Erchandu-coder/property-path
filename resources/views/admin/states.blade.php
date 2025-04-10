@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
@@ -25,12 +25,18 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $results->state_name }}</td>
                                         <td>
-                                            <input type="checkbox" class="status-toggle" data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" data-id="{{ $results->id }}" {{ $results->status == '1' ? 'checked' : '' }}>                                        
-                                        </td>                                       
+                                            <input type="checkbox" class="status-toggle" data-toggle="toggle"
+                                                data-on="Enabled" data-off="Disabled" data-onstyle="success"
+                                                data-offstyle="danger" data-id="{{ $results->id }}"
+                                                {{ $results->status == '1' ? 'checked' : '' }}>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="d-flex mt-4">
+                            {{ $result->links() }}
                         </div>
                     </div>
                 </div>
