@@ -36,9 +36,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
 
     // Route::post('state/store', [AreaController::class, 'storStates'])->name('storStates');
     Route::post('state/status-update', [AreaController::class, 'updateStatus'])->name('updateStatus');
-
-
     Route::get('cities/create', [AreaController::class, 'createcities'])->name('createcities');
+    Route::post('cities/store', [AreaController::class, 'storeCities'])->name('storeCities');
+    Route::post('state/city-status-update', [AreaController::class, 'cityUpdateStatus'])->name('cityUpdateStatus');
+
+    
     Route::get('district/create', [AreaController::class, 'createdistrict'])->name('createdistrict');
 
 

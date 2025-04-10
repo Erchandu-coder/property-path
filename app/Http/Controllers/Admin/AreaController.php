@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\State;
+use App\Models\City;
 
 
 class AreaController extends Controller
@@ -46,9 +47,49 @@ class AreaController extends Controller
 
     public function createcities()
     {
-        return view('admin.cities');
+        $items = State::where('status', 1)->get();
+        $cities = City::paginate(10);
+        return view('admin.cities', compact(['items', 'cities']));
     }
 
+    public function cityUpdateStatus(Request $request)
+    {
+        $item = City::find($request->id);
+        if ($item) {
+            $item->status = $request->status;
+            $item->save();
+
+            return response()->json(['message' => 'Status updated successfully.']);
+        }
+
+        return response()->json(['message' => 'Item not found.'], 404);
+    }
+
+    public function storeCities(Request $request)
+    {
+        $request->validate([
+            'state_id' => 'required|exists:states,id',
+            'city_name' => 'required|string|max:255',
+            'status' => 'required|in:0,1',
+        ], [
+            'state_id.required' => 'Please select a state.',
+            'state_id.exists'   => 'The selected state is invalid.',
+            
+            'city_name.required' => 'City name is required.',
+            'city_name.string'   => 'City name must be a string.',
+            'city_name.max'      => 'City name may not be greater than 255 characters.',
+            
+            'status.required' => 'Please select a status.',
+            'status.in'       => 'Status must be either Active or Deactive.',
+        ]);
+        City::create([
+            'state_id' => $request->state_id,
+            'city_name' => $request->city_name,
+            'status' => $request->status,
+        ]);
+    
+        return response()->json(['message' => 'City added successfully!']);
+    }
     public function createdistrict()
     {
         return view('admin.district');
