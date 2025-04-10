@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="{{asset('admin-assets/css/demo_1/style.css')}}" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin-assets/images/favicon.png')}}" />
+    <!-- Enable/Disable Toggle button CSS-->
+    <!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
 </head>
 
@@ -325,10 +328,13 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{asset('admin-assets/js/dashboard.js')}}"></script>
+    <!-- Enable/Disable Toggle button Js-->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!-- End -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script> -->
     <!-- End custom js for this page -->
+    @stack('scripts')
 </body>
-
 </html>

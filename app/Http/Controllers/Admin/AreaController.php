@@ -11,26 +11,39 @@ class AreaController extends Controller
 {
     public function createStates()
     {
-        $result = State::where('status', 1)->get();
+        $result = State::get();
         return view('admin.states', compact('result'));
     }
 
-    public function storStates(Request $request)
+    // public function storStates(Request $request)
+    // {
+    //     $request->validate([
+    //         'state_name' => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/', 'max:255'],
+    //     ]);
+    //     $state_name = filter_var($request->state_name, FILTER_SANITIZE_STRING);
+    //     try {
+    //         $data = new State;
+    //         $data->state_name = $state_name;
+    //         $data->save();
+    //         return redirect()->back()->with('success', 'State added successfully!');
+    //     } catch (\Throwable $th) {
+    //         return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+    //     }
+    //     // dd($request->all());
+    // }
+    public function updateStatus(Request $request)
     {
-        $request->validate([
-            'state_name' => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/', 'max:255'],
-        ]);
-        $state_name = filter_var($request->state_name, FILTER_SANITIZE_STRING);
-        try {
-            $data = new State;
-            $data->state_name = $state_name;
-            $data->save();
-            return redirect()->back()->with('success', 'State added successfully!');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+        $item = State::find($request->id);
+        if ($item) {
+            $item->status = $request->status;
+            $item->save();
+
+            return response()->json(['message' => 'Status updated successfully.']);
         }
-        // dd($request->all());
+
+        return response()->json(['message' => 'Item not found.'], 404);
     }
+
     public function createcities()
     {
         return view('admin.cities');
