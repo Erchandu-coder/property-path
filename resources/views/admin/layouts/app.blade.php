@@ -315,8 +315,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script> -->
     <!-- End custom js for this page -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    
     <script src="{{asset('admin-assets/vendors/js/vendor.bundle.base.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{asset('admin-assets/vendors/jquery-bar-rating/jquery.barrating.min.js')}}"></script>

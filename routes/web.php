@@ -39,6 +39,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::get('cities/create', [AreaController::class, 'createcities'])->name('createcities');
     Route::post('cities/store', [AreaController::class, 'storeCities'])->name('storeCities');
     Route::post('city/fetch', [AreaController::class, 'fetchCity'])->name('fetchcity');
+    Route::post('district/store', [AreaController::class, 'storeDistrict'])->name('storedistrict');
     Route::post('state/city-status-update', [AreaController::class, 'cityUpdateStatus'])->name('cityUpdateStatus');
 
     
