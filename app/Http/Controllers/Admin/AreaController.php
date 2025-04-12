@@ -47,9 +47,17 @@ class AreaController extends Controller
 
     public function createcities()
     {
-        $items = State::where('status', 1)->get();
-        $cities = City::paginate(10);
+        $items = State::where('status', 1)->get(); 
+        $cities = City::paginate(10);      
         return view('admin.cities', compact(['items', 'cities']));
+    }
+
+    public function fetchCity(Request $request)
+    {
+        $data['cities'] = City::where('state_id', $request->state_id)
+                    ->where('status', 1)
+                    ->get('city_name', 'id');
+                    return response()->json($data);            
     }
 
     public function cityUpdateStatus(Request $request)
@@ -93,7 +101,11 @@ class AreaController extends Controller
     public function createdistrict()
     {
         $states = State::where('status', 1)->get();
-        $cities = City::where('status', 1)->get();
-        return view('admin.district', compact(['states', 'cities']));
+        // $cities = City::where('status', 1)->get();
+        return view('admin.district', compact(['states']));
     }
+    // public function storeDistrict()
+    // {
+        
+    // }
 }

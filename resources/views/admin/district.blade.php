@@ -27,7 +27,7 @@
                           <div class="form-group row">
                             <label class="col-sm-4 col-form-label">State Name</label>
                             <div class="col-sm-8">
-                              <select class="form-control">
+                              <select class="form-control" id="state-dropdown">
                                   <option value="">Select</option>
                                   @foreach($states as $state)
                                   <option value="{{$state->id}}">{{$state->state_name}}</option>
@@ -40,12 +40,7 @@
                           <div class="form-group row">
                             <label class="col-sm-4 col-form-label">City Name</label>
                             <div class="col-sm-8">
-                              <select class="form-control">
-                                  <option value="">Select</option>
-                                  @foreach($cities as $citie)
-                                  <option value="{{$citie->id}}">{{$citie->city_name}}</option>
-                                  @endforeach
-                                </select>
+                              <select class="form-control" id="city-dropdown"></select>
                             </div>
                           </div>
                         </div>
@@ -139,3 +134,30 @@
         </div>
     </div>
     @endsection
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    @push('scripts')
+    <script>
+    $(document).ready(function(){
+      $("#state-dropdown").on('change', function(){
+        var state_id = this.value;
+        $('#city-dropdown').html('');
+        $.ajax({
+          url: "{{route('admin.fetchcity')}}",
+          type: "Post",
+          data: {
+            state_id: state_id,
+            _token: '{{csrf_token()}}'
+          },
+          dataType: 'json',
+          success: function (res) {
+            $('#city-dropdown').html('<option value="">-- Select City --</option>')
+            $.each(res.cities, function (key, value) {
+              $("#city-dropdown").append('<option value="' + value
+                  .id + '">' + value.city_name + '</option>');
+              });
+          }
+        })
+      });
+    })
+    </script>
+    @endpush  
