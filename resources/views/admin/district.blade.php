@@ -112,7 +112,7 @@
                                     <td>{{$result->district_name}}</td>
                                     <td>{{$result->pin_code}}</td>
                                     <td>
-                                      <input type="checkbox" class="city-toggle" data-toggle="toggle"
+                                      <input type="checkbox" class="district-toggle" data-toggle="toggle"
                                             data-on="Enabled" data-off="Disabled" data-onstyle="success"
                                             data-offstyle="danger" data-id="{{ $result->id }}"
                                             {{ $result->status == '1' ? 'checked' : '' }}>
@@ -146,7 +146,7 @@ $(document).ready(function() {
         var state_id = this.value;
         $('#city-dropdown').html('');
         $.ajax({
-            url: "{{route('admin.fetchcity')}}",
+            url: "{{route('admin.fetchCity')}}",
             type: "Post",
             data: {
                 state_id: state_id,
@@ -167,7 +167,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: "{{route('admin.storedistrict')}}",
+            url: "{{route('admin.storeDistrict')}}",
             type: "Post",
             data: $(this).serialize(),
             headers: {
@@ -196,7 +196,44 @@ $(document).ready(function() {
             }
         });
     });
+    $('.district-toggle').change(function() {
+            var status = $(this).prop('checked') ? 1 : 0;
+            var id = $(this).data('id');
 
+            $.ajax({
+                url: '{{ route("admin.UpdateDistrictStatus") }}', // adjust as needed
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    status: status
+                },
+                success: function(response) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000"
+                    };
+                    toastr.success(response.message, 'Success');
+                },
+                error: function(xhr) {
+                    // console.log(xhr.responseText);
+                    let errorMsg = 'Something went wrong';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMsg = xhr.responseJSON.message;
+                    }
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000"
+                    };
+                    toastr.error(errorMsg, 'Error');
+                }
+            });
+        });
 
 })
 </script>

@@ -12,7 +12,7 @@ use App\Models\District;
 
 class AreaController extends Controller
 {
-    public function createStates()
+    public function createState()
     {
         $result = State::paginate(10);
         return view('admin.states', compact('result'));
@@ -34,7 +34,7 @@ class AreaController extends Controller
     //     }
     //     // dd($request->all());
     // }
-    public function updateStatus(Request $request)
+    public function updateStateStatus(Request $request)
     {
         $item = State::find($request->id);
         if ($item) {
@@ -46,8 +46,8 @@ class AreaController extends Controller
 
         return response()->json(['message' => 'Item not found.'], 404);
     }
-
-    public function createcities()
+/////////////////////////////////////////////////////////////////////////////////////////
+    public function createCity()
     {
         $items = State::where('status', 1)->get(); 
         $cities = City::paginate(10);      
@@ -62,7 +62,7 @@ class AreaController extends Controller
                     return response()->json($data);            
     }
 
-    public function cityUpdateStatus(Request $request)
+    public function updateCityStatus(Request $request)
     {
         $item = City::find($request->id);
         if ($item) {
@@ -75,11 +75,11 @@ class AreaController extends Controller
         return response()->json(['message' => 'Item not found.'], 404);
     }
 
-    public function storeCities(Request $request)
+    public function storeCity(Request $request)
     {
         $request->validate([
             'state_id' => 'required|exists:states,id',
-            'city_name' => 'required|string|max:255',
+            'city_name' => 'required|string|max:255|unique:cities',
             'status' => 'required|in:0,1',
         ], [
             'state_id.required' => 'Please select a state.',
@@ -100,7 +100,7 @@ class AreaController extends Controller
     
         return response()->json(['message' => 'City added successfully!']);
     }
-    public function createdistrict()
+    public function createDistrict()
     {
         $states = State::where('status', 1)->get();
         // $cities = City::where('status', 1)->get();
@@ -112,7 +112,7 @@ class AreaController extends Controller
         $request->validate([
             'state_id' => 'required|exists:states,id',
             'city_id' => 'required|string|max:255',
-            'district_name' => 'required|string|max:255',
+            'district_name' => 'required|max:255|unique:districts',
             'pin_code' => 'required|numeric|digits:6',
             'status' => 'required|in:0,1',
         ], [
@@ -123,7 +123,6 @@ class AreaController extends Controller
             'city_id.exists'   => 'The selected city is invalid.',
             
             'district_name.required' => 'district name is required.',
-            'district_name.string'   => 'district name must be a string.',
             'district_name.max'      => 'district name may not be greater than 255 characters.',
             
             'status.required' => 'Please select a status.',
@@ -137,5 +136,17 @@ class AreaController extends Controller
             'status' => $request->status,
         ]);
         return response()->json(['message' => 'District added successfully!']);
+    }
+    public function UpdateDistrictStatus(Request $request)
+    {
+        $item = District::find($request->id);
+        if ($item) {
+            $item->status = $request->status;
+            $item->save();
+
+            return response()->json(['message' => 'Status updated successfully.']);
+        }
+
+        return response()->json(['message' => 'Item not found.'], 404);
     }
 }

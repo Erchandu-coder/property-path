@@ -125,7 +125,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: "{{route('admin.storeCities')}}",
+                url: "{{route('admin.storeCity')}}",
                 type: "Post",
                 data: $(this).serialize(),
                 headers: {
@@ -159,7 +159,7 @@
             var id = $(this).data('id');
 
             $.ajax({
-                url: '{{ route("admin.cityUpdateStatus") }}', // adjust as needed
+                url: '{{ route("admin.updateCityStatus") }}', // adjust as needed
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',

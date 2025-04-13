@@ -23,9 +23,10 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin-assets/images/favicon.png')}}" />
     <!-- Enable/Disable Toggle button CSS-->
-    <!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap4.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap4.css"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </head>
 
@@ -68,13 +69,13 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.createStates')}}">Add States</a>
+                                <a class="nav-link" href="{{route('admin.createState')}}">Add States</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.createcities')}}">Add City</a>
+                                <a class="nav-link" href="{{route('admin.createCity')}}">Add City</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.createdistrict')}}">Add District & Pin Code</a>
+                                <a class="nav-link" href="{{route('admin.createDistrict')}}">Add District & Pin Code</a>
                             </li>
                         </ul>
                     </div>
@@ -92,7 +93,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/charts/chartjs.html">
+                    <a class="nav-link" href="{{route('admin.propertyList')}}">
                         <i class="mdi mdi-table-large menu-icon"></i>
                         <span class="menu-title">List Property</span>
                     </a>

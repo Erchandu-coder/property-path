@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AreaController;
+use App\Http\Controllers\Admin\PropertyListController;
 
 
 Route::get('/welcome', function () {
@@ -32,18 +33,20 @@ require __DIR__.'/admin-auth.php';
 
 
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
-    Route::get('state/create', [AreaController::class, 'createStates'])->name('createStates');
-
-    // Route::post('state/store', [AreaController::class, 'storStates'])->name('storStates');
-    Route::post('state/status-update', [AreaController::class, 'updateStatus'])->name('updateStatus');
-    Route::get('cities/create', [AreaController::class, 'createcities'])->name('createcities');
-    Route::post('cities/store', [AreaController::class, 'storeCities'])->name('storeCities');
-    Route::post('city/fetch', [AreaController::class, 'fetchCity'])->name('fetchcity');
-    Route::post('district/store', [AreaController::class, 'storeDistrict'])->name('storedistrict');
-    Route::post('state/city-status-update', [AreaController::class, 'cityUpdateStatus'])->name('cityUpdateStatus');
-
+    Route::get('state/create', [AreaController::class, 'createState'])->name('createState');
+    Route::post('state/status-update', [AreaController::class, 'updateStateStatus'])->name('updateStateStatus');
     
-    Route::get('district/create', [AreaController::class, 'createdistrict'])->name('createdistrict');
+    Route::get('city/create', [AreaController::class, 'createCity'])->name('createCity');
+    Route::post('city/fetch', [AreaController::class, 'fetchCity'])->name('fetchCity');
+    Route::post('city/status-update', [AreaController::class, 'updateCityStatus'])->name('updateCityStatus');
+    Route::post('city/store', [AreaController::class, 'storeCity'])->name('storeCity');
+    
+    Route::get('district/create', [AreaController::class, 'createDistrict'])->name('createDistrict');  
+    Route::post('district/store', [AreaController::class, 'storeDistrict'])->name('storeDistrict');
+    Route::post('district/status-update', [AreaController::class, 'UpdateDistrictStatus'])->name('UpdateDistrictStatus');
+    
 
+    Route::get('property/list', [PropertyListController::class, 'propertyList'])->name('propertyList');
+    Route::get('property/create', [PropertyListController::class, 'create'])->name('create');
 
 });
