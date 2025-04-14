@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('special_note')->nullable();
             $table->string('date')->nullable();
-            $table->string('name_contact')->nullable();
+            $table->string('owner_name')->nullable();
+            $table->string('contact_number')->nullable();
             $table->string('address')->nullable();
             $table->string('premise')->nullable();
             $table->string('area')->nullable();

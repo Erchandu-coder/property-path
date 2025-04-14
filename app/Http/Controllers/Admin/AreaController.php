@@ -62,6 +62,13 @@ class AreaController extends Controller
                     return response()->json($data);            
     }
 
+    public function fetchDistrict(Request $request)
+    {
+        $data['districts'] = District::where('city_id', $request->city_id)
+                    ->where('status', 1)
+                    ->get(['district_name', 'id']);
+                    return response()->json($data);            
+    }
     public function updateCityStatus(Request $request)
     {
         $item = City::find($request->id);

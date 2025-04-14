@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\State;
+use App\Models\City;
+use App\Models\District;
 
 class PropertyListController extends Controller
 {
@@ -13,6 +16,14 @@ class PropertyListController extends Controller
     }
     public function create()
     {
-        return view('admin.add-property');
+        $data = State::where('status', 1)->get();
+        return view('admin.add-property', compact('data'));
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
     }
 }
