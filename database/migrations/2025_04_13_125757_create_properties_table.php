@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('contact_number')->nullable();
             $table->string('address')->nullable();
             $table->string('premise')->nullable();
-            $table->string('area')->nullable();
             $table->string('rent')->nullable();
             $table->string('availability')->nullable();
             $table->string('condition')->nullable();
