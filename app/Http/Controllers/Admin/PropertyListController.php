@@ -98,20 +98,14 @@ class PropertyListController extends Controller
             'state_id' => $request->state_id,
             'city_id' => $request->city_id,
             'district_id' => $request->district_id,
-            'property_type_id ' => $request->property_type_id,
+            'property_type_id' => $request->property_type_id,
             'date' => $request->date,
-            'status' => $request->status,
         ]);
+        // dd($data);
         if ($data) {
-            return response()->json([
-                'message' => 'Record added successfully!',
-                'status'  => true
-            ], 200);
+            return redirect()->back()->with('message', 'Record added successfully!');
         } else {
-            return response()->json([
-                'message' => 'Something went wrong!',
-                'status'  => false
-            ], 500);
-        }
+            return redirect()->back()->with('error', 'Something went wrong!');
+        }        
     }
 }
