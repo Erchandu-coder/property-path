@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class State extends Model
@@ -12,4 +12,8 @@ class State extends Model
         'state_name',
         'status',
     ];
+    public function properties(): BelongsTo
+    {
+        return $this->belongsTo(Property::class, 'state_id');
+    }
 }

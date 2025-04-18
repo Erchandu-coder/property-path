@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class District extends Model
 {
@@ -13,4 +14,8 @@ class District extends Model
         'pin_code',
         'status'
     ];
+    // public function properties(): HasOne
+    // {
+    //     return $this->hasOne(Property::class, 'district_id');
+    // }
 }

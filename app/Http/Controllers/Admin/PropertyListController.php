@@ -14,7 +14,8 @@ class PropertyListController extends Controller
 {
     public function propertyList()
     {
-        return view('admin.property-list');
+        $results = Property::with('district')->get();
+        return view('admin.property-list', compact('results'));
     }
     public function create()
     {

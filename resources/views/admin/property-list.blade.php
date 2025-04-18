@@ -58,7 +58,8 @@
                                     <th>S.No</th>
                                         <th>Special Note</th>
                                         <th>Date</th>
-                                        <th>Name & Contact</th>
+                                        <th>Name</th>
+                                        <th>Contact</th>
                                         <th>Address</th>
                                         <th>Premise</th>
                                         <th>Area</th>
@@ -72,22 +73,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $i=1; @endphp
+                                    @foreach($results as $result)
                                     <tr>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td class="text-danger"> 28.76% </td>
-                                        <td>Jacob</td>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td class="text-danger"> 28.76% </td>
-                                        <td>Jacob</td>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td class="text-danger"> 28.76% </td>
-                                        <td>Jacob</td>
-                                        <td>Jacob</td>
+                                        <td>{{$i++}}</td>
+                                        <td>{{ $result->special_note ? $result->special_note : 'N/A' }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($result->date)->format('d-m-Y') }}</td>
+                                        <td>{{ $result->owner_name }}</td>
+                                        <td>{{ $result->contact_number }}</td>
+                                        <td>{{ $result->address }}</td>
+                                        <td>{{ $result->premise }}</td>
+                                        <td>{{ $result->district?->district_name ?? 'N/A' }}</td>
+                                        <td>{{ $result->rent }} Thd</td>
+                                        <td>{{ $result->availability }}</td>
+                                        <td>{{ $result->condition }}</td>
+                                        <td>{{ $result->sqFt_sqyd }}</td>
+                                        <td>{{ $result->key }}</td>
+                                        <td>{{ $result->brokerage }}</td>
                                         <td>Photoshop</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -98,7 +103,7 @@
     </div>
 </div>
 @endsection
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
@@ -107,4 +112,4 @@
 <script>
 new DataTable('#example');
 </script>
-@endpush
+@endpush -->
