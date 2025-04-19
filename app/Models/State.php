@@ -12,8 +12,8 @@ class State extends Model
         'state_name',
         'status',
     ];
-    public function properties(): BelongsTo
+    public function properties(): HasOne
     {
-        return $this->belongsTo(Property::class, 'state_id');
+        return $this->hasOne(Property::class, 'state_id');
     }
 }

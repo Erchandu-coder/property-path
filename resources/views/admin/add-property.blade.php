@@ -235,20 +235,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">District</label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" id="district-dropdown" name="district_id"
-                                                value="{{ old('district_id') }}"></select>
-                                            @error('district_id')
-                                            <p class="text text-danger">{{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Description 1</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" placeholder="Enter Description 1"
@@ -259,6 +245,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Description 2</label>
@@ -305,29 +293,7 @@ $(document).ready(function() {
             }
         })
     });
-    $("#city-dropdown").on('change', function() {
-        var city_id = this.value;
-        $('#district-dropdown').html('');
-        $.ajax({
-            url: "{{route('admin.fetchDistrict')}}",
-            type: "Post",
-            data: {
-                city_id: city_id,
-                _token: '{{csrf_token()}}'
-            },
-            dataType: 'json',
-            success: function(res) {
-                $('#district-dropdown').html(
-                    '<option value="">-- Select District --</option>')
-                $.each(res.districts, function(key, value) {
-                    console.log(value);
-                    $("#district-dropdown").append('<option value="' + value.id +
-                        '">' +
-                        value.district_name + '</option>');
-                });
-            }
-        })
-    });
+    
     toastr.options = {
         "closeButton": true,
         "progressBar": true,
@@ -342,78 +308,6 @@ $(document).ready(function() {
     @if(session('error'))
     toastr.error("{{ session('error') }}");
     @endif
-    // $('#districtForm').on('submit', function(e) {
-    //     e.preventDefault();
-
-    //     $.ajax({
-    //         url: "{{route('admin.storeDistrict')}}",
-    //         type: "Post",
-    //         data: $(this).serialize(),
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         },
-    //         success: function(response) {
-    //             toastr.options = {
-    //                 "closeButton": true,
-    //                 "progressBar": true,
-    //                 "positionClass": "toast-top-right",
-    //                 "timeOut": "5000"
-    //             };
-    //             toastr.success(response.message, 'Success');
-    //             $('#districtForm')[0].reset(); // Reset form
-    //             $('#Modal').modal('hide');
-    //         },
-    //         error: function(xhr) {
-    //             if (xhr.status === 422) {
-    //                 let errors = xhr.responseJSON.errors;
-    //                 $.each(errors, function(key, value) {
-    //                     toastr.error(value[0]);
-    //                 });
-    //             } else {
-    //                 toastr.error("Something went wrong.");
-    //             }
-    //         }
-    //     });
-    // });
-    // $('.district-toggle').change(function() {
-    //         var status = $(this).prop('checked') ? 1 : 0;
-    //         var id = $(this).data('id');
-
-    //         $.ajax({
-    //             url: '{{ route("admin.UpdateDistrictStatus") }}', // adjust as needed
-    //             type: 'POST',
-    //             data: {
-    //                 _token: '{{ csrf_token() }}',
-    //                 id: id,
-    //                 status: status
-    //             },
-    //             success: function(response) {
-    //                 toastr.options = {
-    //                     "closeButton": true,
-    //                     "progressBar": true,
-    //                     "positionClass": "toast-top-right",
-    //                     "timeOut": "5000"
-    //                 };
-    //                 toastr.success(response.message, 'Success');
-    //             },
-    //             error: function(xhr) {
-    //                 // console.log(xhr.responseText);
-    //                 let errorMsg = 'Something went wrong';
-    //                 if (xhr.responseJSON && xhr.responseJSON.message) {
-    //                     errorMsg = xhr.responseJSON.message;
-    //                 }
-
-    //                 toastr.options = {
-    //                     "closeButton": true,
-    //                     "progressBar": true,
-    //                     "positionClass": "toast-top-right",
-    //                     "timeOut": "5000"
-    //                 };
-    //                 toastr.error(errorMsg, 'Error');
-    //             }
-    //         });
-    //     });
-
-})
+});
 </script>
 @endpush

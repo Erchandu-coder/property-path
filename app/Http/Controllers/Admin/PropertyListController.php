@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\City;
-use App\Models\District;
 use App\Models\Property;
 use App\Models\PropertyType;
 
@@ -14,7 +13,7 @@ class PropertyListController extends Controller
 {
     public function propertyList()
     {
-        $results = Property::with('district')->get();
+        $results = Property::with('city')->paginate(10);
         return view('admin.property-list', compact('results'));
     }
     public function create()
@@ -40,7 +39,6 @@ class PropertyListController extends Controller
             'address'           => 'required',
             'state_id'          => 'required|exists:states,id',
             'city_id'           => 'required|exists:cities,id',
-            'district_id'       => 'required|exists:districts,id',
             'description_1'     => 'required',
             'description_2'     => 'required',
             'property_type_id'  => 'required|exists:property_types,id',
@@ -73,9 +71,6 @@ class PropertyListController extends Controller
             'city_id.required'           => 'City is required.',
             'city_id.exists'             => 'Selected city is invalid.',
         
-            'district_id.required'       => 'District is required.',
-            'district_id.exists'         => 'Selected district is invalid.',
-        
             'description_1.required'     => 'Description 1 is required.',
             'description_2.required'     => 'Description 2 is required.',
         
@@ -98,7 +93,6 @@ class PropertyListController extends Controller
             'description_2' => $request->description_2,
             'state_id' => $request->state_id,
             'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
             'property_type_id' => $request->property_type_id,
             'date' => $request->date,
         ]);

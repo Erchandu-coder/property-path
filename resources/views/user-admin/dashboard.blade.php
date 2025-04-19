@@ -36,7 +36,7 @@
                                             <i class="mdi mdi mdi-home text-info"></i>
                                         </button>
                                         <div class="pl-2">
-                                            <h4 class="mb-0 font-weight-semibold head-count"> #8,217 </h4>
+                                            <h4 class="mb-0 font-weight-semibold head-count"> #{{$rrent_count}} </h4>
                                             <span class="font-10 font-weight-semibold text-muted">RESIDENTIAL
                                                 RENT</span>
                                         </div>
@@ -46,7 +46,7 @@
                                             <i class="mdi mdi mdi-home-map-marker text-info"></i>
                                         </button>
                                         <div class="pl-2">
-                                            <h4 class="mb-0 font-weight-semibold head-count"> #2,804 </h4>
+                                            <h4 class="mb-0 font-weight-semibold head-count"> #{{$rsell_count}} </h4>
                                             <span class="font-10 font-weight-semibold text-muted">RESIDENTIAL
                                                 SELL</span>
                                         </div>
@@ -56,7 +56,7 @@
                                             <i class="mdi mdi-hospital-building text-info"></i>
                                         </button>
                                         <div class="pl-2">
-                                            <h4 class="mb-0 font-weight-semibold head-count"> #2,804 </h4>
+                                            <h4 class="mb-0 font-weight-semibold head-count"> #{{$crent_count}} </h4>
                                             <span class="font-10 font-weight-semibold text-muted">COMMERCIAL RENT</span>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                             <i class="mdi mdi mdi-hospital-building text-info"></i>
                                         </button>
                                         <div class="pl-2">
-                                            <h4 class="mb-0 font-weight-semibold head-count"> #2,804 </h4>
+                                            <h4 class="mb-0 font-weight-semibold head-count"> #{{$csell_count}} </h4>
                                             <span class="font-10 font-weight-semibold text-muted">COMMERCIAL SELL</span>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                             <i class="mdi mdi-format-list-bulleted text-info"></i>
                                         </button>
                                         <div class="pl-2">
-                                            <h4 class="mb-0 font-weight-semibold head-count"> 2,804 </h4>
+                                            <h4 class="mb-0 font-weight-semibold head-count"> {{$total_property}} </h4>
                                             <span class="font-10 font-weight-semibold text-muted">TOTAL
                                                 ACTIVE</span>
                                         </div>
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-warning mb-0"> 12.45 </h4>
+                                    <h4 class="font-weight-bold text-warning mb-0">{{$today_rrent_count}}</h4>
                                     <h6 class="text-muted">Residential Rent</h6>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-danger mb-0">34568</h4>
+                                    <h4 class="font-weight-bold text-danger mb-0">{{$today_rsell_count}}</h4>
                                     <h6 class="text-muted">Residential Sell</h6>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-success mb-0"> 33.50% </h4>
+                                    <h4 class="font-weight-bold text-success mb-0">{{$today_crent_count}}</h4>
                                     <h6 class="text-muted">Commercial Rent</h6>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-info mb-0">12.45</h4>
+                                    <h4 class="font-weight-bold text-info mb-0">{{$today_csell_count}}</h4>
                                     <h6 class="text-muted">Commercial Sell</h6>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-primary mb-0"> 12.45 </h4>
+                                    <h4 class="font-weight-bold text-primary mb-0">{{$today_total_property}}</h4>
                                     <h6 class="text-muted mb-0">Total Property</h6>
                                 </div>
                             </div>

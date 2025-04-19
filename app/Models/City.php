@@ -3,8 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class City extends Model
 {
@@ -13,8 +12,8 @@ class City extends Model
         'state_id',
         'status',
     ];
-    // public function properties(): BelongsTo
-    // {
-    //     return $this->belongsTo(Property::class, 'city_id');
-    // }
+    public function properties(): HasMany
+    {
+        return $this->hasMany(Property::class, 'city_id');
+    }
 }

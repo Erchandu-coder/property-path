@@ -30,11 +30,9 @@ return new class extends Migration
             $table->string('description_2')->nullable();
             $table->unsignedBigInteger('state_id');
             $table->unsignedBigInteger('city_id');
-            $table->unsignedBigInteger('district_id');
             $table->unsignedBigInteger('property_type_id');
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');   
             $table->foreign('property_type_id')->references('id')->on('property_types')->onDelete('cascade');   
             $table->boolean('status')->default(1)->comment('1 = active, 0 = deactive');       
             $table->timestamps();

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\City;
-use App\Models\District;
 
 
 
@@ -62,13 +61,6 @@ class AreaController extends Controller
                     return response()->json($data);            
     }
 
-    public function fetchDistrict(Request $request)
-    {
-        $data['districts'] = District::where('city_id', $request->city_id)
-                    ->where('status', 1)
-                    ->get(['district_name', 'id']);
-                    return response()->json($data);            
-    }
     public function updateCityStatus(Request $request)
     {
         $item = City::find($request->id);
@@ -106,54 +98,5 @@ class AreaController extends Controller
         ]);
     
         return response()->json(['message' => 'City added successfully!']);
-    }
-    public function createDistrict()
-    {
-        $states = State::where('status', 1)->get();
-        // $cities = City::where('status', 1)->get();
-        $results = District::paginate(10);
-        return view('admin.district', compact(['states', 'results']));
-    }
-    public function storeDistrict(Request $request)
-    {
-        $request->validate([
-            'state_id' => 'required|exists:states,id',
-            'city_id' => 'required|string|max:255',
-            'district_name' => 'required|max:255|unique:districts',
-            'pin_code' => 'required|numeric|digits:6',
-            'status' => 'required|in:0,1',
-        ], [
-            'state_id.required' => 'Please select a state.',
-            'state_id.exists'   => 'The selected state is invalid.',
-            
-            'city_id.required' => 'Please select a city.',
-            'city_id.exists'   => 'The selected city is invalid.',
-            
-            'district_name.required' => 'district name is required.',
-            'district_name.max'      => 'district name may not be greater than 255 characters.',
-            
-            'status.required' => 'Please select a status.',
-            'status.in'       => 'Status must be either Active or Deactive.',
-        ]);
-        District::create([
-            'state_id' => $request->state_id,
-            'city_id' => $request->city_id,
-            'district_name' => $request->district_name,
-            'pin_code' => $request->pin_code,
-            'status' => $request->status,
-        ]);
-        return response()->json(['message' => 'District added successfully!']);
-    }
-    public function UpdateDistrictStatus(Request $request)
-    {
-        $item = District::find($request->id);
-        if ($item) {
-            $item->status = $request->status;
-            $item->save();
-
-            return response()->json(['message' => 'Status updated successfully.']);
-        }
-
-        return response()->json(['message' => 'Item not found.'], 404);
     }
 }

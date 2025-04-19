@@ -26,24 +26,15 @@ class Property extends Model
         'description_2',
         'state_id',
         'city_id',
-        'district_id',
         'property_type_id',
         'status',
     ];
-    // public function proptype(): HasMany
-    // {
-    //     return $this->hasOne(PropertyType::class, 'property_type_id');
-    // }
-    // public function state(): HasOne
-    // {
-    //     return $this->hasOne(State::class, 'state_id');
-    // }
-    // public function cities(): HasOne
-    // {
-    //     return $this->hasOne(City::class, 'city_id');
-    // }
-    public function district(): BelongsTo
+    public function state(): HasOne
     {
-        return $this->belongsTo(District::class, 'district_id');
+        return $this->belongsTo(State::class, 'state_id');
+    }
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
 }

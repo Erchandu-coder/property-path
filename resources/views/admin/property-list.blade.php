@@ -70,6 +70,7 @@
                                         <th>Key</th>
                                         <th>Brokerage</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -83,18 +84,29 @@
                                         <td>{{ $result->contact_number }}</td>
                                         <td>{{ $result->address }}</td>
                                         <td>{{ $result->premise }}</td>
-                                        <td>{{ $result->district?->district_name ?? 'N/A' }}</td>
+                                        <td>{{ $result->city?->city_name ?? 'N/A' }}</td>
                                         <td>{{ $result->rent }} Thd</td>
                                         <td>{{ $result->availability }}</td>
                                         <td>{{ $result->condition }}</td>
                                         <td>{{ $result->sqFt_sqyd }}</td>
                                         <td>{{ $result->key }}</td>
                                         <td>{{ $result->brokerage }}</td>
-                                        <td>Photoshop</td>
+                                        <td><label class="{{ $result->status == 1 ? 'badge badge-success' : 'badge badge-danger'}}">{{ $result->status == '1' ? 'Enable' : 'Disable' }}</label></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-rounded btn-icon">
+                                                <i class="mdi mdi mdi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                                                <i class="mdi mdi mdi-delete"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="d-flex mt-4">
+                            {{ $results->links() }}
                         </div>
                     </div>
                 </div>
