@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\http\Controllers\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\PropertyListController;
@@ -25,6 +26,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+    Route::get('residential-rent', [PropertyController::class, 'showResidentialRent'])->name('showResidentialRent');
+    Route::get('residential-sell', [PropertyController::class, 'showResidentialSell'])->name('showResidentialSell');   
+    Route::get('commercial-rent', [PropertyController::class, 'showCommercialRent'])->name('showCommercialRent');   
+    Route::get('commercial-sell', [PropertyController::class, 'showCommercialSell'])->name('showCommercialSell');   
+    Route::get('total-property', [PropertyController::class, 'totalProperty'])->name('totalProperty');   
+
+
 });
 
 require __DIR__.'/auth.php';

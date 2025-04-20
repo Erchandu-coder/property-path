@@ -12,66 +12,54 @@ class UserController extends Controller
 {
     public function userDashboard()
     {
-        $user = Auth::user(); // Get the authenticated user
-        $tpcount = [];
-        $date = Carbon::now();   
-        $today_date = Carbon::now()->toDateString(); // Just the date
-        $yesterdayDate = Carbon::yesterday()->toDateString();
+        $user = Auth::user();
+        $today = Carbon::today()->toDateString();
+        $yesterday = Carbon::yesterday()->toDateString();
+    
+        $propertyTypeMapping = [
+            1 => 'rrent', // Residential Rent
+            2 => 'rsell', // Residential Sell
+            3 => 'crent', // Commercial Rent
+            4 => 'csell', // Commercial Sell
+        ];
+    
         $counts = [];
-        $propertyTypes = [
-            'rrent_count' => 1, // Residential Rent
-            'rsell_count' => 2, // Residential Sell
-            'crent_count' => 3, // Commercial Rent
-            'csell_count' => 4, // Commercial Sell
-        ];
-        
-        foreach ($propertyTypes as $key => $typeId) {
-            $counts[$key] = Property::where('status', 1)
-                                    ->where('property_type_id', $typeId)
-                                    ->count();                    
+        $todayCounts = [];
+        $yesterdayCounts = [];
+    
+        foreach ($propertyTypeMapping as $typeId => $label) {
+            // Total by type
+            $counts["{$label}_count"] = Property::where('status', 1)
+                ->where('property_type_id', $typeId)
+                ->count();
+    
+            // Today's count by type
+            $todayCounts["today_{$label}_count"] = Property::where('status', 1)
+                ->where('property_type_id', $typeId)
+                ->whereDate('date', $today)
+                ->count();
+    
+            // Yesterday's count by type
+            $yesterdayCounts["yesterday_{$label}_count"] = Property::where('status', 1)
+                ->where('property_type_id', $typeId)
+                ->whereDate('date', $yesterday)
+                ->count();
         }
-        
-        $PropertyTypes = [
-            'today_rrent_count' => 1, // Residential Rent
-            'today_rsell_count' => 2, // Residential Sell
-            'today_crent_count' => 3, // Commercial Rent
-            'today_csell_count' => 4, // Commercial Sell
-        ];
-
-        foreach ($PropertyTypes as $pkey => $pId) {
-            $tpcount[$pkey] = Property::where('status', 1)
-                                      ->where('property_type_id', $pId)
-                                      ->where('date', $today_date)
-                                      ->count();
-        }
-
-        // $PropertyTypes = [
-        //     'yesterday_rrent_count' => 1, // Residential Rent
-        //     'yesterday_rsell_count' => 2, // Residential Sell
-        //     'yesterday_crent_count' => 3, // Commercial Rent
-        //     'yesterday_csell_count' => 4, // Commercial Sell
-        // ];
-
-        // foreach ($PropertyTypes as $ykey => $pId) {
-        //     $tpcount[$pkey] = Property::where('status', 1)
-        //                               ->where('property_type_id', $pId)
-        //                               ->where('date', $yesterdayDate)
-        //                               ->count();
-        // }
-
-        $tpcount['today_total_property'] = Property::where('status', 1)
-                                                    ->where('date', $today_date)
-                                                    ->count();
-        // $yesterdayCount = Property::where('status', 1)
-        //                         ->where('property_type_id', 1)
-        //                         ->where('date', $yesterdayDate)
-        //                         ->count();                        
-        // dd($yesterdayCount);
-        // dd($tpcount);
-
-
+    
+        // Total counts
         $counts['total_property'] = Property::where('status', 1)->count();
-
-        return view('user-admin.dashboard', array_merge(['user' => $user], $counts, $tpcount));
+        $todayCounts['today_total_property'] = Property::where('status', 1)
+            ->whereDate('date', $today)
+            ->count();
+        $yesterdayCounts['yesterday_total_property'] = Property::where('status', 1)
+            ->whereDate('date', $yesterday)
+            ->count();
+    
+        return view('user-admin.dashboard', array_merge(
+            ['user' => $user],
+            $counts,
+            $todayCounts,
+            $yesterdayCounts
+        ));
     }
 }

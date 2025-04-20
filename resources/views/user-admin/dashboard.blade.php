@@ -225,7 +225,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-warning mb-0"> 12.45 </h4>
+                                    <h4 class="font-weight-bold text-warning mb-0"> {{$yesterday_rrent_count}} </h4>
                                     <h6 class="text-muted">Residential Rent</h6>
                                 </div>
                             </div>
@@ -236,7 +236,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-danger mb-0">34568</h4>
+                                    <h4 class="font-weight-bold text-danger mb-0">{{$yesterday_rsell_count}}</h4>
                                     <h6 class="text-muted">Residential Sell</h6>
                                 </div>
                             </div>
@@ -247,7 +247,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-success mb-0"> 33.50% </h4>
+                                    <h4 class="font-weight-bold text-success mb-0"> {{$yesterday_crent_count}} </h4>
                                     <h6 class="text-muted">Commercial Rent</h6>
                                 </div>
                             </div>
@@ -258,7 +258,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-info mb-0">12.45</h4>
+                                    <h4 class="font-weight-bold text-info mb-0">{{$yesterday_csell_count}}</h4>
                                     <h6 class="text-muted">Commercial Sell</h6>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@
                                     </div>
                                 </div>
                                 <div class="pl-4">
-                                    <h4 class="font-weight-bold text-primary mb-0"> 12.45 </h4>
+                                    <h4 class="font-weight-bold text-primary mb-0"> {{$yesterday_total_property}} </h4>
                                     <h6 class="text-muted mb-0">Total Property</h6>
                                 </div>
                             </div>

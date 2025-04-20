@@ -77,10 +77,65 @@
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{{route('dashboard')}}">
                                 <i class="mdi mdi-compass-outline menu-icon"></i>
                                 <span class="menu-title" :active="request()->routeIs('dashboard')">Dashboard</span>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                            <i class="mdi mdi-monitor-dashboard menu-icon"></i>
+                            <span class="menu-title">All Property</span>
+                            <i class="menu-arrow"></i>
+                            </a>
+                            <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{route('showResidentialRent')}}">Residential Rent</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{route('showResidentialSell')}}">Residential Sell</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{route('showCommercialRent')}}">Commercial Rent</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{route('showCommercialSell')}}">Commercial Sell</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{route('totalProperty')}}">Total Property</a>
+                                </li>
+                            </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- <a class="nav-link" href="../../pages/forms/basic_elements.html">
+                            <i class="mdi mdi-clipboard-text menu-icon"></i>
+                            <span class="menu-title">Forms</span>
+                            </a> -->
+                        </li>
+                        <li>
+                            <!-- <a class="nav-link" href="../../pages/icons/mdi.html">
+                            <i class="mdi mdi-contacts menu-icon"></i>
+                            <span class="menu-title">Icons</span>
+                            </a> -->
+                        </li>
+                        <li>
+                            <!-- <a class="nav-link" href="../../pages/charts/chartjs.html">
+                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                            <span class="menu-title">Charts</span>
+                            </a> -->
+                        </li>
+                        <li>
+                            <!-- <a class="nav-link" href="../../pages/tables/basic-table.html">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Tables</span>
+                            </a> -->
+                        </li>
+                        <li>
+                            <!-- <a href="https://www.bootstrapdash.com/demo/plus-free/documentation/documentation.html" class="nav-link" target="_blank">
+                            <i class="mdi mdi-file-document-box menu-icon"></i>
+                            <span class="menu-title">Docs</span></a> -->
                         </li>
                         <li class="nav-item">
                             <div class="nav-link d-flex">

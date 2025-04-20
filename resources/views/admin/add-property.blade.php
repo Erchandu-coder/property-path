@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
 <!-- partial -->
-<div class="col-12 main-panel">
+<div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">Add Property</h3>
