@@ -52,11 +52,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     // Route::get('district/create', [AreaController::class, 'createDistrict'])->name('createDistrict'); 
     // Route::post('district/fetch', [AreaController::class, 'fetchDistrict'])->name('fetchDistrict'); 
     // Route::post('district/store', [AreaController::class, 'storeDistrict'])->name('storeDistrict');
-    // Route::post('district/status-update', [AreaController::class, 'UpdateDistrictStatus'])->name('UpdateDistrictStatus');
+    
     
 
     Route::get('property/list', [PropertyListController::class, 'propertyList'])->name('propertyList');
     Route::get('property/create', [PropertyListController::class, 'create'])->name('create');
     Route::post('property/store', [PropertyListController::class, 'store'])->name('store');
-
+    Route::get('user/show', [AdminController::class, 'showUser'])->name('showUser');
 });
