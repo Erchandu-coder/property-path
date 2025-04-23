@@ -48,15 +48,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::post('city/fetch', [AreaController::class, 'fetchCity'])->name('fetchCity');
     Route::post('city/status-update', [AreaController::class, 'updateCityStatus'])->name('updateCityStatus');
     Route::post('city/store', [AreaController::class, 'storeCity'])->name('storeCity');
-    
     // Route::get('district/create', [AreaController::class, 'createDistrict'])->name('createDistrict'); 
     // Route::post('district/fetch', [AreaController::class, 'fetchDistrict'])->name('fetchDistrict'); 
-    // Route::post('district/store', [AreaController::class, 'storeDistrict'])->name('storeDistrict');
-    
-    
-
+    // Route::post('district/store', [AreaController::class, 'storeDistrict'])->name('storeDistrict');   
     Route::get('property/list', [PropertyListController::class, 'propertyList'])->name('propertyList');
     Route::get('property/create', [PropertyListController::class, 'create'])->name('create');
     Route::post('property/store', [PropertyListController::class, 'store'])->name('store');
     Route::get('user/show', [AdminController::class, 'showUser'])->name('showUser');
+    Route::get('user/edit/{id}', [AdminController::class, 'editUser'])->name('editUser');
 });

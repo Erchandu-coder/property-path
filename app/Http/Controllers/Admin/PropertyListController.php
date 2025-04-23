@@ -103,4 +103,8 @@ class PropertyListController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }        
     }
+    public function editProperty()
+    {
+        return view('admin.edit-property');
+    }
 }

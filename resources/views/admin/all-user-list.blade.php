@@ -18,7 +18,7 @@
                                 <table class="table table-bordered table-striped">
                                     <thead class="table-dark">
                                         <tr>
-                                        <th>S.No</th>
+                                            <th>S.No</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Mobile</th>
@@ -37,13 +37,13 @@
                                             <td>{{ $result->mobile }}</td>
                                             <td>
                                                 <input type="checkbox" class="city-toggle" data-toggle="toggle"
-                                                data-on="Enabled" data-off="Disabled" data-onstyle="success"
-                                                data-offstyle="danger" data-id="{{ $result->id }}"
-                                                {{ $result->status == '1' ? 'checked' : '' }}>
+                                                    data-on="Enabled" data-off="Disabled" data-onstyle="success"
+                                                    data-offstyle="danger" data-id="{{ $result->id }}"
+                                                    {{ $result->status == '1' ? 'checked' : '' }}>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-icon">
-                                                    <i class="mdi mdi mdi-pencil"></i>
+                                                <a href="{{ route('admin.editUser', ['id' => $result->id]) }}"><button type="button" class="btn btn-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi mdi-pencil"></i></a>
                                                 </button>
                                                 <button type="button" class="btn btn-danger btn-rounded btn-icon">
                                                     <i class="mdi mdi mdi-delete"></i>
@@ -62,16 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 @endsection
-<!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap4.js"></script>
-@push('scripts')
-<script>
-new DataTable('#example');
-</script>
-@endpush -->

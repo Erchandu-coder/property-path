@@ -15,9 +15,16 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+    
     public function showUser()
     {
         $results = User::paginate(10);
         return view('admin.all-user-list', compact('results'));
     }
+    
+    public function editUser($id)
+    {
+        $user = User::find($id);
+       return view('admin.update-users', compact('user'));
+    } 
 }

@@ -337,6 +337,7 @@
     <!-- Custom js for this page -->
     <script src="{{asset('admin-assets/js/dashboard.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="{{asset('admin-assets/js/custome.js')}}"></script>
     <!-- Enable/Disable Toggle button Js-->
     
     @stack('scripts')
