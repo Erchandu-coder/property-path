@@ -56,4 +56,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::post('property/store', [PropertyListController::class, 'store'])->name('store');
     Route::get('user/show', [AdminController::class, 'showUser'])->name('showUser');
     Route::get('user/edit/{id}', [AdminController::class, 'editUser'])->name('editUser');
+    Route::post('user/update-user', [AdminController::class, 'updateUser'])->name('updateUser');
+    Route::delete('user/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+
 });

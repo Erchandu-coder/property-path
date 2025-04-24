@@ -35,6 +35,7 @@
                                             <td>{{ $result->name}}</td>
                                             <td>{{ $result->email }}</td>
                                             <td>{{ $result->mobile }}</td>
+                                            <td>{{ $result->address }}</td>
                                             <td>
                                                 <input type="checkbox" class="city-toggle" data-toggle="toggle"
                                                     data-on="Enabled" data-off="Disabled" data-onstyle="success"
@@ -43,11 +44,16 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.editUser', ['id' => $result->id]) }}"><button type="button" class="btn btn-primary btn-rounded btn-icon">
-                                                    <i class="mdi mdi mdi-pencil"></i></a>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                                                    <i class="mdi mdi mdi-delete"></i>
-                                                </button>
+                                                    <i class="mdi mdi mdi-pencil"></i>
+                                                </button></a>
+                                                <form action="{{ route('admin.deleteUser', ['id' => $result->id]) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-rounded btn-icon">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </button>
+                                                </form>
+
                                             </td>
                                         </tr>
                                         @endforeach

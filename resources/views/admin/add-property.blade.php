@@ -293,21 +293,6 @@ $(document).ready(function() {
             }
         })
     });
-    
-    toastr.options = {
-        "closeButton": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "timeOut": "5000", // 5 seconds
-        "extendedTimeOut": "1000"
-    };
-    @if(session('message'))
-    toastr.success("{{ session('message') }}");
-    @endif
-
-    @if(session('error'))
-    toastr.error("{{ session('error') }}");
-    @endif
 });
 </script>
 @endpush

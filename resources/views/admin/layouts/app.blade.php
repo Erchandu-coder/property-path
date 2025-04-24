@@ -339,7 +339,24 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="{{asset('admin-assets/js/custome.js')}}"></script>
     <!-- Enable/Disable Toggle button Js-->
-    
+    <script>
+        $(document).ready(function(){
+            toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000", // 5 seconds
+        "extendedTimeOut": "1000"
+        };
+        @if(session('message'))
+        toastr.success("{{ session('message') }}");
+        @endif
+
+        @if(session('error'))
+        toastr.error("{{ session('error') }}");
+        @endif
+        });
+    </script>    
     @stack('scripts')
 </body>
 </html>
