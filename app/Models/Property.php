@@ -29,12 +29,16 @@ class Property extends Model
         'property_type_id',
         'status',
     ];
-    public function state(): HasOne
+    public function state(): BelongsTo
     {
         return $this->belongsTo(State::class, 'state_id');
     }
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city_id');
+    }
+    public function propertype(): BelongsTo
+    {
+        return $this->belongsTo(PropertyType::class, 'property_type_id');
     }
 }

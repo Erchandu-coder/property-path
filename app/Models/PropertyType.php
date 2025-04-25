@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class PropertyType extends Model
 {
     //
     protected $fillable = ['property_name', 'status'];
 
-    public function properties(): BelongsTo
+    public function properties(): hasMany
     {
-        return $this->belongsTo(Property::class, 'property_type_id');
+        return $this->hasMany(Property::class, 'property_type_id');
     }
 }

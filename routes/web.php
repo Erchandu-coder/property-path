@@ -58,5 +58,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::get('user/edit/{id}', [AdminController::class, 'editUser'])->name('editUser');
     Route::post('user/update-user', [AdminController::class, 'updateUser'])->name('updateUser');
     Route::delete('user/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
-
+    Route::get('list-property/edit-property/{id}', [PropertyListController::class, 'editProperty'])->name('editProperty');
+    Route::post('list-property/update-property', [PropertyListController::class, 'updateProperty'])->name('updateProperty');
+    Route::delete('list-property/delete-property/{id}', [PropertyListController::class, 'deleteProperty'])->name('deleteProperty');
 });

@@ -4,6 +4,10 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">Update User</h3>
+            <nav aria-label="breadcrumb">
+                <a href="{{route('admin.showUser')}}"><button type="button" class="btn btn-warning btn-icon-text">
+                    <i class="mdi mdi-arrow-left btn-icon-prepend"></i> Back </button></a>
+            </nav>
         </div>
         <div class="row">
             <div class="col-12 grid-margin">

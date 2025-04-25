@@ -56,12 +56,16 @@
                                             <td>{{ $result->brokerage }}</td>
                                             <td><label class="{{ $result->status == 1 ? 'badge badge-success' : 'badge badge-danger'}}">{{ $result->status == '1' ? 'Enable' : 'Disable' }}</label></td>
                                             <td>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-icon">
-                                                    <i class="mdi mdi mdi-pencil"></i>
+                                                <a href="{{ route('admin.editProperty', ['id' => $result->id]) }}"><button type="button" class="btn btn-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi mdi-pencil"></i></a>
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                                                    <i class="mdi mdi mdi-delete"></i>
-                                                </button>
+                                                <form action="{{ route('admin.deleteProperty', ['id' => $result->id]) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-rounded btn-icon">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

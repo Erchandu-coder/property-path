@@ -250,9 +250,6 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav navbar-nav-right">
-                        <li class="nav-item nav-logout d-none d-md-block mr-3">
-                            <a class="nav-link" href="#">Status</a>
-                        </li>
                         <li class="nav-item nav-logout d-none d-md-block">
                             <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
@@ -263,20 +260,13 @@
                         <li class="nav-item nav-profile dropdown d-none d-md-block">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
                                 aria-expanded="false">
-                                <div class="nav-profile-text">English </div>
+                                <div class="nav-profile-text">Account</div>
                             </a>
                             <div class="dropdown-menu center navbar-dropdown" aria-labelledby="profileDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <i class="flag-icon flag-icon-bl mr-3"></i> French </a>
-                                <div class="dropdown-divider"></div>
+                                     Profile </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="flag-icon flag-icon-cn mr-3"></i> Chinese </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
-                                    <i class="flag-icon flag-icon-de mr-3"></i> German </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
-                                    <i class="flag-icon flag-icon-ru mr-3"></i>Russian </a>
+                                     Password </a>
                             </div>
                         </li>
                         <li class="nav-item nav-logout d-none d-lg-block">
@@ -297,11 +287,10 @@
     <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                        bootstrapdash.com
-                        2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                            href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from
-                        Bootstrapdash.com</span>
+                        propertypath
+                        2025</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a
+                            href="#" target="_blank">propertypath@2025</a> Developed by Chandrakant</span>
                 </div>
             </footer>
     <!-- page-body-wrapper ends -->

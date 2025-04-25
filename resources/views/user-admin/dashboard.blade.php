@@ -162,50 +162,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($rrent_tops as $rrent_top)
                                         <tr>
-                                            <td>Herman Beck</td>
+                                            <td>{{$rrent_top->city_name}}</td>
                                             <td>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-success" role="progressbar"
                                                         style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100">25%</div>
+                                                        aria-valuemax="100">{{$rrent_top->total_properties}}%</div>
                                                 </div>
                                             </td>
-                                            <td>$ 77.99</td>
+                                            <td>{{$rrent_top->total_properties}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Messsy Adam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
-                                                        aria-valuemax="100">75%</div>
-                                                </div>
-                                            </td>
-                                            <td>$245.30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Richards</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                                        aria-valuemax="100">90%</div>
-                                                </div>
-                                            </td>
-                                            <td>$138.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Peter Meggik</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary" role="progressbar"
-                                                        style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                                                        aria-valuemax="100">50%</div>
-                                                </div>
-                                            </td>
-                                            <td>$ 77.99</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
