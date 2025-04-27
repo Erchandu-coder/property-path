@@ -166,10 +166,18 @@
                                         <tr>
                                             <td>{{$rrent_top->city_name}}</td>
                                             <td>
+                                                @php
+                                                $max = 100;
+                                                $value = $rrent_top->total_properties;
+                                                $percentage = ($value / $max) * 100;
+                                                @endphp
                                                 <div class="progress">
                                                     <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100">{{$rrent_top->total_properties}}%</div>
+                                                        style="width: {{ $percentage }}%;"
+                                                        aria-valuenow="{{ $percentage }}" aria-valuemin="0"
+                                                        aria-valuemax="100">
+
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td>{{$rrent_top->total_properties}}</td>
@@ -178,6 +186,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <a href="#">Read more...</a>
                         </div>
                     </div>
                 </div>
@@ -259,64 +268,42 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($rsell_tops as $rsell_top)
                                         <tr>
-                                            <td>Herman Beck</td>
+                                            <td>{{$rsell_top->city_name}}</td>
                                             <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100">25%</div>
-                                                </div>
-                                            </td>
-                                            <td>$ 77.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Messsy Adam</td>
-                                            <td>
+                                                @php
+                                                $max = 100;
+                                                $value = $rsell_top->total_properties;
+                                                $percentage = ($value / $max) * 100;
+                                                @endphp
                                                 <div class="progress">
                                                     <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
-                                                        aria-valuemax="100">75%</div>
+                                                        style="width: {{ $percentage }}%;"
+                                                        aria-valuenow="{{ $percentage }}" aria-valuemin="0"
+                                                        aria-valuemax="100">
+
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td>$245.30</td>
+                                            <td>{{$rsell_top->total_properties}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>John Richards</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                                        aria-valuemax="100">90%</div>
-                                                </div>
-                                            </td>
-                                            <td>$138.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Peter Meggik</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary" role="progressbar"
-                                                        style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                                                        aria-valuemax="100">50%</div>
-                                                </div>
-                                            </td>
-                                            <td>$ 77.99</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            </div><br>
+                            <a href="#">Read more...</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-12 stretch-card grid-margin">
+                <div class="col-xl-6 stretch-card grid-margin">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Commercial Rent Top 50 Area</h4>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                            <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>Area Name</th>
@@ -325,59 +312,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($crent_tops as $crent_top)
                                         <tr>
-                                            <td>Herman Beck</td>
+                                            <td>{{$crent_top->city_name}}</td>
                                             <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100">25%</div>
-                                                </div>
-                                            </td>
-                                            <td>$ 77.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Messsy Adam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
-                                                        aria-valuemax="100">75%</div>
-                                                </div>
-                                            </td>
-                                            <td>$245.30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Richards</td>
-                                            <td>
+                                                @php
+                                                $max = 100;
+                                                $value = $crent_top->total_properties;
+                                                $percentage = ($value / $max) * 100;
+                                                @endphp
                                                 <div class="progress">
                                                     <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                                        aria-valuemax="100">90%</div>
+                                                        style="width: {{ $percentage }}%;"
+                                                        aria-valuenow="{{ $percentage }}" aria-valuemin="0"
+                                                        aria-valuemax="100">
+
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td>$138.00</td>
+                                            <td>{{$crent_top->total_properties}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Peter Meggik</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary" role="progressbar"
-                                                        style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                                                        aria-valuemax="100">50%</div>
-                                                </div>
-                                            </td>
-                                            <td>$ 77.99</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            </div><br>
+                            <a href="#">Read more</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-12 stretch-card grid-margin">
+                <div class="col-xl-6 stretch-card grid-margin">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Commercial Sell Top 50 Area</h4>
@@ -391,53 +354,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($csell_tops as $csell_top)
                                         <tr>
-                                            <td>Herman Beck</td>
+                                            <td>{{$csell_top->city_name}}</td>
                                             <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100">25%</div>
-                                                </div>
-                                            </td>
-                                            <td>$ 77.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Messsy Adam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
-                                                        aria-valuemax="100">75%</div>
-                                                </div>
-                                            </td>
-                                            <td>$245.30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Richards</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                                        aria-valuemax="100">90%</div>
-                                                </div>
-                                            </td>
-                                            <td>$138.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Peter Meggik</td>
-                                            <td>
+                                                @php
+                                                $max = 100;
+                                                $value = $csell_top->total_properties;
+                                                $percentage = ($value / $max) * 100;
+                                                @endphp
                                                 <div class="progress">
                                                     <div class="progress-bar bg-primary" role="progressbar"
-                                                        style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                                                        aria-valuemax="100">50%</div>
+                                                        style="width: {{ $percentage }}%;"
+                                                        aria-valuenow="{{ $percentage }}" aria-valuemin="0"
+                                                        aria-valuemax="100">
+
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td>$ 77.99</td>
+                                            <td>{{$csell_top->total_properties}}</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            </div><br>
+                            <a href="#">Read more</a>
                         </div>
                     </div>
                 </div>

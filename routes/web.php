@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\http\Controllers\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AreaController;
@@ -31,8 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('commercial-rent', [PropertyController::class, 'showCommercialRent'])->name('showCommercialRent');   
     Route::get('commercial-sell', [PropertyController::class, 'showCommercialSell'])->name('showCommercialSell');   
     Route::get('total-property', [PropertyController::class, 'totalProperty'])->name('totalProperty');   
+    Route::get('user/subscribe', [OrderController::class, 'subscribe'])->name('subscribe');
+    Route::post('user/create-subscribe', [OrderController::class, 'createSubscribe'])->name('createSubscribe');
 
-
+    
 });
 
 require __DIR__.'/auth.php';
@@ -58,7 +61,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::get('user/edit/{id}', [AdminController::class, 'editUser'])->name('editUser');
     Route::post('user/update-user', [AdminController::class, 'updateUser'])->name('updateUser');
     Route::delete('user/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
-    Route::get('list-property/edit-property/{id}', [PropertyListController::class, 'editProperty'])->name('editProperty');
-    Route::post('list-property/update-property', [PropertyListController::class, 'updateProperty'])->name('updateProperty');
-    Route::delete('list-property/delete-property/{id}', [PropertyListController::class, 'deleteProperty'])->name('deleteProperty');
+    Route::get('user/list-property/edit-property/{id}', [PropertyListController::class, 'editProperty'])->name('editProperty');
+    Route::post('user/list-property/update-property', [PropertyListController::class, 'updateProperty'])->name('updateProperty');
+    Route::delete('user/list-property/delete-property/{id}', [PropertyListController::class, 'deleteProperty'])->name('deleteProperty');
+    
+
 });

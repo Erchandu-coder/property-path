@@ -14,6 +14,9 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="../admin-assets/vendors/jquery-bar-rating/css-stars.css" />
     <link rel="stylesheet" href="../admin-assets/vendors/font-awesome/css/font-awesome.min.css" />
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap4.css" /> -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -89,24 +92,30 @@
                             <i class="menu-arrow"></i>
                             </a>
                             <div class="submenu">
-                            <ul class="submenu-item">
-                                <li class="nav-item">
-                                <a class="nav-link" href="{{route('showResidentialRent')}}">Residential Rent</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="{{route('showResidentialSell')}}">Residential Sell</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="{{route('showCommercialRent')}}">Commercial Rent</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="{{route('showCommercialSell')}}">Commercial Sell</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="{{route('totalProperty')}}">Total Property</a>
-                                </li>
-                            </ul>
+                                <ul class="submenu-item">
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="{{route('showResidentialRent')}}">Residential Rent</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="{{route('showResidentialSell')}}">Residential Sell</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="{{route('showCommercialRent')}}">Commercial Rent</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="{{route('showCommercialSell')}}">Commercial Sell</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="{{route('totalProperty')}}">Total Property</a>
+                                    </li>
+                                </ul>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('subscribe')}}">
+                                <i class="mdi mdi-contacts menu-icon"></i>
+                                <span class="menu-title">Subscription</span>
+                            </a>
                         </li>
                         <li>
                             <!-- <a class="nav-link" href="../../pages/forms/basic_elements.html">
@@ -191,6 +200,14 @@
     <!-- Custom js for this page -->
     <script src="../admin-assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap4.js"></script> -->
+    <!-- <script>
+        new DataTable('#example');
+    </script>     -->
 </body>
 
 </html>

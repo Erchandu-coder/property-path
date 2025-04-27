@@ -61,14 +61,49 @@ class UserController extends Controller
                     ->where('property.property_type_id', 1)
                     ->where('city.status', 1)
                     ->groupBy('property.city_id','city.city_name')
+                    ->orderByDesc('total_properties')
+                    ->limit(7)
                     ->get();
+
+        $rsell_top = DB::table('cities as city')
+                    ->leftJoin('properties as property', 'city.id', '=', 'property.city_id')
+                    ->select('city.city_name', DB::raw('COUNT(property.id) as total_properties'), )
+                    ->where('property.property_type_id', 2)
+                    ->where('city.status', 1)
+                    ->groupBy('property.city_id','city.city_name')
+                    ->orderByDesc('total_properties')
+                    ->limit(7)
+                    ->get();    
+
+        $crent_top = DB::table('cities as city')
+                    ->leftJoin('properties as property', 'city.id', '=', 'property.city_id')
+                    ->select('city.city_name', DB::raw('COUNT(property.id) as total_properties'), )
+                    ->where('property.property_type_id', 3)
+                    ->where('city.status', 1)
+                    ->groupBy('property.city_id','city.city_name')
+                    ->orderByDesc('total_properties')
+                    ->limit(5)
+                    ->get();  
+                    
+        $csell_top = DB::table('cities as city')
+                    ->leftJoin('properties as property', 'city.id', '=', 'property.city_id')
+                    ->select('city.city_name', DB::raw('COUNT(property.id) as total_properties'), )
+                    ->where('property.property_type_id', 4)
+                    ->where('city.status', 1)
+                    ->groupBy('property.city_id','city.city_name')
+                    ->orderByDesc('total_properties')
+                    ->limit(5)
+                    ->get();              
     
         return view('user-admin.dashboard', array_merge(
             ['user' => $user],
             $counts,
             $todayCounts,
             $yesterdayCounts,
-            ['rrent_tops' => $rrent_top]
+            ['rrent_tops' => $rrent_top],
+            ['rsell_tops' => $rsell_top], 
+            ['crent_tops'=>$crent_top], 
+            ['csell_tops'=>$csell_top]
         ));
     }
 }
