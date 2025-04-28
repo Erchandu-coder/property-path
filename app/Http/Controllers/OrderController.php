@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Subscription; // Add this
 use Illuminate\Support\Carbon; // (at the top if not already)
+use Illuminate\Support\Str;
 
 
 class OrderController extends Controller
@@ -18,7 +19,6 @@ class OrderController extends Controller
     }
     public function createSubscribe(Request $request)
     {
-        dd($request);
         $request->validate([
             'mobile_number' => ['required', 'digits:10'],
             'payment_receipt' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
@@ -29,12 +29,20 @@ class OrderController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName(); // Unique file name
             $filePath = $file->storeAs('uploads', $fileName, 'public');
             // Step 3: Save file name in DB
-            Subscription::create([
-                'user_id'=>$request->id,
+            $pstatus = Subscription::create([
+                'user_id'=>$request->user_id,
+                'order_id' => (string) Str::uuid(),
                 'mobile_number' => $request->mobile_number,
                 'payment_receipt' => $fileName,
                 'plan_renew_date' => Carbon::now(),
+                'plan_expire_date' => Carbon::now()->addYear()->toDateString(),
+                'payment_status' => 'pending'
             ]);
+            if ($pstatus) {
+                return redirect()->back()->with('message', "We've received your payment request and it's now under review. We'll notify you once it's approved.");
+            } else {
+                return redirect()->back()->with('error', 'Something went wrong!');
+            } 
         }
 
     }

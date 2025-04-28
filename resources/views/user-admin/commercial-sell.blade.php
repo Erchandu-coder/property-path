@@ -9,7 +9,7 @@
                   <div class="card-body">
                     <h3 class="page-title">Commercial Sell Property Listing</h3>
                     <p class="card-description"></p>
-                    <div class="table-responsive">
+                    <div class="table-responsive d-none d-md-block">
                       <table class="table table-bordered">
                         <thead class="table-dark">
                         <tr>
@@ -55,6 +55,32 @@
                           @endforeach
                         </tbody>
                       </table>
+                    </div>
+                    <!-- Cards for mobile -->
+                    <div class="d-block d-md-none stretch-card">
+                      @php $i=1; @endphp
+                      @foreach($items as $item)
+                        <div class="card card-body mb-3">
+                          <div class="card-body">
+                            <h5 class="card-title">#{{$i++}} - {{ $item->special_note ?? 'N/A' }}</h5>
+                            <p class="card-text"><strong>Date:</strong> {{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</p>
+                            <p class="card-text"><strong>Name:</strong> {{ $item->owner_name }}</p>
+                            <p class="card-text"><strong>Contact:</strong> <a href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}</a></p>
+                            <p class="card-text"><strong>Address:</strong> {{ $item->address }}</p>
+                            <p class="card-text"><strong>Premise:</strong> {{ $item->premise }}</p>
+                            <p class="card-text"><strong>Area:</strong> {{ $item->city?->city_name ?? 'N/A' }}</p>
+                            <p class="card-text"><strong>Rent:</strong> {{ $item->rent }} Thd</p>
+                            <p class="card-text"><strong>Availability:</strong> {{ $item->availability }}</p>
+                            <p class="card-text"><strong>Condition:</strong> {{ $item->condition }}</p>
+                            <p class="card-text"><strong>SqFt/Sqyd:</strong> {{ $item->sqFt_sqyd }}</p>
+                            <p class="card-text"><strong>Key:</strong> {{ $item->key }}</p>
+                            <p class="card-text"><strong>Brokerage:</strong> {{ $item->brokerage }}</p>
+                            <p class="card-text"><strong>Status:</strong> {{ $item->property_status }}</p>
+                            <p class="card-text"><strong>Description 1:</strong> {{ $item->description_1 }}</p>
+                            <p class="card-text"><strong>Description 2:</strong> {{ $item->description_2 }}</p>
+                          </div>
+                        </div>
+                      @endforeach
                     </div>
                     <div class="d-flex mt-4">
                             {{ $items->links() }}

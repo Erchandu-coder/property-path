@@ -14,15 +14,13 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('property_id');
-            $table->string('order_id')->unique();
+            $table->uuid('order_id')->unique();
             $table->string('mobile_number');
             $table->string('payment_receipt');
             $table->date('plan_renew_date');
             $table->date('plan_expire_date');
             $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending'); // Payment status
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
             $table->timestamps();
         });
     }

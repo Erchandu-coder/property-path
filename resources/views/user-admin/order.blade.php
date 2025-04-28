@@ -23,8 +23,8 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row align-items-center">
-                                <sup class="dollar font-weight-bold text-muted">$</sup>
-                                <span class="h2 mx-1 mb-0">8,350</span>
+                                <sup class="dollar font-weight-bold text-muted">&#8377;</sup>
+                                <span class="h2 mx-1 mb-0">5000</span>
                                 <span class="text-muted font-weight-bold mt-2">/ year</span>
                             </div>
                         </div>
@@ -91,6 +91,17 @@
                         </form>
                     </div>
                 </div>
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">

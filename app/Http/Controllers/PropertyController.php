@@ -8,13 +8,44 @@ use App\Models\Property;
 
 class PropertyController extends Controller
 {
-    public function showResidentialRent()
+    public function showResidentialRent(Request $request)
     {
         $user = Auth::user();
-        $items = Property::with('city')
-                        ->where('property_type_id', 1)
-                        ->where('status', 1)
-                        ->paginate(10);
+        // $items = Property::with('city')
+        //                 ->where('property_type_id', 1)
+        //                 ->where('status', 1)
+        //                 ->paginate(10);
+
+        $query = Property::with('city')
+        ->where('property_type_id', 1)
+        ->where('status', 1);
+
+        // Apply filters if they exist
+        if ($request->filled('date')) {
+        $query->whereDate('date', $request->date);
+        }
+
+        if ($request->filled('premise')) {
+        $query->where('premise', 'like', '%' . $request->premise . '%');
+        }
+
+        if ($request->filled('area')) {
+        // Assuming area is linked to city->city_name
+        $query->whereHas('city', function($q) use ($request) {
+        $q->where('city_name', 'like', '%' . $request->area . '%');
+        });
+        }
+
+        if ($request->filled('availability')) {
+        $query->where('availability', $request->availability);
+        }
+
+        if ($request->filled('condition')) {
+        $query->where('condition', 'like', '%' . $request->condition . '%');
+        }
+
+        $items = $query->paginate(10)->appends($request->all());
+
         return view('user-admin.residential-rent', compact('user', 'items'));
     }
 
