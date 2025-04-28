@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Property;
+use App\Models\PropertyType;
+use App\Models\City;
+
 
 class PropertyController extends Controller
 {
     public function showResidentialRent(Request $request)
     {
         $user = Auth::user();
+        $ptypes = PropertyType::get();
+        $cities = City::where('status', 1)->get();
         // $items = Property::with('city')
         //                 ->where('property_type_id', 1)
         //                 ->where('status', 1)
@@ -46,7 +51,7 @@ class PropertyController extends Controller
 
         $items = $query->paginate(10)->appends($request->all());
 
-        return view('user-admin.residential-rent', compact('user', 'items'));
+        return view('user-admin.residential-rent', compact('user', 'items', 'ptypes', 'cities'));
     }
 
     public function showResidentialSell()
