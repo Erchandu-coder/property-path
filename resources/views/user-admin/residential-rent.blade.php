@@ -9,264 +9,8 @@
                         <div class="card-body">
                             <div class="page-header">
                                 <h3 class="page-title">Residential Rent Property Listing</h3>
-                                <nav aria-label="breadcrumb">
-                                    <button type="button" class="btn btn-info btn-fw btn-icon-text" data-toggle="modal"
-                                        data-target=".bd-example-modal-lg">
-                                        <i class="mdi mdi-magnify"></i> Search Property </button>
-                                </nav>
                             </div>
-                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-
-
-
-
-                                        <div class="col-12 grid-margin">
-                                            <div>
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Search Property</h4>
-                                                    <form class="form-sample">
-                                                        <p class="card-description">Personal info</p>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">Property
-                                                                        Type</label>
-                                                                    <div class="col-sm-9">
-                                                                        <select class="form-control"
-                                                                            name="property_type_id"
-                                                                            value="{{ old('property_type_id') }}">
-                                                                            <option value="">--Select--</option>
-                                                                            @foreach($ptypes as $ptype)
-                                                                            <option value="{{$ptype->id}}">
-                                                                                {{$ptype->property_name}}</option>
-                                                                            @endforeach;
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group row">
-                                                                    <label
-                                                                        class="col-sm-3 col-form-label">Condition</label>
-                                                                    <div class="col-sm-9">
-                                                                        <div class="form-check">
-                                                                            <input type="checkbox"
-                                                                                class="form-check-input"
-                                                                                value="Semi Furnished"
-                                                                                name="semi_furnished">
-                                                                            <label class="form-check-label">Semi
-                                                                                Furnished</label>
-                                                                        </div>
-
-                                                                        <div class="form-check">
-                                                                            <input type="checkbox"
-                                                                                class="form-check-input"
-                                                                                name="unfurnished" value="Unfurnished">
-                                                                            <label class="form-check-label"
-                                                                                for="primary2">Unfurnished</label>
-                                                                        </div>
-
-                                                                        <div class="form-check">
-                                                                            <input type="checkbox"
-                                                                                class="form-check-input"
-                                                                                name="furnished" value="Furnished">
-                                                                            <label class="form-check-label"
-                                                                                for="primary3">Furnished</label>
-                                                                        </div>
-
-                                                                        <div class="form-check">
-                                                                            <input type="checkbox"
-                                                                                class="form-check-input"
-                                                                                name="kitchen_fix" value="Kitchen-Fix">
-                                                                            <label class="form-check-label"
-                                                                                for="primary4">Kitchen-Fix</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-2 col-form-label">Area</label>
-                                                                    <div class="col-md-12 grid-margin stretch-card">
-                                                                        <div class="card">
-                                                                            <div class="card-body">
-                                                                                <h4 class="card-title">Icon size</h4>
-                                                                                <p class="card-description"> Add class
-                                                                                    <code>.icon-lg</code>,
-                                                                                    <code>.icon-md</code>,
-                                                                                    <code>.icon-sm</code>
-                                                                                </p>
-                                                                                <div class="row">
-                                                                                    <div
-                                                                                        class="col-md-2 d-flex align-items-center">
-                                                                                        <div
-                                                                                            class="d-flex flex-row align-items-center">
-                                                                                            <input type="checkbox"
-                                                                                class="form-check-input"
-                                                                                name="kitchen_fix" value="Kitchen-Fix">
-                                                                            <label class="form-check-label"
-                                                                                for="primary4">Kitchen-Fix</label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-md-2 d-flex align-items-center">
-                                                                                        <div
-                                                                                            class="d-flex flex-row align-items-center">
-                                                                                            <input type="checkbox"
-                                                                                class="form-check-input"
-                                                                                name="kitchen_fix" value="Kitchen-Fix">
-                                                                            <label class="form-check-label"
-                                                                                for="primary4">Kitchen-Fix</label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-md-2 d-flex align-items-center">
-                                                                                        <div
-                                                                                            class="d-flex flex-row align-items-center">
-                                                                                            <i
-                                                                                                class="mdi mdi-compass icon-sm text-danger"></i>
-                                                                                            <p class="mb-0 ml-1">Icon-sm
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-md-2 d-flex align-items-center">
-                                                                                        <div
-                                                                                            class="d-flex flex-row align-items-center">
-                                                                                            <i
-                                                                                                class="mdi mdi-compass icon-sm text-danger"></i>
-                                                                                            <p class="mb-0 ml-1">Icon-sm
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-md-2 d-flex align-items-center">
-                                                                                        <div
-                                                                                            class="d-flex flex-row align-items-center">
-                                                                                            <i
-                                                                                                class="mdi mdi-compass icon-sm text-danger"></i>
-                                                                                            <p class="mb-0 ml-1">Icon-sm
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-md-2 d-flex align-items-center">
-                                                                                        <div
-                                                                                            class="d-flex flex-row align-items-center">
-                                                                                            <i
-                                                                                                class="mdi mdi-compass icon-sm text-danger"></i>
-                                                                                            <p class="mb-0 ml-1">Icon-sm
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!-- <div class="col-sm-10">
-                                                                        <div class="row">
-                                                                            <div class="col-md-4 d-flex">
-                                                                                <div class="form-check">
-                                                                                    @foreach($cities as $city)
-                                                                                    <input type="checkbox"
-                                                                                        class="form-check-input"
-                                                                                        name="city_id[]"
-                                                                                        value="{{ $city->city_name }}">
-                                                                                    <label class="form-check-label"
-                                                                                        for="primary4">{{ $city->city_name }}</label>
-                                                                                    @endforeach
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                      </div> -->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p class="card-description">Address</p>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">Address
-                                                                        1</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">State</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">Address
-                                                                        2</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group row">
-                                                                    <label
-                                                                        class="col-sm-3 col-form-label">Postcode</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group row">
-                                                                    <label
-                                                                        class="col-sm-3 col-form-label">Country</label>
-                                                                    <div class="col-sm-9">
-                                                                        <select class="form-control">
-                                                                            <option>America</option>
-                                                                            <option>Italy</option>
-                                                                            <option>Russia</option>
-                                                                            <option>Britain</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <form method="GET" action="{{route('showResidentialRent')}}" class="row mb-4">
+                            <form method="GET" action="{{route('showResidentialRent')}}" class="row mb-4">
                                 <div class="col-md-2 mb-2">
                                     <input type="date" name="date" class="form-control" value="{{ request('date') }}">
                                 </div>
@@ -277,8 +21,13 @@
                                 </div>
 
                                 <div class="col-md-2 mb-2">
-                                    <input type="text" name="area" class="form-control" placeholder="Area"
-                                        value="{{ request('area') }}">
+                                    <select class="form-control" name="city_id"
+                                        value="{{ old('city_id') }}">
+                                        <option value="">--Select--</option>
+                                        @foreach($cities as $city)
+                                        <option value="{{$city->id}}">{{$city->city_name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="col-md-2 mb-2">
@@ -301,7 +50,7 @@
                                 <div class="col-md-2 mb-2">
                                     <button type="submit" class="btn btn-primary w-100">Filter</button>
                                 </div>
-                            </form> -->
+                            </form>
                             <div class="table-responsive d-none d-md-block">
                                 <table class="table table-bordered">
                                     <thead class="table-dark">

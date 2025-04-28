@@ -105,8 +105,27 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Availability</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" placeholder="Enter Availability"
-                                                name="availability" value="{{ old('availability') }}" />
+                                            <select class="form-control" name="availability"
+                                                value="{{ old('availability') }}">
+                                                <option value="">--Select--</option>
+                                                <option value="Semi Furnished">1 Room</option>
+                                                <option value="Unfurnished">1 Room & Kitchen</option>
+                                                <option value="Furnished">1.5BHK</option>
+                                                <option value="Kitchen Fix">1BHK</option>
+                                                <option value="Kitchen Fix">2 Room</option>
+                                                <option value="Kitchen Fix">2 Room & Kitchen</option>
+                                                <option value="Kitchen Fix">2.5BHK</option>
+                                                <option value="Kitchen Fix">2BHK</option>
+                                                <option value="Kitchen Fix">3BHK</option>
+                                                <option value="Kitchen Fix">4BHK</option>
+                                                <option value="Kitchen Fix">5BHK</option>
+                                                <option value="Kitchen Fix">6BHK</option>
+                                                <option value="Kitchen Fix">Above 2BHK</option>
+                                                <option value="Kitchen Fix">Duplex</option>
+                                                <option value="Kitchen Fix">Duplex 1</option>
+                                                <option value="Kitchen Fix">Independent Building</option>
+                                                <option value="Kitchen Fix">PG</option>
+                                            </select>
                                             @error('availability')
                                             <p class="text text-danger">{{ $message }}</p>
                                             @enderror
@@ -123,7 +142,9 @@
                                                 <option value="Semi Furnished">Semi Furnished</option>
                                                 <option value="Unfurnished">Unfurnished</option>
                                                 <option value="Furnished">Furnished</option>
-                                                <option value="Kitchen-Fix">Kitchen-Fix</option>
+                                                <option value="Kitchen Fix">Kitchen Fix</option>
+                                                <option value="Kitchen Fix">Kitchen Fix</option>
+                                                <option value="Kitchen Fix">Fully Furnished</option>
                                             </select>
                                             @error('condition')
                                             <p class="text text-danger">{{ $message }}</p>

@@ -16,11 +16,7 @@ class PropertyController extends Controller
         $user = Auth::user();
         $ptypes = PropertyType::get();
         $cities = City::where('status', 1)->get();
-        // $items = Property::with('city')
-        //                 ->where('property_type_id', 1)
-        //                 ->where('status', 1)
-        //                 ->paginate(10);
-
+        
         $query = Property::with('city')
         ->where('property_type_id', 1)
         ->where('status', 1);
@@ -33,11 +29,11 @@ class PropertyController extends Controller
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
-
-        if ($request->filled('area')) {
+        dd($request->city_id);
+        if ($request->filled('city_id')) {
         // Assuming area is linked to city->city_name
         $query->whereHas('city', function($q) use ($request) {
-        $q->where('city_name', 'like', '%' . $request->area . '%');
+        $q->where('city_name', 'like', '%' . $request->city_id . '%');
         });
         }
 

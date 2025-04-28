@@ -7,8 +7,116 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="page-title">Total Property Listing</h3>
-                            <p class="card-description"></p>
+                            <div class="page-header">
+                                <h3 class="page-title">Total Property Listing</h3>
+                                <nav aria-label="breadcrumb">
+                                    <button type="button" class="btn btn-info btn-fw btn-icon-text" data-toggle="modal"
+                                        data-target=".bd-example-modal-lg">
+                                        <i class="mdi mdi-magnify"></i> Search Property </button>
+                                </nav>
+                            </div>
+                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="col-12 grid-margin">
+                                            <div>
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Search Property</h4>
+                                                    <form class="form-sample" method="GET" action="{{route('showResidentialRent')}}">
+                                                        <p class="card-description">Personal info</p>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Property
+                                                                        Type</label>
+                                                                    <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" value="Residential Rent" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Condition</label>
+                                                                    <div class="col-sm-9">
+                                                                        <div class="form-check">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                value="Semi Furnished"
+                                                                                name="condition[]">
+                                                                            <label class="form-check-label">Semi
+                                                                                Furnished</label>
+                                                                        </div>
+
+                                                                        <div class="form-check">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                name="condition[]" value="Unfurnished">
+                                                                            <label class="form-check-label"
+                                                                                for="primary2">Unfurnished</label>
+                                                                        </div>
+
+                                                                        <div class="form-check">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                name="condition[]" value="Furnished">
+                                                                            <label class="form-check-label"
+                                                                                for="primary3">Furnished</label>
+                                                                        </div>
+
+                                                                        <div class="form-check">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                name="condition[]" value="Kitchen-Fix">
+                                                                            <label class="form-check-label"
+                                                                                for="primary4">Kitchen-Fix</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-2 col-form-label">Area</label>
+                                                                    <div class="col-md-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+                                                                                <div class="row">
+                                                                                    
+                                                                                    <div
+                                                                                        class="col-md-2 d-flex align-items-center">
+                                                                                        <div
+                                                                                            class="d-flex flex-row align-items-center">
+                                                                                            <input type="checkbox"
+                                                                                                class="form-check-input"
+                                                                                                name=""
+                                                                                                value="">
+                                                                                            <p class="form-check-label"
+                                                                                                for="primary4">
+                                                                                                </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                   
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                                        <button class="btn btn-light">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table-responsive d-none d-md-block">
                                 <table class="table table-bordered">
                                     <thead class="table-dark">
