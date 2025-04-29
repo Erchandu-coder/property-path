@@ -19,6 +19,7 @@ class OrderController extends Controller
     }
     public function createSubscribe(Request $request)
     {
+        $userId = $request->user_id;
         $request->validate([
             'mobile_number' => ['required', 'digits:10'],
             'payment_receipt' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
@@ -29,9 +30,10 @@ class OrderController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName(); // Unique file name
             $filePath = $file->storeAs('uploads', $fileName, 'public');
             // Step 3: Save file name in DB
+            $orderId = 'ORD-'.$userId.now()->format('YmdHis').strtoupper(Str::random(4)).rand(1000, 9999);
             $pstatus = Subscription::create([
                 'user_id'=>$request->user_id,
-                'order_id' => (string) Str::uuid(),
+                'order_id' => $orderId,
                 'mobile_number' => $request->mobile_number,
                 'payment_receipt' => $fileName,
                 'plan_renew_date' => Carbon::now(),

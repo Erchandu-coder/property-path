@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">
+                    <a class="nav-link" href="{{route('admin.orderIndex')}}">
                         <i class="mdi mdi-chart-bar menu-icon"></i>
                         <span class="menu-title">Orders</span>
                     </a>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Subscription;
 
 
 class AdminController extends Controller
@@ -78,5 +79,9 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }  
     }
-
+    public function orderIndex()
+    {
+        $results = Subscription::with('user')->orderBy('id', 'DESC')->paginate(10);
+        return view('admin.orderlist', compact('results'));
+    }
 }
