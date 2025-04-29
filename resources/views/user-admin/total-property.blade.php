@@ -23,7 +23,7 @@
                                             <div>
                                                 <div class="card-body">
                                                     <h4 class="card-title">Search Property</h4>
-                                                    <form class="form-sample" method="GET" action="{{route('showResidentialRent')}}">
+                                                    <form class="form-sample" method="GET" action="{{route('totalProperty')}}">
                                                         <p class="card-description">Personal info</p>
                                                         <div class="row">
                                                             <div class="col-md-12">
@@ -31,7 +31,13 @@
                                                                     <label class="col-sm-3 col-form-label">Property
                                                                         Type</label>
                                                                     <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" value="Residential Rent" readonly>
+                                                                    <select class="form-control" name="property_type_id"
+                                                                        value="{{ request('property_type_id') }}">
+                                                                        <option value="">--Select--</option>
+                                                                        @foreach($ptypes as $ptype)
+                                                                        <option value="{{$ptype->id}}">{{$ptype->property_name}}</option>
+                                                                        @endforeach;
+                                                                    </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -86,21 +92,21 @@
                                                                         <div class="card">
                                                                             <div class="card-body">
                                                                                 <div class="row">
-                                                                                    
+                                                                                    @foreach($cities as $city)
                                                                                     <div
                                                                                         class="col-md-2 d-flex align-items-center">
                                                                                         <div
                                                                                             class="d-flex flex-row align-items-center">
                                                                                             <input type="checkbox"
                                                                                                 class="form-check-input"
-                                                                                                name=""
-                                                                                                value="">
+                                                                                                name="city_id[]"
+                                                                                                value="{{$city->id}}">
                                                                                             <p class="form-check-label"
-                                                                                                for="primary4">
+                                                                                                for="primary4">{{$city->city_name}}
                                                                                                 </p>
                                                                                         </div>
                                                                                     </div>
-                                                                                   
+                                                                                   @endforeach
                                                                                 </div>
                                                                             </div>
                                                                         </div>

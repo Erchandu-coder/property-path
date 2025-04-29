@@ -15,16 +15,13 @@ class PropertyController extends Controller
     {
         $user = Auth::user();
         $cities = City::where('status', 1)->get();
-        
         $query = Property::with('city')
         ->where('property_type_id', 1)
         ->where('status', 1);
-
         // Apply filters if they exist
         if ($request->filled('date')) {
         $query->whereDate('date', $request->date);
         }
-
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
@@ -33,55 +30,122 @@ class PropertyController extends Controller
                 $q->where('id', $request->city_id);
             });
         }      
-
         if ($request->filled('availability')) {
         $query->where('availability', $request->availability);
         }
-
         if ($request->filled('condition')) {
         $query->where('condition', $request->condition);
         }
-
         $items = $query->paginate(10)->appends($request->all());
-
         return view('user-admin.residential-rent', compact('user', 'items', 'cities'));
     }
 
-    public function showResidentialSell()
+    public function showResidentialSell(Request $request)
     {
         $user = Auth::user();
-        $items = Property::with('city')
-                        ->where('property_type_id', 2)
-                        ->where('status', 1)
-                        ->paginate(10);
-        return view('user-admin.residential-sell', compact('user', 'items'));
+        $cities = City::where('status', 1)->get();
+        $query = Property::with('city')
+        ->where('property_type_id', 2)
+        ->where('status', 1);
+        // Apply filters if they exist
+        if ($request->filled('date')) {
+        $query->whereDate('date', $request->date);
+        }
+        if ($request->filled('premise')) {
+        $query->where('premise', 'like', '%' . $request->premise . '%');
+        }
+        if ($request->filled('city_id')) {
+            $query->whereHas('city', function($q) use ($request) {
+                $q->where('id', $request->city_id);
+            });
+        }      
+        if ($request->filled('availability')) {
+        $query->where('availability', $request->availability);
+        }
+        if ($request->filled('condition')) {
+        $query->where('condition', $request->condition);
+        }
+        $items = $query->paginate(10)->appends($request->all());
+        return view('user-admin.residential-sell', compact('user', 'items', 'cities'));
     }
 
-    public function showCommercialRent()
+    public function showCommercialRent(Request $request)
     {
         $user = Auth::user();
-        $items = Property::with('city')
-                        ->where('property_type_id', 3)
-                        ->where('status', 1)
-                        ->paginate(10);
-        return view('user-admin.commercial-rent', compact('user', 'items'));
+        $cities = City::where('status', 1)->get();
+        $query = Property::with('city')
+        ->where('property_type_id', 3)
+        ->where('status', 1);
+        // Apply filters if they exist
+        if ($request->filled('date')) {
+        $query->whereDate('date', $request->date);
+        }
+        if ($request->filled('premise')) {
+        $query->where('premise', 'like', '%' . $request->premise . '%');
+        }
+        if ($request->filled('city_id')) {
+            $query->whereHas('city', function($q) use ($request) {
+                $q->where('id', $request->city_id);
+            });
+        }      
+        if ($request->filled('availability')) {
+        $query->where('availability', $request->availability);
+        }
+        if ($request->filled('condition')) {
+        $query->where('condition', $request->condition);
+        }
+        $items = $query->paginate(10)->appends($request->all());
+        return view('user-admin.commercial-rent', compact('user', 'items', 'cities'));
     }
 
-    public function showCommercialSell()
+    public function showCommercialSell(Request $request)
     {
         $user = Auth::user();
-        $items = Property::with('city')
-                        ->where('property_type_id', 4)
-                        ->where('status', 1)
-                        ->paginate(10);
-        return view('user-admin.commercial-sell', compact('user', 'items'));
+        $cities = City::where('status', 1)->get();
+        $query = Property::with('city')
+        ->where('property_type_id', 4)
+        ->where('status', 1);
+        // Apply filters if they exist
+        if ($request->filled('date')) {
+        $query->whereDate('date', $request->date);
+        }
+        if ($request->filled('premise')) {
+        $query->where('premise', 'like', '%' . $request->premise . '%');
+        }
+        if ($request->filled('city_id')) {
+            $query->whereHas('city', function($q) use ($request) {
+                $q->where('id', $request->city_id);
+            });
+        }      
+        if ($request->filled('availability')) {
+        $query->where('availability', $request->availability);
+        }
+        if ($request->filled('condition')) {
+        $query->where('condition', $request->condition);
+        }
+        $items = $query->paginate(10)->appends($request->all());
+        return view('user-admin.commercial-sell', compact('user', 'items', 'cities'));
     }
-    public function totalProperty()
+    public function totalProperty(Request $request)
     {
         $user = Auth::user();
-        $items = Property::with('city')
-                        ->where('status', 1)
-                        ->paginate(10);
-        return view('user-admin.total-property', compact('user', 'items'));
+        $ptypes = PropertyType::get();
+        $cities = City::where('status', 1)->get();
+        $query = Property::with('city')->where('status', 1);
+        // Apply filters if they exist
+        if ($request->filled('property_type_id')) {
+            $query->where('property_type_id', $request->property_type_id);
+        }
+
+        if ($request->filled('condition')) {
+            $query->whereIn('condition', $request->condition);
+        }
+
+        if ($request->filled('city_id')) {
+            $query->whereIn('city_id', $request->city_id);
+        }
+
+        $items = $query->paginate(10)->appends($request->all());
+        return view('user-admin.total-property', compact('user', 'items', 'ptypes', 'cities'));
     }
 }
