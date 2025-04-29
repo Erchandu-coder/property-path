@@ -84,4 +84,16 @@ class AdminController extends Controller
         $results = Subscription::with('user')->orderBy('id', 'DESC')->paginate(10);
         return view('admin.orderlist', compact('results'));
     }
+
+    public function approvePayment(Request $request)
+    {
+        $result = Subscription::findOrFail($request->payment_id);
+        $result->payment_status = $request->payment_status;
+        $data = $result->save();
+        if ($data) {
+            return redirect()->back()->with('message', 'Payment updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Something went wrong!');
+        }   
+    }
 }

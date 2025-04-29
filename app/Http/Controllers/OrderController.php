@@ -15,7 +15,8 @@ class OrderController extends Controller
     public function subscribe()
     {
         $user = Auth::user();
-        return view('user-admin.order', compact('user'));
+        $pstatus = Subscription::where('user_id', $user->id)->first();
+        return view('user-admin.order', compact('user', 'pstatus'));
     }
     public function createSubscribe(Request $request)
     {

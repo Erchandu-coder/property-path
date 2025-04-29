@@ -100,7 +100,8 @@
                                             <td>{{$i++}}</td>
                                             <td>{{ $item->special_note ? $item->special_note : 'N/A' }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
-                                            <td>{{ $item->owner_name }} <br><br> <a
+                                            <td>
+                                                {{ $item->owner_name }} <br><br> <a
                                                     href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}</a>
                                             </td>
                                             <td>{{ $item->address }}</td>

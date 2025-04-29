@@ -59,6 +59,12 @@
                         </div>
 
                         <h6 class="mt-4 mb-3 text-primary text-uppercase">After payment add below</h6>
+                        @if($pstatus->payment_status == 'pending' || $pstatus->payment_status == 'completed')
+                        <div class="alert alert-success" role="alert">
+                            Thank you! Your payment request has been submitted successfully. Kindly wait for administrator approval
+                        </div> 
+                        @endif
+                        @if(!$pstatus || $pstatus->payment_status == 'failed')    
                         <form method="post" action="{{route('createSubscribe')}}" enctype="multipart/form-data">
                             @csrf
                             <div data-mdb-input-init class="form-outline">
@@ -89,6 +95,7 @@
                                 </button>
                             </div>
                         </form>
+                        @endif
                     </div>
                 </div>
                 @if (session('message'))

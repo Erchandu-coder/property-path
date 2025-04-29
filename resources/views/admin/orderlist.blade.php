@@ -5,11 +5,11 @@
         <div class="content-wrapper pb-0">
             <div class="page-header flex-wrap">
                 <h3 class="page-title">All User Order List</h3>
-                <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
+                <!-- <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                     <a href="{{route('admin.create')}}"><button type="button"
                             class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
                             <i class="mdi mdi-plus-circle"></i> Add Property </button></a>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -42,8 +42,10 @@
                                             <td>{{$result->mobile_number}}</td>
                                             <td>{{$result->plan_renew_date}}</td>
                                             <td>{{$result->plan_expire_date}}</td>
-                                            <td><button type="button" class="btn btn-warning btn-icon-text">
-                                                    <i class="mdi mdi-download btn-icon-prepend"></i> Download </button>
+                                            <td>
+                                                <a href="{{ asset('storage/uploads/' . $result->payment_receipt) }}" class="btn btn-warning btn-icon-text" download>
+                                                    <i class="mdi mdi-download btn-icon-prepend"></i> Download 
+                                                </a>
                                             </td>
                                             <td>
                                                 @if($result->payment_status == 'pending')
@@ -76,30 +78,29 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
+                                    <form class="forms-sample" method="post" action="{{route('admin.approvePayment')}}">
+                                        @csrf    
                                         <div class="modal-body">
-                                            <form class="forms-sample">
                                                 <div class="form-group">
-                                                    <label for="exampleInputName1">Name</label>
-                                                    <input type="text" class="form-control" placeholder="Name"
-                                                        id="payment_id"/>
+                                                    <input type="hidden" class="form-control" placeholder="Name"
+                                                        id="payment_id" name="payment_id"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleSelectGender">Verify Payment
                                                         Status</label>
-                                                    <select class="form-control" id="payment_status">
+                                                    <select class="form-control" id="payment_status" name="payment_status">
                                                         <option value="pending">Pending</option>
                                                         <option value="completed">Completed</option>
                                                         <option value="failed">Failed</option>
                                                     </select>
                                                 </div>
-                                            </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
+                                            <button type="submit" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save
-                                                changes</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>

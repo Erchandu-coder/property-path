@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\City;
+use App\Models\Subscription;
 
 
 class PropertyController extends Controller
