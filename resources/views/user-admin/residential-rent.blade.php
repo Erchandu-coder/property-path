@@ -21,30 +21,50 @@
                                 </div>
 
                                 <div class="col-md-2 mb-2">
-                                    <select class="form-control" name="city_id"
-                                        value="{{ old('city_id') }}">
-                                        <option value="">--Select--</option>
+                                    <select class="form-control" name="city_id">
+                                        <option value="">--Select Area--</option>
                                         @foreach($cities as $city)
-                                        <option value="{{$city->id}}">{{$city->city_name}}</option>
+                                        <option value="{{ $city->id }}"
+                                            {{ request('city_id') == $city->id ? 'selected' : '' }}>
+                                            {{ $city->city_name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="col-md-2 mb-2">
-                                    <select name="availability" class="form-control">
-                                        <option value="">Availability</option>
-                                        <option value="Available"
-                                            {{ request('availability') == 'Available' ? 'selected' : '' }}>Available
+                                    <select class="form-control" name="availability">
+                                        <option value="">--Select Availability--</option>
+                                        @php
+                                        $availabilities = [
+                                        '1 Room', '1 Room & Kitchen', '1.5BHK', '1BHK', '2 Room', '2 Room & Kitchen',
+                                        '2.5BHK', '2BHK', '3BHK', '4BHK', '5BHK', '6BHK',
+                                        'Above 2BHK', 'Duplex', 'Duplex 1', 'Independent Building', 'PG'
+                                        ];
+                                        @endphp
+                                        @foreach($availabilities as $option)
+                                        <option value="{{ $option }}"
+                                            {{ request('availability') == $option ? 'selected' : '' }}>
+                                            {{ $option }}
                                         </option>
-                                        <option value="Not Available"
-                                            {{ request('availability') == 'Not Available' ? 'selected' : '' }}>Not
-                                            Available</option>
+                                        @endforeach
                                     </select>
-                                </div>
 
+                                </div>
                                 <div class="col-md-2 mb-2">
-                                    <input type="text" name="condition" class="form-control" placeholder="Condition"
-                                        value="{{ request('condition') }}">
+                                    <select class="form-control" name="condition" placeholder="Condition">
+                                        <option value="">--Select Condition--</option>
+                                        @php
+                                        $conditions = ['Semi Furnished', 'Unfurnished', 'Furnished', 'Kitchen Fix',
+                                        'Fully Furnished'];
+                                        @endphp
+                                        @foreach($conditions as $condition)
+                                        <option value="{{ $condition }}"
+                                            {{ request('condition') == $condition ? 'selected' : '' }}>
+                                            {{ $condition }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+
                                 </div>
 
                                 <div class="col-md-2 mb-2">

@@ -14,7 +14,6 @@ class PropertyController extends Controller
     public function showResidentialRent(Request $request)
     {
         $user = Auth::user();
-        $ptypes = PropertyType::get();
         $cities = City::where('status', 1)->get();
         
         $query = Property::with('city')
@@ -29,25 +28,23 @@ class PropertyController extends Controller
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
-        dd($request->city_id);
         if ($request->filled('city_id')) {
-        // Assuming area is linked to city->city_name
-        $query->whereHas('city', function($q) use ($request) {
-        $q->where('city_name', 'like', '%' . $request->city_id . '%');
-        });
-        }
+            $query->whereHas('city', function($q) use ($request) {
+                $q->where('id', $request->city_id);
+            });
+        }      
 
         if ($request->filled('availability')) {
         $query->where('availability', $request->availability);
         }
 
         if ($request->filled('condition')) {
-        $query->where('condition', 'like', '%' . $request->condition . '%');
+        $query->where('condition', $request->condition);
         }
 
         $items = $query->paginate(10)->appends($request->all());
 
-        return view('user-admin.residential-rent', compact('user', 'items', 'ptypes', 'cities'));
+        return view('user-admin.residential-rent', compact('user', 'items', 'cities'));
     }
 
     public function showResidentialSell()
