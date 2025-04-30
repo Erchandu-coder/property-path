@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Subscription;
-
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $current = Carbon::now('Asia/Kolkata');
+        $formatted = $current->format('d-m-Y h:i A');
+        
+        return view('admin.dashboard', compact('formatted'));
     }
     
     public function showUser()

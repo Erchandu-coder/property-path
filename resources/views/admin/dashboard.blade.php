@@ -5,21 +5,19 @@
     <div class="content-wrapper pb-0">
         <div class="page-header flex-wrap">
             <div class="header-left">
-                <button class="btn btn-primary mb-2 mb-md-0 mr-2"> Create new document</h1>
+                <!-- <button class="btn btn-primary mb-2 mb-md-0 mr-2"> Create new document</h1>
                 </button>
-                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0"> Import documents </button>
+                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0"> Import documents </button> -->
             </div>
             <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
                     <a href="#">
-                        <p class="m-0 pr-3">Dashboard</p>
+                        <p class="m-0 pr-3">Date / Time</p>
                     </a>
                     <a class="pl-3 mr-4" href="#">
-                        <p class="m-0">ADE-00234</p>
+                        <p class="m-0">{{ $formatted }}</p>
                     </a>
                 </div>
-                <button type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                    <i class="mdi mdi-plus-circle"></i> Add Prodcut </button>
             </div>
         </div>
         <!-- first row starts here -->
@@ -29,7 +27,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between flex-wrap">
                             <div>
-                                <div class="card-title mb-0">Sales Revenue</div>
+                                <div class="card-title mb-0">Total Sell</div>
                                 <h3 class="font-weight-bold mb-0">$32,409</h3>
                             </div>
                             <div>
