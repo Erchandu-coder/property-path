@@ -186,7 +186,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="#">Read more...</a>
+                            <a href="{{route('showResidentialRent')}}">Read more...</a>
                         </div>
                     </div>
                 </div>
@@ -292,7 +292,7 @@
                                     </tbody>
                                 </table>
                             </div><br>
-                            <a href="#">Read more...</a>
+                            <a href="{{route('showResidentialSell')}}">Read more...</a>
                         </div>
                     </div>
                 </div>
@@ -384,28 +384,4 @@
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-            <div class="container">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                        bootstrapdash.com 2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                            href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard
-                            templates</a> from
-                        Bootstrapdash.com</span>
-                </div>
-
-                <div>
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> Distributed
-                        By: <a href="https://themewagon.com/" target="_blank">Themewagon</a></span>
-                </div>
-            </div>
-        </footer>
-        <!-- partial -->
-    </div>
-    <!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
 @endsection

@@ -59,55 +59,35 @@
                         </div>
 
                         <h6 class="mt-4 mb-3 text-primary text-uppercase">After payment add below</h6>
-                        @if($pstatus->payment_status == 'pending' || $pstatus->payment_status == 'completed')
+                        @if($pstatus)
+                        @if(in_array($pstatus->payment_status, ['pending', 'completed']))
                         <div class="alert alert-success" role="alert">
-                            Thank you! Your payment request has been submitted successfully. Kindly wait for administrator approval
-                        </div> 
+                            Thank you! Your payment request has been submitted successfully. Kindly wait for
+                            administrator approval.
+                        </div>
+                        @elseif($pstatus->payment_status == 'fail')
+                        {{-- Show form again for failed payment --}}
+                        @include('user-admin.partials.payment-form', ['user' => $user])
+                        @else
+                        {{-- Unknown status, show form as fallback --}}
+                        @include('user-admin.partials.payment-form', ['user' => $user])
                         @endif
-                        @if(!$pstatus || $pstatus->payment_status == 'failed')    
-                        <form method="post" action="{{route('createSubscribe')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div data-mdb-input-init class="form-outline">
-                                <div class="form-row">
-                                <input type="hidden" class="form-control" name="user_id" value="{{$user->id}}">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Mobile Number</label>
-                                        <input type="number" class="form-control" name="mobile_number"
-                                            placeholder="Mobile Number">
-                                        @error('mobile')
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Upload Receipt</label>
-                                        <input type="file" class="form-control file-upload-browse"
-                                            name="payment_receipt">
-                                        @error('payment_receipt')
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                                    class="btn btn-primary btn-block btn-lg">
-                                    Proceed to payment <i class="fas fa-long-arrow-alt-right"></i>
-                                </button>
-                            </div>
-                        </form>
+                        @else
+                        {{-- No subscription record, show form --}}
+                        @include('user-admin.payment-form', ['user' => $user])
                         @endif
                     </div>
                 </div>
                 @if (session('message'))
-                    <div class="alert alert-success">
-                        {{ session('message') }}
-                    </div>
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
                 @endif
 
                 @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
                 @endif
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

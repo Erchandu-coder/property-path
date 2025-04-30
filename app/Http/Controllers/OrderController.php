@@ -15,8 +15,9 @@ class OrderController extends Controller
     public function subscribe()
     {
         $user = Auth::user();
-        $pstatus = Subscription::where('user_id', $user->id)->first();
-        return view('user-admin.order', compact('user', 'pstatus'));
+        $pstatus = Subscription::where('user_id', $user->id)->latest('created_at')->first();
+        $exists = Subscription::where('user_id', $user->id)->where('payment_status', 'failed')->exists();
+        return view('user-admin.order', compact('user', 'pstatus', 'exists'));
     }
     public function createSubscribe(Request $request)
     {
@@ -48,5 +49,11 @@ class OrderController extends Controller
             } 
         }
 
+    }
+    public function subScriptionDetails()
+    {
+        $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
+        return view('user-admin.subscription-details', compact('user', 'p_status'));
     }
 }

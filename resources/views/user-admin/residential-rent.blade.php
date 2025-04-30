@@ -101,8 +101,18 @@
                                             <td>{{ $item->special_note ? $item->special_note : 'N/A' }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
                                             <td>
-                                                {{ $item->owner_name }} <br><br> <a
-                                                    href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}</a>
+                                            @if($p_status->payment_status == 'completed')
+                                            {{ $item->owner_name }} <br><br> 
+                                                <a
+                                                    href="tel:{{ $item->contact_number }}">
+                                                    {{ $item->contact_number }}
+                                                </a>
+                                            @else
+                                                <a type="button" class="btn btn-inverse-warning btn-fw" href="{{route('subscribe')}}"> Get Contact Info </a>
+                                            @endif
+
+                                                
+                                                
                                             </td>
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->premise }}</td>
@@ -162,21 +172,6 @@
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-            <div class="container">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                        bootstrapdash.com 2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                            href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from
-                        Bootstrapdash.com</span>
-                </div>
-            </div>
-        </footer>
-        <!-- partial -->
     </div>
-    <!-- main-panel ends -->
 </div>
 @endsection

@@ -87,26 +87,26 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                            <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                            <span class="menu-title">All Property</span>
-                            <i class="menu-arrow"></i>
+                                <i class="mdi mdi-monitor-dashboard menu-icon"></i>
+                                <span class="menu-title">All Property</span>
+                                <i class="menu-arrow"></i>
                             </a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{route('showResidentialRent')}}">Residential Rent</a>
+                                        <a class="nav-link" href="{{route('showResidentialRent')}}">Residential Rent</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{route('showResidentialSell')}}">Residential Sell</a>
+                                        <a class="nav-link" href="{{route('showResidentialSell')}}">Residential Sell</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{route('showCommercialRent')}}">Commercial Rent</a>
+                                        <a class="nav-link" href="{{route('showCommercialRent')}}">Commercial Rent</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{route('showCommercialSell')}}">Commercial Sell</a>
+                                        <a class="nav-link" href="{{route('showCommercialSell')}}">Commercial Sell</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{route('totalProperty')}}">Total Property</a>
+                                        <a class="nav-link" href="{{route('totalProperty')}}">Total Property</a>
                                     </li>
                                 </ul>
                             </div>
@@ -163,7 +163,7 @@
                                         <a class="dropdown-item" href="{{route('profile.updatePassword')}}">
                                             Change Password </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('subScriptionDetails')}}">
                                             Order </a>
                                         <div class="dropdown-divider"></div>
                                     </div>
@@ -176,6 +176,20 @@
         </div>
         <!-- partial -->
         @yield('content')
+    <footer class="footer">
+        <div class="container">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                    propertyscroller.com 2025</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by <a
+                        href="#" target="_blank">propertyscroller</a> from
+                        propertyscroller.com</span>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- main-panel ends -->
+</div>
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

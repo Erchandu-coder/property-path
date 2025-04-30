@@ -15,6 +15,7 @@ class PropertyController extends Controller
     public function showResidentialRent(Request $request)
     {
         $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 1)
@@ -38,7 +39,7 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.residential-rent', compact('user', 'items', 'cities'));
+        return view('user-admin.residential-rent', compact('user', 'items', 'cities', 'p_status'));
     }
 
     public function showResidentialSell(Request $request)
