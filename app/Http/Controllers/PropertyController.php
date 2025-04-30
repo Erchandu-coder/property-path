@@ -45,6 +45,7 @@ class PropertyController extends Controller
     public function showResidentialSell(Request $request)
     {
         $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 2)
@@ -68,12 +69,13 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.residential-sell', compact('user', 'items', 'cities'));
+        return view('user-admin.residential-sell', compact('user', 'items', 'cities', 'p_status'));
     }
 
     public function showCommercialRent(Request $request)
     {
         $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 3)
@@ -97,12 +99,13 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.commercial-rent', compact('user', 'items', 'cities'));
+        return view('user-admin.commercial-rent', compact('user', 'items', 'cities', 'p_status'));
     }
 
     public function showCommercialSell(Request $request)
     {
         $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 4)
@@ -126,11 +129,12 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.commercial-sell', compact('user', 'items', 'cities'));
+        return view('user-admin.commercial-sell', compact('user', 'items', 'cities', 'p_status'));
     }
     public function totalProperty(Request $request)
     {
         $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
         $ptypes = PropertyType::get();
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')->where('status', 1);
@@ -148,6 +152,6 @@ class PropertyController extends Controller
         }
 
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.total-property', compact('user', 'items', 'ptypes', 'cities'));
+        return view('user-admin.total-property', compact('user', 'items', 'ptypes', 'cities', 'p_status'));
     }
 }

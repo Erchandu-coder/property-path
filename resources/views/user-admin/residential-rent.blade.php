@@ -101,7 +101,7 @@
                                             <td>{{ $item->special_note ? $item->special_note : 'N/A' }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
                                             <td>
-                                            @if($p_status->payment_status == 'completed')
+                                            @if($p_status && $p_status->payment_status == 'completed')
                                             {{ $item->owner_name }} <br><br> 
                                                 <a
                                                     href="tel:{{ $item->contact_number }}">
@@ -109,10 +109,7 @@
                                                 </a>
                                             @else
                                                 <a type="button" class="btn btn-inverse-warning btn-fw" href="{{route('subscribe')}}"> Get Contact Info </a>
-                                            @endif
-
-                                                
-                                                
+                                            @endif                                                
                                             </td>
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->premise }}</td>

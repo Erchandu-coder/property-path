@@ -74,7 +74,7 @@
                         @endif
                         @else
                         {{-- No subscription record, show form --}}
-                        @include('user-admin.payment-form', ['user' => $user])
+                        @include('user-admin.partials.payment-form', ['user' => $user])
                         @endif
                     </div>
                 </div>

@@ -336,7 +336,7 @@
                                     </tbody>
                                 </table>
                             </div><br>
-                            <a href="#">Read more</a>
+                            <a href="{{route('showCommercialRent')}}">Read more</a>
                         </div>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
                                     </tbody>
                                 </table>
                             </div><br>
-                            <a href="#">Read more</a>
+                            <a href="{{route('showCommercialSell')}}">Read more</a>
                         </div>
                     </div>
                 </div>

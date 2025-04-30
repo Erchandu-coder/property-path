@@ -24,7 +24,7 @@
         </div>
         <!-- first row starts here -->
         <div class="row">
-            <div class="col-xl-9 stretch-card grid-margin">
+            <div class="col-xl-12 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between flex-wrap">
@@ -54,30 +54,32 @@
                                                 PROFIT</span>
                                         </div>
                                     </div>
+                                    <div class="d-flex mr-3 mt-2 mt-sm-0">
+                                        <button type="button" class="btn btn-social-icon btn-outline-sales profit">
+                                            <i class="mdi mdi-cash text-info"></i>
+                                        </button>
+                                        <div class="pl-2">
+                                            <h4 class="mb-0 font-weight-semibold head-count"> 2,804 </h4>
+                                            <span class="font-10 font-weight-semibold text-muted">TOTAL
+                                                PROFIT</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mr-3 mt-2 mt-sm-0">
+                                        <button type="button" class="btn btn-social-icon btn-outline-sales profit">
+                                            <i class="mdi mdi-cash text-info"></i>
+                                        </button>
+                                        <div class="pl-2">
+                                            <h4 class="mb-0 font-weight-semibold head-count"> 2,804 </h4>
+                                            <span class="font-10 font-weight-semibold text-muted">TOTAL
+                                                PROFIT</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <p class="text-muted font-13 mt-2 mt-sm-0"> Your sales monitoring dashboard
                             template. <a class="text-muted font-13" href="#"><u>Learn more</u></a>
                         </p>
-                        <div class="flot-chart-wrapper">
-                            <div id="flotChart" class="flot-chart">
-                                <canvas class="flot-base"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 stretch-card grid-margin">
-                <div class="card card-img">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="text-white">
-                            <h1 class="font-20 font-weight-semibold mb-0"> Get premium </h1>
-                            <h1 class="font-20 font-weight-semibold">account!</h1>
-                            <p>to optimize your selling prodcut</p>
-                            <p class="font-10 font-weight-semibold"> Enjoy the advantage of premium. </p>
-                            <button class="btn bg-white font-12">Get Premium</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -100,9 +102,6 @@
                                     class="mdi mdi-arrow-up"></i></span>
                         </h3>
                         <span class="text-muted font-13">Avg customers/Day</span>
-                        <div class="line-chart-wrapper">
-                            <canvas id="linechart" height="80"></canvas>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -122,77 +121,11 @@
                                     class="mdi mdi-arrow-up"></i></span>
                         </h3>
                         <span class="text-muted font-13">Avg customers/Day</span>
-                        <div class="bar-chart-wrapper">
-                            <canvas id="barchart" height="80"></canvas>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
-        <!-- image card row starts here -->
-        <div class="row">
-            <div class="col-sm-4 stretch-card grid-margin">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_1.jpg" alt="" />
-                    </div>
-                    <div class="card-body px-3 text-dark">
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted font-13 mb-0">ENTIRE APARTMENT</p>
-                            <i class="mdi mdi-heart-outline"></i>
-                        </div>
-                        <h5 class="font-weight-semibold"> Cosy Studio flat in London </h5>
-                        <div class="d-flex justify-content-between font-weight-semibold">
-                            <p class="mb-0">
-                                <i class="mdi mdi-star star-color pr-1"></i>4.60 (35)
-                            </p>
-                            <p class="mb-0">$5,267/night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 stretch-card grid-margin">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_2.jpg" alt="" />
-                    </div>
-                    <div class="card-body px-3 text-dark">
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted font-13 mb-0">ENTIRE APARTMENT</p>
-                            <i class="mdi mdi-heart-outline"></i>
-                        </div>
-                        <h5 class="font-weight-semibold"> Victoria Bedsit Studio Ensuite </h5>
-                        <div class="d-flex justify-content-between font-weight-semibold">
-                            <p class="mb-0">
-                                <i class="mdi mdi-star star-color pr-1"></i>4.83 (12)
-                            </p>
-                            <p class="mb-0">$6,144/night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 stretch-card grid-margin">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <img class="img-fluid w-100" src="../admin-assets/images/dashboard/img_3.jpg" alt="" />
-                    </div>
-                    <div class="card-body px-3 text-dark">
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted font-13 mb-0">ENTIRE APARTMENT</p>
-                            <i class="mdi mdi-heart-outline"></i>
-                        </div>
-                        <h5 class="font-weight-semibold">Fabulous Huge Room</h5>
-                        <div class="d-flex justify-content-between font-weight-semibold">
-                            <p class="mb-0">
-                                <i class="mdi mdi-star star-color pr-1"></i>3.83 (15)
-                            </p>
-                            <p class="mb-0">$5,267/night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- table row starts here -->
         <div class="row">
             <div class="col-xl-4 grid-margin">
                 <div class="card card-stat stretch-card mb-3">
@@ -403,61 +336,6 @@
                 </div>
             </div>
         </div>
-        <!-- doughnut chart row starts -->
-        <div class="row">
-            <div class="col-sm-12 stretch-card grid-margin">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card border-0">
-                                <div class="card-body">
-                                    <div class="card-title">Channel Sessions</div>
-                                    <div class="d-flex flex-wrap">
-                                        <div class="doughnut-wrapper w-50">
-                                            <canvas id="doughnutChart1" width="100" height="100"></canvas>
-                                        </div>
-                                        <div id="doughnut-chart-legend"
-                                            class="pl-lg-3 rounded-legend align-self-center flex-grow legend-vertical legend-bottom-left">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card border-0">
-                                <div class="card-body">
-                                    <div class="card-title">News Sessions</div>
-                                    <div class="d-flex flex-wrap">
-                                        <div class="doughnut-wrapper w-50">
-                                            <canvas id="doughnutChart2" width="100" height="100"></canvas>
-                                        </div>
-                                        <div id="doughnut-chart-legend2"
-                                            class="pl-lg-3 rounded-legend align-self-center flex-grow legend-vertical legend-bottom-left">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card border-0">
-                                <div class="card-body">
-                                    <div class="card-title">Device Sessions</div>
-                                    <div class="d-flex flex-wrap">
-                                        <div class="doughnut-wrapper w-50">
-                                            <canvas id="doughnutChart3" width="100" height="100"></canvas>
-                                        </div>
-                                        <div id="doughnut-chart-legend3"
-                                            class="pl-lg-3 rounded-legend align-self-center flex-grow legend-vertical legend-bottom-left">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- last row starts here -->
         <div class="row">
             <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
                 <div class="card">
@@ -606,7 +484,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+       </div>
     </div>
 </div>    
     @endsection
