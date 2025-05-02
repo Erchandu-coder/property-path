@@ -33,11 +33,11 @@
             <nav class="navbar top-navbar col-lg-12 col-12 p-0">
                 <div class="container">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                        <a class="navbar-brand brand-logo" href="index.html">
+                        <a class="navbar-brand brand-logo" href="{{route('dashboard')}}">
                             <img src="../admin-assets/images/logo.svg" alt="logo" />
                             <span class="font-12 d-block font-weight-light">Responsive Dashboard </span>
                         </a>
-                        <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                        <a class="navbar-brand brand-logo-mini" href="{{route('dashboard')}}"><img
                                 src="../admin-assets/images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">

@@ -21,7 +21,7 @@
             </div>
         </div>
         <!-- first row starts here -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xl-12 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
@@ -78,23 +78,17 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- chart row starts here -->
         <div class="row">
             <div class="col-sm-6 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <div class="card-title"> Customers <small class="d-block text-muted">August 01 -
-                                    August 31</small>
-                            </div>
-                            <div class="d-flex text-muted font-20">
-                                <i class="mdi mdi-printer mouse-pointer"></i>
-                                <i class="mdi mdi-help-circle-outline ml-2 mouse-pointer"></i>
+                            <div class="card-title"> Customers
                             </div>
                         </div>
-                        <h3 class="font-weight-bold mb-0"> 2,409 <span class="text-success h5">4,5%<i
-                                    class="mdi mdi-arrow-up"></i></span>
+                        <h3 class="font-weight-bold mb-0"> 2,409
                         </h3>
                         <span class="text-muted font-13">Avg customers/Day</span>
                     </div>
@@ -104,16 +98,10 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <div class="card-title"> Conversions <small class="d-block text-muted">August 01
-                                    - August 31</small>
-                            </div>
-                            <div class="d-flex text-muted font-20">
-                                <i class="mdi mdi-printer mouse-pointer"></i>
-                                <i class="mdi mdi-help-circle-outline ml-2 mouse-pointer"></i>
+                            <div class="card-title"> Conversions
                             </div>
                         </div>
-                        <h3 class="font-weight-bold mb-0"> 0.40% <span class="text-success h5">0.20%<i
-                                    class="mdi mdi-arrow-up"></i></span>
+                        <h3 class="font-weight-bold mb-0"> 0.40
                         </h3>
                         <span class="text-muted font-13">Avg customers/Day</span>
                         
