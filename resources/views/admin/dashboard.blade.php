@@ -75,9 +75,6 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-muted font-13 mt-2 mt-sm-0"> Your sales monitoring dashboard
-                            template. <a class="text-muted font-13" href="#"><u>Learn more</u></a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -126,20 +123,6 @@
         </div>
         <div class="row">
             <div class="col-xl-4 grid-margin">
-                <div class="card card-stat stretch-card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="text-white">
-                                <h3 class="font-weight-bold mb-0">$168.90</h3>
-                                <h6>This Month</h6>
-                                <div class="badge badge-danger">23%</div>
-                            </div>
-                            <div class="flot-bar-wrapper">
-                                <div id="column-chart" class="flot-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card stretch-card mb-3">
                     <div class="card-body d-flex flex-wrap justify-content-between">
                         <div>

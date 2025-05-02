@@ -37,7 +37,7 @@
                                             <td>{{ $result->mobile }}</td>
                                             <td>{{ $result->address }}</td>
                                             <td>
-                                                <input type="checkbox" class="city-toggle" data-toggle="toggle"
+                                                <input type="checkbox" class="user-toggle" data-toggle="toggle"
                                                     data-on="Enabled" data-off="Disabled" data-onstyle="success"
                                                     data-offstyle="danger" data-id="{{ $result->id }}"
                                                     {{ $result->status == '1' ? 'checked' : '' }}>
@@ -71,3 +71,48 @@
     </div>
 </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @push('scripts')
+    <script>
+    $(document).ready(function() {
+        $('.user-toggle').change(function() {
+            var status = $(this).prop('checked') ? 1 : 0;
+            var id = $(this).data('id');
+
+            $.ajax({
+                url: '{{ route("admin.updateUserStatus") }}', // adjust as needed
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    status: status
+                },
+                success: function(response) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000"
+                    };
+                    toastr.success(response.message, 'Success');
+                },
+                error: function(xhr) {
+                    // console.log(xhr.responseText);
+                    let errorMsg = 'Something went wrong';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMsg = xhr.responseJSON.message;
+                    }
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000"
+                    };
+                    toastr.error(errorMsg, 'Error');
+                }
+            });
+        });
+    });
+    </script>
+    @endpush

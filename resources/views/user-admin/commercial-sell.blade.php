@@ -133,9 +133,22 @@
                                         <h5 class="card-title">#{{$i++}} - {{ $item->special_note ?? 'N/A' }}</h5>
                                         <p class="card-text"><strong>Date:</strong>
                                             {{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</p>
-                                        <p class="card-text"><strong>Name:</strong> {{ $item->owner_name }}</p>
-                                        <p class="card-text"><strong>Contact:</strong> <a
-                                                href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}</a>
+                                            <p class="card-text"><strong>Name:</strong>
+                                            @if($p_status && $p_status->payment_status == 'completed')
+                                            {{ $item->owner_name }}
+                                            @else
+                                            <a type="button" class="btn btn-inverse-warning btn-fw"
+                                                href="{{route('subscribe')}}"> Get Contact Info </a>
+                                            @endif
+                                        </p>
+                                        <p class="card-text"><strong>Contact:</strong>
+                                            @if($p_status && $p_status->payment_status == 'completed')
+                                            <a href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}
+                                            </a>
+                                            @else
+                                            <a type="button" class="btn btn-inverse-warning btn-fw"
+                                                href="{{route('subscribe')}}"> Get Contact Info </a>
+                                            @endif
                                         </p>
                                         <p class="card-text"><strong>Address:</strong> {{ $item->address }}</p>
                                         <p class="card-text"><strong>Premise:</strong> {{ $item->premise }}</p>

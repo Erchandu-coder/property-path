@@ -99,4 +99,16 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }   
     }
+    public function updateUserStatus(Request $request)
+    {
+        $item = User::find($request->id);
+        if ($item) {
+            $item->status = $request->status;
+            $item->save();
+
+            return response()->json(['message' => 'User Status updated successfully.']);
+        }
+
+        return response()->json(['message' => 'Item not found.'], 404);
+    }
 }

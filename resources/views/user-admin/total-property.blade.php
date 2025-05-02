@@ -23,7 +23,8 @@
                                             <div>
                                                 <div class="card-body">
                                                     <h4 class="card-title">Search Property</h4>
-                                                    <form class="form-sample" method="GET" action="{{route('totalProperty')}}">
+                                                    <form class="form-sample" method="GET"
+                                                        action="{{route('totalProperty')}}">
                                                         <p class="card-description">Personal info</p>
                                                         <div class="row">
                                                             <div class="col-md-12">
@@ -31,13 +32,15 @@
                                                                     <label class="col-sm-3 col-form-label">Property
                                                                         Type</label>
                                                                     <div class="col-sm-9">
-                                                                    <select class="form-control" name="property_type_id"
-                                                                        value="{{ request('property_type_id') }}">
-                                                                        <option value="">--Select--</option>
-                                                                        @foreach($ptypes as $ptype)
-                                                                        <option value="{{$ptype->id}}">{{$ptype->property_name}}</option>
-                                                                        @endforeach;
-                                                                    </select>
+                                                                        <select class="form-control"
+                                                                            name="property_type_id"
+                                                                            value="{{ request('property_type_id') }}">
+                                                                            <option value="">--Select--</option>
+                                                                            @foreach($ptypes as $ptype)
+                                                                            <option value="{{$ptype->id}}">
+                                                                                {{$ptype->property_name}}</option>
+                                                                            @endforeach;
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -102,11 +105,12 @@
                                                                                                 name="city_id[]"
                                                                                                 value="{{$city->id}}">
                                                                                             <p class="form-check-label"
-                                                                                                for="primary4">{{$city->city_name}}
-                                                                                                </p>
+                                                                                                for="primary4">
+                                                                                                {{$city->city_name}}
+                                                                                            </p>
                                                                                         </div>
                                                                                     </div>
-                                                                                   @endforeach
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -114,7 +118,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                                        <button type="submit" class="btn btn-primary mr-2"> Submit
+                                                        </button>
                                                         <button class="btn btn-light">Cancel</button>
                                                     </form>
                                                 </div>
@@ -154,14 +159,14 @@
                                             <td>{{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
                                             <td>
                                                 @if($p_status && $p_status->payment_status == 'completed')
-                                                {{ $item->owner_name }} <br><br> 
-                                                    <a
-                                                        href="tel:{{ $item->contact_number }}">
-                                                        {{ $item->contact_number }}
-                                                    </a>
+                                                {{ $item->owner_name }} <br><br>
+                                                <a href="tel:{{ $item->contact_number }}">
+                                                    {{ $item->contact_number }}
+                                                </a>
                                                 @else
-                                                    <a type="button" class="btn btn-inverse-warning btn-fw" href="{{route('subscribe')}}"> Get Contact Info </a>
-                                                @endif    
+                                                <a type="button" class="btn btn-inverse-warning btn-fw"
+                                                    href="{{route('subscribe')}}"> Get Contact Info </a>
+                                                @endif
                                             </td>
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->premise }}</td>
@@ -189,9 +194,22 @@
                                         <h5 class="card-title">#{{$i++}} - {{ $item->special_note ?? 'N/A' }}</h5>
                                         <p class="card-text"><strong>Date:</strong>
                                             {{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</p>
-                                        <p class="card-text"><strong>Name:</strong> {{ $item->owner_name }}</p>
-                                        <p class="card-text"><strong>Contact:</strong> <a
-                                                href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}</a>
+                                        <p class="card-text"><strong>Name:</strong>
+                                            @if($p_status && $p_status->payment_status == 'completed')
+                                            {{ $item->owner_name }}
+                                            @else
+                                            <a type="button" class="btn btn-inverse-warning btn-fw"
+                                                href="{{route('subscribe')}}"> Get Contact Info </a>
+                                            @endif
+                                        </p>
+                                        <p class="card-text"><strong>Contact:</strong>
+                                            @if($p_status && $p_status->payment_status == 'completed')
+                                            <a href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}
+                                            </a>
+                                            @else
+                                            <a type="button" class="btn btn-inverse-warning btn-fw"
+                                                href="{{route('subscribe')}}"> Get Contact Info </a>
+                                            @endif
                                         </p>
                                         <p class="card-text"><strong>Address:</strong> {{ $item->address }}</p>
                                         <p class="card-text"><strong>Premise:</strong> {{ $item->premise }}</p>
