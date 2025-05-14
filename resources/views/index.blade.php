@@ -11,10 +11,9 @@
       </div>
 
       <div class="intro-info">
-        <h2>The Ultimate property<br><span>solutions</span><br>for property path!</h2>
+        <h2>The Ultimate property<br><span>solutions</span><br>for Property Scroller!</h2>
         <div>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
-          <a href="#services" class="btn-services scrollto">Our Services</a>
         </div>
       </div>
 

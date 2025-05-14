@@ -8,7 +8,7 @@
         <div class="col-md-8 register-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Welcome To Property Path</h3>
+                    <h3 class="register-heading">Welcome To Property Scroller</h3>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
