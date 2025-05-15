@@ -14,6 +14,7 @@ class PropertyController extends Controller
 {
     public function showResidentialRent(Request $request)
     {
+        $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
@@ -28,8 +29,8 @@ class PropertyController extends Controller
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
         if ($request->filled('city_id')) {
-            $query->whereHas('city', function($q) use ($request) {
-                $q->where('id', $request->city_id);
+            $query->whereHas('city', function($q) use ($city_ids) {
+                $q->where('id', $city_ids);
             });
         }      
         if ($request->filled('availability')) {
@@ -44,6 +45,7 @@ class PropertyController extends Controller
 
     public function showResidentialSell(Request $request)
     {
+        $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
@@ -58,8 +60,8 @@ class PropertyController extends Controller
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
         if ($request->filled('city_id')) {
-            $query->whereHas('city', function($q) use ($request) {
-                $q->where('id', $request->city_id);
+            $query->whereHas('city', function($q) use ($city_ids) {
+                $q->where('id', $city_ids);
             });
         }      
         if ($request->filled('availability')) {
@@ -74,6 +76,7 @@ class PropertyController extends Controller
 
     public function showCommercialRent(Request $request)
     {
+        $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
@@ -88,8 +91,8 @@ class PropertyController extends Controller
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
         if ($request->filled('city_id')) {
-            $query->whereHas('city', function($q) use ($request) {
-                $q->where('id', $request->city_id);
+            $query->whereHas('city', function($q) use ($city_ids) {
+                $q->where('id', $city_ids);
             });
         }      
         if ($request->filled('availability')) {
@@ -104,6 +107,7 @@ class PropertyController extends Controller
 
     public function showCommercialSell(Request $request)
     {
+        $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
@@ -118,8 +122,8 @@ class PropertyController extends Controller
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
         if ($request->filled('city_id')) {
-            $query->whereHas('city', function($q) use ($request) {
-                $q->where('id', $request->city_id);
+            $query->whereHas('city', function($q) use ($city_ids) {
+                $q->where('id', $city_ids);
             });
         }      
         if ($request->filled('availability')) {

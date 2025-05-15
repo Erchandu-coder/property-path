@@ -24,7 +24,7 @@
                                     <select class="form-control" name="city_id">
                                         <option value="">--Select Area--</option>
                                         @foreach($cities as $city)
-                                        <option value="{{ $city->id }}"
+                                        <option value="{{ encrypt_id($city->id) }}"
                                             {{ request('city_id') == $city->id ? 'selected' : '' }}>
                                             {{ $city->city_name }}
                                         </option>
