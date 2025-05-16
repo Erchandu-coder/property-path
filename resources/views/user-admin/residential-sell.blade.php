@@ -20,6 +20,7 @@
                                         <div class="d-flex align-items-center">
                                             <span class="pl-3 mr-4">
                                                 <form method="GET" action="{{route('showResidentialSell')}}">
+                                                    @csrf
                                                     <input type="hidden" name="yesterday" class="form-control"
                                                         value="{{ $yesterday }}">
                                                     <button type="submit"
@@ -30,6 +31,7 @@
                                             </span>
                                         </div>
                                         <form method="GET" action="{{route('showResidentialSell')}}">
+                                            @csrf
                                             <input type="hidden" name="today" class="form-control"
                                                 value="{{ $today }}">
                                             <button type="submit" class="btn btn-success mt-2 mt-sm-0 btn-icon-text">
@@ -38,6 +40,7 @@
                                     </div>
                                 </div>
                             <form method="GET" action="{{route('showResidentialSell')}}" class="row mb-4">
+                                @csrf
                                 <div class="col-md-2 mb-2">
                                     <input type="text" name="premise" class="form-control" placeholder="Premise"
                                         value="{{ request('premise') }}">

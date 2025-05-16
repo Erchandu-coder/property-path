@@ -25,6 +25,7 @@
                                                     <h4 class="card-title">Search Property</h4>
                                                     <form class="form-sample" method="GET"
                                                         action="{{route('totalProperty')}}">
+                                                        @csrf
                                                         <p class="card-description">Personal info</p>
                                                         <div class="row">
                                                             <div class="col-md-12">

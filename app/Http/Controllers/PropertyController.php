@@ -57,6 +57,7 @@ class PropertyController extends Controller
         $query = Property::with('city')
         ->where('property_type_id', 2)
         ->where('status', 1);
+
         if ($request->filled('yesterday')) {
         $query->whereDate('date', $request->yesterday);
         }
@@ -64,6 +65,7 @@ class PropertyController extends Controller
         if ($request->filled('today')) {
         $query->whereDate('date', $request->today);
         }
+
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
@@ -127,10 +129,15 @@ class PropertyController extends Controller
         $query = Property::with('city')
         ->where('property_type_id', 4)
         ->where('status', 1);
-        // Apply filters if they exist
-        if ($request->filled('date')) {
-        $query->whereDate('date', $request->date);
+        
+        if ($request->filled('yesterday')) {
+        $query->whereDate('date', $request->yesterday);
         }
+
+        if ($request->filled('today')) {
+        $query->whereDate('date', $request->today);
+        }
+        
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }

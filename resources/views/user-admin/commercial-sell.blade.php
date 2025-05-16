@@ -7,17 +7,41 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="page-title">Commercial Sell Property Listing</h3>
-                            <form method="GET" action="{{route('showCommercialSell')}}" class="row mb-4">
-                                <div class="col-md-2 mb-2">
-                                    <input type="date" name="date" class="form-control" value="{{ request('date') }}">
+                            @php
+                            $today = \Carbon\Carbon::today()->format('Y-m-d');
+                            $yesterday = \Carbon\Carbon::yesterday()->format('Y-m-d');
+                            @endphp
+                            <div class="page-header flex-wrap">
+                                <div class="header-left">
+                                    <h3 class="page-title">Commercial Sell Property Listing</h3>
                                 </div>
-
+                                <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
+                                    <div class="d-flex align-items-center">
+                                        <span class="pl-3 mr-4">
+                                            <form method="GET" action="{{route('showCommercialSell')}}">
+                                                @csrf
+                                                <input type="hidden" name="yesterday" class="form-control"
+                                                    value="{{ $yesterday }}">
+                                                <button type="submit" class="btn btn-warning btn-icon-text">
+                                                    <i class="mdi mdi-calendar-multiple-check"></i> Yesterday
+                                                </button>
+                                            </form>
+                                        </span>
+                                    </div>
+                                    <form method="GET" action="{{route('showCommercialSell')}}">
+                                        @csrf
+                                        <input type="hidden" name="today" class="form-control" value="{{ $today }}">
+                                        <button type="submit" class="btn btn-success btn-icon-text">
+                                            <i class="mdi mdi-calendar-today"></i> Todays </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <form method="GET" action="{{route('showCommercialSell')}}" class="row mb-4">
+                                @csrf
                                 <div class="col-md-2 mb-2">
                                     <input type="text" name="premise" class="form-control" placeholder="Premise"
                                         value="{{ request('premise') }}">
                                 </div>
-
                                 <div class="col-md-2 mb-2">
                                     <select class="form-control" name="city_id">
                                         <option value="">--Select Area--</option>
@@ -29,7 +53,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-2 mb-2">
+                                <div class="col-md-3 mb-3">
                                     <select class="form-control" name="availability">
                                         <option value="">--Select Availability--</option>
                                         @php
@@ -48,7 +72,7 @@
                                     </select>
 
                                 </div>
-                                <div class="col-md-2 mb-2">
+                                <div class="col-md-3 mb-3">
                                     <select class="form-control" name="condition" placeholder="Condition">
                                         <option value="">--Select Condition--</option>
                                         @php
