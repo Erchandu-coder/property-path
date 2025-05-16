@@ -21,10 +21,15 @@ class PropertyController extends Controller
         $query = Property::with('city')
         ->where('property_type_id', 1)
         ->where('status', 1);
-        // Apply filters if they exist
-        if ($request->filled('date')) {
-        $query->whereDate('date', $request->date);
+
+        if ($request->filled('yesterday')) {
+        $query->whereDate('date', $request->yesterday);
         }
+
+        if ($request->filled('today')) {
+        $query->whereDate('date', $request->today);
+        }
+        
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
@@ -52,9 +57,12 @@ class PropertyController extends Controller
         $query = Property::with('city')
         ->where('property_type_id', 2)
         ->where('status', 1);
-        // Apply filters if they exist
-        if ($request->filled('date')) {
-        $query->whereDate('date', $request->date);
+        if ($request->filled('yesterday')) {
+        $query->whereDate('date', $request->yesterday);
+        }
+
+        if ($request->filled('today')) {
+        $query->whereDate('date', $request->today);
         }
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
@@ -84,9 +92,14 @@ class PropertyController extends Controller
         ->where('property_type_id', 3)
         ->where('status', 1);
         // Apply filters if they exist
-        if ($request->filled('date')) {
-        $query->whereDate('date', $request->date);
+        if ($request->filled('yesterday')) {
+        $query->whereDate('date', $request->yesterday);
         }
+
+        if ($request->filled('today')) {
+        $query->whereDate('date', $request->today);
+        }
+        
         if ($request->filled('premise')) {
         $query->where('premise', 'like', '%' . $request->premise . '%');
         }
@@ -141,7 +154,11 @@ class PropertyController extends Controller
         $p_status = Subscription::where('user_id', $user->id)->first();
         $ptypes = PropertyType::get();
         $cities = City::where('status', 1)->get();
-        $query = Property::with('city')->where('status', 1);
+        $query = Property::with('city')
+            ->where('status', 1)
+            ->whereHas('city', function ($q) {
+                $q->where('status', 1);
+            });
         // Apply filters if they exist
         if ($request->filled('property_type_id')) {
             $query->where('property_type_id', $request->property_type_id);
