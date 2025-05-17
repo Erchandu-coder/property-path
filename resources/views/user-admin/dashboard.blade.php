@@ -37,8 +37,8 @@
                                         </button>
                                         <div class="pl-2">
                                             <h4 class="mb-0 font-weight-semibold head-count"> #{{$rrent_count}} </h4>
-                                            <span class="font-10 font-weight-semibold text-muted">RESIDENTIAL
-                                                RENT</span>
+                                            <a href="{{route('showResidentialRent')}}"><span class="font-10 font-weight-semibold text-info">RESIDENTIAL
+                                                RENT</span></a>
                                         </div>
                                     </div>
                                     <div class="d-flex mr-5">
@@ -47,8 +47,8 @@
                                         </button>
                                         <div class="pl-2">
                                             <h4 class="mb-0 font-weight-semibold head-count"> #{{$rsell_count}} </h4>
-                                            <span class="font-10 font-weight-semibold text-muted">RESIDENTIAL
-                                                SELL</span>
+                                            <a href="{{route('showResidentialSell')}}"><span class="font-10 font-weight-semibold text-info">RESIDENTIAL
+                                                SELL</span></a>
                                         </div>
                                     </div>
                                     <div class="d-flex mr-5">
@@ -57,7 +57,7 @@
                                         </button>
                                         <div class="pl-2">
                                             <h4 class="mb-0 font-weight-semibold head-count"> #{{$crent_count}} </h4>
-                                            <span class="font-10 font-weight-semibold text-muted">COMMERCIAL RENT</span>
+                                            <a href="{{route('showCommercialRent')}}"><span class="font-10 font-weight-semibold text-info">COMMERCIAL RENT</span></a>
                                         </div>
                                     </div>
                                     <div class="d-flex mr-5">
@@ -66,7 +66,7 @@
                                         </button>
                                         <div class="pl-2">
                                             <h4 class="mb-0 font-weight-semibold head-count"> #{{$csell_count}} </h4>
-                                            <span class="font-10 font-weight-semibold text-muted">COMMERCIAL SELL</span>
+                                            <a href="{{route('showCommercialSell')}}"><span class="font-10 font-weight-semibold text-info">COMMERCIAL SELL</span></a>
                                         </div>
                                     </div>
                                     <div class="d-flex mr-5">
@@ -75,8 +75,8 @@
                                         </button>
                                         <div class="pl-2">
                                             <h4 class="mb-0 font-weight-semibold head-count"> {{$total_property}} </h4>
-                                            <span class="font-10 font-weight-semibold text-muted">TOTAL
-                                                ACTIVE</span>
+                                            <a href="{{route('totalProperty')}}"><span class="font-10 font-weight-semibold text-info">TOTAL
+                                                ACTIVE</span></a>
                                         </div>
                                     </div>
                                 </div>

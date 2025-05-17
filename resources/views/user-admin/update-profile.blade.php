@@ -38,6 +38,19 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Estate / Company Name</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"
+                                                    value="{{ old('estate_name', $user->estate_name) }}" name="estate_name"
+                                                    />
+                                                @error('estate_name')
+                                                <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Email</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
