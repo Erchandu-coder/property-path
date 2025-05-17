@@ -16,6 +16,14 @@
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>       
+                                @endif
                             <form id="send-verification" method="post" action="{{ route('verification.send') }}">
                                 @csrf
                             </form>
@@ -201,11 +209,11 @@
                                 @endif
                                 <button type="submit" class="btn btn-primary mr-2"> Submit </button>
                                 <button class="btn btn-light">Cancel</button>
-                                @if (session('status') === 'profile-updated')
+                                <!-- @if (session('status') === 'profile-updated')
                                 <p x-data="{ show: true }" x-show="show" x-transition
                                     x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
                                     {{ __('Saved.') }}</p>
-                                @endif
+                                @endif -->
                             </form>
                         </div>
                     </div>
