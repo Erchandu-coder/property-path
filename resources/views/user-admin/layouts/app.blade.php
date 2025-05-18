@@ -24,6 +24,26 @@
     <link rel="stylesheet" href="../admin-assets/css/demo_2/style.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../admin-assets/images/favicon.png" />
+    <style>
+        #fixedWhatsAppIcon {
+        display: block;
+        position: fixed;
+        right: 20px;
+        bottom: 60px;
+        width: 50px;
+        height: 50px;
+        background-color: #54b460;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 24px;
+        z-index: 9999;
+        }
+        #fixedWhatsAppIcon:hover {
+        background-color: #339933;
+        }
+    </style>
 </head>
 
 <body>
@@ -187,6 +207,7 @@
             </div>
         </div>
     </footer>
+    <a href="https://api.whatsapp.com/send?phone=919000000000&text=Hello!%20Got%20your%20reference%20from%20Website..." id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa fa-whatsapp"></i></a>
     </div>
     <!-- main-panel ends -->
 </div>

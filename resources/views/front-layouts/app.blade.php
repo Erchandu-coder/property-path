@@ -129,6 +129,24 @@
     margin-bottom: -15%;
     color: #495057;
 }
+#fixedWhatsAppIcon {
+  display: block;
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+  width: 50px;
+  height: 50px;
+  background-color: #54b460;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  z-index: 9999;
+}
+#fixedWhatsAppIcon:hover {
+  background-color: #339933;
+}
 </style>  
 </head>
 
@@ -170,9 +188,15 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li> -->
-          <li><a href="">Suggestion</a></li>
+          <li><a href="#add-property">Add Property</a></li>
           <li><a href="{{route('register')}}">Register</a></li>
-          <li><a href="{{route('login')}}">Login</a></li>
+          <li>
+              @if(Auth::check())
+                  <a href="{{ route('dashboard') }}" class="btn btn-warning btn-fw">Dashboard</a>
+              @else
+                  <a href="{{ route('login') }}">Login</a>
+              @endif
+          </li>
         </ul>
       </nav><!-- .main-nav -->
       
@@ -255,28 +279,51 @@
       <!-- </div> -->
     </div>
   </footer><!-- #footer -->
-
+    <a href="https://api.whatsapp.com/send?phone=919000000000&text=Hello!%20Got%20your%20reference%20from%20Website..." id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa fa-whatsapp"></i></a>
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
   <!-- JavaScript Libraries -->
   <script src="assets/lib/jquery/jquery.min.js"></script>
-  <script src="assets/lib/jquery/jquery-migrate.min.js"></script>
+  <!-- <script src="assets/lib/jquery/jquery-migrate.min.js"></script> -->
   <script src="assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/lib/easing/easing.min.js"></script>
+  <!-- <script src="assets/lib/easing/easing.min.js"></script> -->
   <script src="assets/lib/mobile-nav/mobile-nav.js"></script>
-  <script src="assets/lib/wow/wow.min.js"></script>
-  <script src="assets/lib/waypoints/waypoints.min.js"></script>
-  <script src="assets/lib/counterup/counterup.min.js"></script>
-  <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="assets/lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="assets/lib/lightbox/js/lightbox.min.js"></script>
+  <!-- <script src="assets/lib/wow/wow.min.js"></script> -->
+  <!-- <script src="assets/lib/waypoints/waypoints.min.js"></script> -->
+  <!-- <script src="assets/lib/counterup/counterup.min.js"></script> -->
+  <!-- <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script> -->
+  <!-- <script src="assets/lib/isotope/isotope.pkgd.min.js"></script> -->
+  <!-- <script src="assets/lib/lightbox/js/lightbox.min.js"></script> -->
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <!-- <script src="contactform/contactform.js"></script> -->
 
   <!-- Template Main Javascript File -->
   <script src="assets/js/main.js"></script>
-
+<script>
+$(document).ready(function() {
+    $("#state-select").on('change', function() {
+        var state_id = this.value;
+        $('#city-dropdown').html('');
+        $.ajax({
+            url: "{{route('getCity')}}",
+            type: "Post",
+            data: {
+                state_id: state_id,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(res) {
+                $('#city-dropdown').html('<option value="">-- Select City --</option>')
+                $.each(res.cities, function(key, value) {
+                    $("#city-dropdown").append('<option value="' + value.id + '">' +
+                        value.city_name + '</option>');
+                });
+            }
+        })
+    });
+});
+</script>
 </body>
 </html>
