@@ -8,6 +8,7 @@ use App\Models\State;
 use App\Models\City;
 use App\Models\Property;
 use App\Models\PropertyType;
+use Carbon\Carbon;
 
 class PropertyListController extends Controller
 {
@@ -95,6 +96,7 @@ class PropertyListController extends Controller
             'city_id' => $request->city_id,
             'property_type_id' => $request->property_type_id,
             'date' => $request->date,
+            'go_live_at' => Carbon::tomorrow(),
         ]);
         // dd($data);
         if ($data) {

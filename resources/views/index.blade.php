@@ -121,7 +121,6 @@
         </div>
 
         <div class="row wow fadeInUp">
-
             <div class="col-lg-6">
                 <div class="map mb-4 mb-lg-0">
                     <img src="{{asset('assets/img/property.jpg')}}" class="img-fluid" height="250px;">
@@ -130,78 +129,108 @@
 
             <div class="col-lg-6">
                 <div class="form">
+                    @if(session('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    @if(session('error'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ session('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     <!-- <div id="sendmessage">Your message has been sent. Thank you!</div>
                     <div id="errormessage"></div> -->
                     <form action="{{route('guestAddProperty')}}" method="post" role="form" class="contactForm">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-lg-6">
-                                <input type="text" name="owner_name" class="form-control" placeholder="Owner Name" />
+                                <input type="text" name="owner_name" value="{{old('owner_name')}}" class="form-control" placeholder="Owner Name" />
                                 @error('owner_name')
                                   <span class="text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control" name="contact_number"
+                                <input type="text" class="form-control" name="contact_number" value="{{old('contact_number')}}"
                                     placeholder="Owner Contact Number" />
-                                <div class="validation"></div>
+                                @error('contact_number')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg-6">
                                 <input type="date" name="date" class="form-control"
                                     placeholder="Property display date" />
-                                <div class="validation"></div>
+                                @error('date')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control" name="brokerage" placeholder="Brokerage" />
-                                <div class="validation"></div>
+                                <input type="text" class="form-control" name="brokerage" value="{{old('brokerage')}}" placeholder="Brokerage" />
+                                @error('brokerage')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg-6">
-                                <input type="email" class="form-control" name="premise" placeholder="Premise" />
-                                <div class="validation"></div>
+                                <input type="text" class="form-control" name="premise" value="{{old('premise')}}" placeholder="Premise" />
+                                @error('premise')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-lg-6">
                                 <select class="form-control" name="property_type_id"
                                     value="{{ old('property_type_id') }}">
                                     <option value="">--Select Property Type--</option>
                                     @foreach($ptypes as $ptype)
-                                        <option value="{{$ptype->id}}">{{$ptype->property_name}}</option>
+                                        <option value="{{encrypt_id($ptype->id)}}" {{ old('property_type_id') == encrypt_id($ptype->id) ? 'selected' : '' }}>{{$ptype->property_name}}</option>
                                     @endforeach;
                                 </select>
-                                <div class="validation"></div>
+                                @error('property_type_id')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control" name="rent" placeholder="Rent" />
-                                <div class="validation"></div>
+                                <input type="text" class="form-control" name="rent" value="{{old('rent')}}" placeholder="Rent" />
+                                @error('rent')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-lg-6">
                                 <select class="form-control" name="availability" value="{{ old('availability') }}">
                                     <option value="">--Select Availability--</option>
-                                    <option value="Semi Furnished">1 Room</option>
-                                    <option value="Unfurnished">1 Room & Kitchen</option>
-                                    <option value="Furnished">1.5BHK</option>
-                                    <option value="Kitchen Fix">1BHK</option>
-                                    <option value="Kitchen Fix">2 Room</option>
-                                    <option value="Kitchen Fix">2 Room & Kitchen</option>
-                                    <option value="Kitchen Fix">2.5BHK</option>
-                                    <option value="Kitchen Fix">2BHK</option>
-                                    <option value="Kitchen Fix">3BHK</option>
-                                    <option value="Kitchen Fix">4BHK</option>
-                                    <option value="Kitchen Fix">5BHK</option>
-                                    <option value="Kitchen Fix">6BHK</option>
-                                    <option value="Kitchen Fix">Above 2BHK</option>
-                                    <option value="Kitchen Fix">Duplex</option>
-                                    <option value="Kitchen Fix">Duplex 1</option>
-                                    <option value="Kitchen Fix">Independent Building</option>
-                                    <option value="Kitchen Fix">PG</option>
+                                    <option value="1 Room">1 Room</option>
+                                    <option value="1 Room & Kitchen">1 Room & Kitchen</option>
+                                    <option value="1.5BHK">1.5BHK</option>
+                                    <option value="1BHK">1BHK</option>
+                                    <option value="2 Room">2 Room</option>
+                                    <option value="2 Room & Kitchen">2 Room & Kitchen</option>
+                                    <option value="2.5BHK">2.5BHK</option>
+                                    <option value="2BHK">2BHK</option>
+                                    <option value="3BHK">3BHK</option>
+                                    <option value="4BHK">4BHK</option>
+                                    <option value="5BHK">5BHK</option>
+                                    <option value="6BHK">6BHK</option>
+                                    <option value="Above 2BHK">Above 2BHK</option>
+                                    <option value="Duplex">Duplex</option>
+                                    <option value="Duplex 1">Duplex 1</option>
+                                    <option value="Independent Building">Independent Building</option>
+                                    <option value="PG">PG</option>
                                 </select>
-                                <div class="validation"></div>
+                                @error('availability')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
@@ -213,14 +242,17 @@
                                     <option value="Unfurnished">Unfurnished</option>
                                     <option value="Furnished">Furnished</option>
                                     <option value="Kitchen Fix">Kitchen Fix</option>
-                                    <option value="Kitchen Fix">Kitchen Fix</option>
-                                    <option value="Kitchen Fix">Fully Furnished</option>
+                                    <option value="Fully Furnished">Fully Furnished</option>
                                 </select>
-                                <div class="validation"></div>
+                                @error('condition')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" name="sqFt_sqyd" class="form-control" placeholder="SqFT/Sqyd" />
-                                <div class="validation"></div>
+                                <input type="text" name="sqFt_sqyd" value="{{old('sqFt_sqyd')}}" class="form-control" placeholder="SqFT/Sqyd" />
+                                @error('sqFt_sqyd')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
@@ -230,21 +262,27 @@
                                     placeholder="--Select--" value="{{ old('state_id') }}">
                                     <option value="">--Select State--</option>
                                     @foreach($states as $state)
-                                        <option value="{{$state->id}}">{{$state->state_name}}</option>
+                                        <option value="{{encrypt_id($state->id)}}">{{$state->state_name}}</option>
                                     @endforeach
                                 </select>
-                                <div class="validation"></div>
+                                @error('state_id')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-lg-6">
                                 <select class="form-control" id="city-dropdown" name="city_id"
                                                 value="{{ old('city_id') }}"></select>
-                                <div class="validation"></div>
+                                @error('city_id')
+                                  <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="address" rows="5"
                                 placeholder="Property Address"></textarea>
-                            <div class="validation"></div>
+                            @error('address')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="text-center"><button type="submit" class="btn btn-primary" title="Send Message">Add</button></div>
                     </form>

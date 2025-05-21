@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PropertySeeder extends Seeder
 {
@@ -23,7 +24,10 @@ class PropertySeeder extends Seeder
             'Yerawada', 'Bibwewadi', 'Katraj', 'Dhanori', 'Camp',
             'Hadapsar', 'Magarpatta', 'Balewadi', 'Kharadi', 'NIBM Road'
         ];
-        
+
+            $cityIds = DB::table('cities')->pluck('id')->toArray();
+            $propertyTypeIds = DB::table('property_types')->pluck('id')->toArray();
+
         for ($i = 1; $i <= 20; $i++) {
             $data[] = [
                 'special_note' => null,
@@ -55,14 +59,19 @@ class PropertySeeder extends Seeder
                 'condition' => ['Semi Furnished', 'Unfurnished', 'Furnished', 'Kitchen-Fix', 'Fully Furnished'][rand(0, 4)],
                 'sqFt_sqyd' => rand(500, 1500) . ' sqft',
                 'key' => 'KEY' . strtoupper(Str::random(5)),
-                'brokerage' => ['2%', '1%', 'No Brokerage'][rand(0, 2)],
+                'brokerage' => 'No Brokerage',
                 'property_status' => ['Available', 'Rent Out', 'Not Receiving', 'Incoming Call Stop', 'Switch Off'][rand(0, 4)],
                 'description_1' => 'Spacious and well ventilated property',
                 'description_2' => '2BHK semi-furnished',
                 'state_id' => 1,
-                'city_id' => rand(1, 37),
-                'property_type_id' => rand(1, 4),
+                'city_id' => $cityIds[array_rand($cityIds)],
+                'property_type_id' => $propertyTypeIds[array_rand($propertyTypeIds)],
                 'status' => 1,
+                'go_live_at'=> collect([
+                        Carbon::now(),
+                        Carbon::yesterday(),
+                        Carbon::tomorrow()
+                    ])->random()->toDateString(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

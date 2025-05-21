@@ -28,6 +28,7 @@ class Property extends Model
         'city_id',
         'property_type_id',
         'status',
+        'go_live_at',
     ];
     public function state(): BelongsTo
     {

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\City;
 use App\Models\PropertyType;
+use App\Models\Property;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -25,13 +27,23 @@ class HomeController extends Controller
     }
     public function getCity(Request $request)
     {
-        $data['cities'] = City::where('state_id', $request->state_id)
+        $data['cities'] = City::where('state_id', decrypt_id($request->state_id))
                     ->where('status', 1)
                     ->get(['city_name', 'id']);
                     return response()->json($data);            
     }
     public function guestAddProperty(Request $request)
     {
+        try {
+            $property_type_id = decrypt_id($request->property_type_id);
+            $state_id = decrypt_id($request->state_id);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            return redirect()->back()->with('error', 'Invalid ID(s) provided.');
+        }
+        $request->merge([
+            'property_type_id' => $property_type_id,
+            'state_id' => $state_id,
+        ]);
             $request->validate([
             'owner_name' =>  'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'contact_number'    => 'required|numeric',
@@ -82,15 +94,16 @@ class HomeController extends Controller
             'date' => $request->date,
             'brokerage' => $request->brokerage,
             'premise' => $request->premise,
-            'property_type_id' => $request->property_type_id,
+            'property_type_id' => $property_type_id,
             'rent' => $request->rent,
             'availability' => $request->availability,
             'condition' => $request->condition,
             'sqFt_sqyd' => $request->sqFt_sqyd,
-            'state_id' => $request->state_id,
+            'state_id' => $state_id,
             'city_id' => $request->city_id,
             'address' => $request->address,           
             'property_status' => 'Available',    
+            'go_live_at' => Carbon::tomorrow(),
         ]);
         // dd($data);
         if ($data) {

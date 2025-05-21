@@ -34,7 +34,8 @@ return new class extends Migration
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->foreign('property_type_id')->references('id')->on('property_types')->onDelete('cascade');   
-            $table->boolean('status')->default(1)->comment('1 = active, 0 = deactive');       
+            $table->boolean('status')->default(1)->comment('1 = active, 0 = deactive'); 
+            $table->string('go_live_at')->nullable();     
             $table->timestamps();
         });
     }

@@ -20,7 +20,9 @@ class PropertyController extends Controller
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 1)
-        ->where('status', 1);
+        ->where('status', 1)
+        ->where('go_live_at', '<=', now())
+        ->orderByDesc('id');
 
         if ($request->filled('yesterday')) {
         $query->whereDate('date', $request->yesterday);
@@ -56,7 +58,9 @@ class PropertyController extends Controller
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 2)
-        ->where('status', 1);
+        ->where('status', 1)
+        ->where('go_live_at', '<=', now())
+        ->orderByDesc('id');
 
         if ($request->filled('yesterday')) {
         $query->whereDate('date', $request->yesterday);
@@ -92,7 +96,10 @@ class PropertyController extends Controller
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 3)
-        ->where('status', 1);
+        ->where('status', 1)
+        ->where('go_live_at', '<=', now())
+        ->orderByDesc('id');
+
         // Apply filters if they exist
         if ($request->filled('yesterday')) {
         $query->whereDate('date', $request->yesterday);
@@ -128,8 +135,10 @@ class PropertyController extends Controller
         $cities = City::where('status', 1)->get();
         $query = Property::with('city')
         ->where('property_type_id', 4)
-        ->where('status', 1);
-        
+        ->where('status', 1)
+        ->where('go_live_at', '<=', now())
+        ->orderByDesc('id');
+
         if ($request->filled('yesterday')) {
         $query->whereDate('date', $request->yesterday);
         }
