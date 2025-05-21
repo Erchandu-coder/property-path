@@ -101,6 +101,7 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>S.No</th>
+                                            <th>Imp</th>
                                             <th>Special Note</th>
                                             <th>Date</th>
                                             <th>Name & Contact</th>
@@ -123,6 +124,12 @@
                                         @foreach($items as $item)
                                         <tr>
                                             <td>{{$i++}}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-inverse-info btn-icon add-to-cart"
+                                                    data-pid="{{encrypt_id($item->id)}}">
+                                                        <i class="mdi mdi-bookmark-outline"></i>
+                                                </button>
+                                            </td>
                                             <td>{{ $item->special_note ? $item->special_note : 'N/A' }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
                                             <td>

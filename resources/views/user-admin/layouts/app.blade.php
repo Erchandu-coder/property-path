@@ -137,11 +137,11 @@
                                 <span class="menu-title">Subscription</span>
                             </a>
                         </li>
-                        <li>
-                            <!-- <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                            <i class="mdi mdi-clipboard-text menu-icon"></i>
-                            <span class="menu-title">Forms</span>
-                            </a> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../pages/forms/basic_elements.html">
+                            <i class="mdi mdi-playlist-plus menu-icon"></i>
+                            <span class="menu-title">Favourite Property</span>
+                            </a>
                         </li>
                         <li>
                             <!-- <a class="nav-link" href="../../pages/icons/mdi.html">
@@ -243,6 +243,25 @@
     <!-- <script>
         new DataTable('#example');
     </script>     -->
+    <script>
+        $(document).on('click', '.add-to-cart', function(){
+            const propertyId = $(this).data('pid'); 
+            $.ajax({
+                url:"{{route('addCart')}}",
+                method:'Post',
+                data:{
+                    property_id: propertyId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                alert(response);
+            },
+            error: function (xhr) {
+                alert(xhr.responseJSON.error || 'Something went wrong');
+            }
+            });
+        });
+    </script>
 </body>
 
 </html>

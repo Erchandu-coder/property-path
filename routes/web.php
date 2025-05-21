@@ -36,7 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('user/subscribe', [OrderController::class, 'subscribe'])->name('subscribe');
     Route::post('user/create-subscribe', [OrderController::class, 'createSubscribe'])->name('createSubscribe');
     Route::get('subscribe/plane-details', [OrderController::class, 'subScriptionDetails'])->name('subScriptionDetails');
-    
+    Route::post('/add-to-property', [PropertyController::class, 'addCart'])->name('addCart');
+
 });
 
 require __DIR__.'/auth.php';

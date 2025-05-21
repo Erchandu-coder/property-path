@@ -8,6 +8,7 @@ use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\City;
 use App\Models\Subscription;
+use App\Models\CartItem;
 
 
 class PropertyController extends Controller
@@ -192,4 +193,24 @@ class PropertyController extends Controller
         $items = $query->paginate(10)->appends($request->all());
         return view('user-admin.total-property', compact('user', 'items', 'ptypes', 'cities', 'p_status'));
     }
+    public function addCart(Request $request)
+    {
+            $user = Auth::user();
+            $propertyID = $request->input('property_id');
+            $propertyId = decrypt_id($propertyID);
+            if (!$user) {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+            // Optional: check if already in cart
+            $exists = CartItem::where('user_id', $user->id)->where('property_id', $propertyId)->exists();
+            if ($exists) {
+                return response()->json(['message' => 'Already in cart', 'status'=>1]);
+            }
+            CartItem::create([
+                'user_id' => $user->id,
+                'property_id' => $propertyId,
+            ]);
+            return response()->json(['message' => 'Added to cart successfully']);
+    }
+
 }
