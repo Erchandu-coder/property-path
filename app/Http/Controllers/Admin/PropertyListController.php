@@ -96,7 +96,7 @@ class PropertyListController extends Controller
             'city_id' => $request->city_id,
             'property_type_id' => $request->property_type_id,
             'date' => $request->date,
-            'go_live_at' => Carbon::tomorrow(),
+            'go_live_at' => Carbon::tomorrow()->toDateString(),
         ]);
         // dd($data);
         if ($data) {
