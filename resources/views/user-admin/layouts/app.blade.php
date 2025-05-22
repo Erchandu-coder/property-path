@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../admin-assets/css/demo_2/style.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../admin-assets/images/favicon.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     <style>
         #fixedWhatsAppIcon {
         display: block;
@@ -234,6 +235,7 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="../admin-assets/js/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- End custom js for this page -->
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
@@ -245,7 +247,8 @@
     </script>     -->
     <script>
         $(document).on('click', '.add-to-cart', function(){
-            const propertyId = $(this).data('pid'); 
+            const btn = $(this);
+            const propertyId = btn.data('pid'); 
             $.ajax({
                 url:"{{route('addCart')}}",
                 method:'Post',
@@ -254,7 +257,17 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function (response) {
-                alert(response);
+                // alert(response.status);
+                if (response.status === 'exists' || response.status === 'added') {
+                    btn.addClass('active'); // Apply 'active' class
+                }
+                toastr.options = {
+                        "closeButton": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000"
+                    };
+                toastr.success(response.message, 'message');
             },
             error: function (xhr) {
                 alert(xhr.responseJSON.error || 'Something went wrong');

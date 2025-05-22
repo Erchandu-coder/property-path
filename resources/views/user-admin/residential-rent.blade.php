@@ -125,7 +125,7 @@
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-inverse-info btn-icon add-to-cart"
+                                                <button type="button" class="btn btn-inverse-info btn-icon add-to-cart {{ in_array($item->id, $cartPropertyIds) ? 'active' : '' }}"
                                                     data-pid="{{encrypt_id($item->id)}}">
                                                         <i class="mdi mdi-bookmark-outline"></i>
                                                 </button>

@@ -19,6 +19,12 @@ class PropertyController extends Controller
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
+        $cartPropertyIds = [];
+
+        if ($user) {
+            $cartPropertyIds = CartItem::where('user_id', $user->id)->pluck('property_id')->toArray();
+        }
+
         $query = Property::with('city')
         ->where('property_type_id', 1)
         ->where('status', 1)
@@ -48,7 +54,7 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.residential-rent', compact('user', 'items', 'cities', 'p_status'));
+        return view('user-admin.residential-rent', compact('user', 'items', 'cities', 'p_status', 'cartPropertyIds'));
     }
 
     public function showResidentialSell(Request $request)
@@ -57,6 +63,12 @@ class PropertyController extends Controller
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
+        $cartPropertyIds = [];
+
+        if ($user) {
+            $cartPropertyIds = CartItem::where('user_id', $user->id)->pluck('property_id')->toArray();
+        }
+
         $query = Property::with('city')
         ->where('property_type_id', 2)
         ->where('status', 1)
@@ -86,7 +98,7 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.residential-sell', compact('user', 'items', 'cities', 'p_status'));
+        return view('user-admin.residential-sell', compact('user', 'items', 'cities', 'p_status', 'cartPropertyIds'));
     }
 
     public function showCommercialRent(Request $request)
@@ -95,6 +107,11 @@ class PropertyController extends Controller
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
+        $cartPropertyIds = [];
+        if ($user) {
+            $cartPropertyIds = CartItem::where('user_id', $user->id)->pluck('property_id')->toArray();
+        }
+
         $query = Property::with('city')
         ->where('property_type_id', 3)
         ->where('status', 1)
@@ -125,7 +142,7 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.commercial-rent', compact('user', 'items', 'cities', 'p_status'));
+        return view('user-admin.commercial-rent', compact('user', 'items', 'cities', 'p_status', 'cartPropertyIds'));
     }
 
     public function showCommercialSell(Request $request)
@@ -134,6 +151,10 @@ class PropertyController extends Controller
         $user = Auth::user();
         $p_status = Subscription::where('user_id', $user->id)->first();
         $cities = City::where('status', 1)->get();
+        $cartPropertyIds = [];
+        if ($user) {
+            $cartPropertyIds = CartItem::where('user_id', $user->id)->pluck('property_id')->toArray();
+        }
         $query = Property::with('city')
         ->where('property_type_id', 4)
         ->where('status', 1)
@@ -163,7 +184,7 @@ class PropertyController extends Controller
         $query->where('condition', $request->condition);
         }
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.commercial-sell', compact('user', 'items', 'cities', 'p_status'));
+        return view('user-admin.commercial-sell', compact('user', 'items', 'cities', 'p_status', 'cartPropertyIds'));
     }
     public function totalProperty(Request $request)
     {
@@ -171,6 +192,10 @@ class PropertyController extends Controller
         $p_status = Subscription::where('user_id', $user->id)->first();
         $ptypes = PropertyType::get();
         $cities = City::where('status', 1)->get();
+        $cartPropertyIds = [];
+        if ($user) {
+            $cartPropertyIds = CartItem::where('user_id', $user->id)->pluck('property_id')->toArray();
+        }
         $query = Property::with('city')
             ->where('status', 1)
             ->whereHas('city', function ($q) {
@@ -191,7 +216,7 @@ class PropertyController extends Controller
         }
 
         $items = $query->paginate(10)->appends($request->all());
-        return view('user-admin.total-property', compact('user', 'items', 'ptypes', 'cities', 'p_status'));
+        return view('user-admin.total-property', compact('user', 'items', 'ptypes', 'cities', 'p_status','cartPropertyIds'));
     }
     public function addCart(Request $request)
     {
@@ -202,15 +227,17 @@ class PropertyController extends Controller
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
             // Optional: check if already in cart
-            $exists = CartItem::where('user_id', $user->id)->where('property_id', $propertyId)->exists();
+            $exists = CartItem::where('user_id', $user->id)
+                    ->where('property_id', $propertyId)->exists();
             if ($exists) {
-                return response()->json(['message' => 'Already in cart', 'status'=>1]);
+                return response()->json(['message' => 'Already iAdded', 
+                    'status' => 'exists'], 200);
             }
             CartItem::create([
                 'user_id' => $user->id,
                 'property_id' => $propertyId,
             ]);
-            return response()->json(['message' => 'Added to cart successfully']);
+            return response()->json(['message' => 'Added to Favourite Property successfully', 'status' => 'added'], 201);
     }
 
 }
