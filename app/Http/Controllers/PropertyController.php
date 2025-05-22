@@ -239,5 +239,9 @@ class PropertyController extends Controller
             ]);
             return response()->json(['message' => 'Added to Favourite Property successfully', 'status' => 'added'], 201);
     }
+    public function favouriteProperty()
+    {
+        return view('user-admin.favourite-property');
+    }
 
 }
