@@ -16,4 +16,8 @@ class City extends Model
     {
         return $this->hasMany(Property::class, 'city_id');
     }
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class, 'property_id');
+    }
 }

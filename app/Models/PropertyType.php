@@ -15,4 +15,8 @@ class PropertyType extends Model
     {
         return $this->hasMany(Property::class, 'property_type_id');
     }
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class, 'property_id');
+    }
 }

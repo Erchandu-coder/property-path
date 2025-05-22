@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Property extends Model
 {
@@ -42,4 +43,10 @@ class Property extends Model
     {
         return $this->belongsTo(PropertyType::class, 'property_type_id');
     }
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class, 'property_id');
+    }
+
+    
 }

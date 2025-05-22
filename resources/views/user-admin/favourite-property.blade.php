@@ -9,22 +9,7 @@
                         <div class="card-body">
                             <div class="page-header flex-wrap">
                                 <div class="header-left">
-                                    <h3 class="page-title">Residential Rent Property Listing</h3>
-                                </div>
-                                <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
-                                    <div class="d-flex align-items-center">
-                                        <span class="pl-3 mr-4">
-                                            <form method="GET" action="{{route('showResidentialRent')}}">
-                                                @csrf
-                                                <input type="hidden" name="yesterday" class="form-control"
-                                                    value="{{ $yesterday }}">
-                                                <button type="submit"
-                                                    class="btn btn-warning btn-icon-text">
-                                                    <i class="mdi mdi-calendar-multiple-check"></i> Yesterday
-                                                </button>
-                                            </form>
-                                        </span>
-                                    </div>
+                                    <h3 class="page-title">Favourite Property</h3>
                                 </div>
                             </div>
                             <div class="table-responsive d-none d-md-block">
@@ -32,8 +17,7 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Imp</th>
-                                            <th>Special Note</th>
+                                            <th>Type</th>
                                             <th>Date</th>
                                             <th>Name & Contact</th>
                                             <th>Address</th>
@@ -52,40 +36,39 @@
                                     </thead>
                                     <tbody>
                                         @php $i=1; @endphp
-                                        @foreach($items as $item)
+                                        @foreach($items as $cartItem)
                                         <tr>
-                                            <td>{{$i++}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-inverse-info btn-icon add-to-cart {{ in_array($item->id, $cartPropertyIds) ? 'active' : '' }}"
-                                                    data-pid="{{encrypt_id($item->id)}}">
-                                                        <i class="mdi mdi-bookmark-outline"></i>
+                                                <button type="button" class="btn btn-danger btn-icon add-to-cart"
+                                                    data-pid="{{encrypt_id($cartItem->id)}}">
+                                                        <i class="mdi mdi-close-box"></i>
                                                 </button>
                                             </td>
-                                            <td>{{ $item->special_note ? $item->special_note : 'N/A' }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
+                                            <td>{{$cartItem->property->propertype->property_name}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($cartItem->property->date)->format('d-m-Y') }}</td>
                                             <td>
                                                 @if($p_status && $p_status->payment_status == 'completed')
-                                                {{ $item->owner_name }} <br><br>
-                                                <a href="tel:{{ $item->contact_number }}">
-                                                    {{ $item->contact_number }}
+                                                {{ $cartItem->property->owner_name }} <br><br>
+                                                <a href="tel:{{ $cartItem->property->contact_number }}">
+                                                    {{ $cartItem->property->contact_number }}
                                                 </a>
                                                 @else
                                                 <a type="button" class="btn btn-inverse-warning btn-fw"
                                                     href="{{route('subscribe')}}"> Get Contact Info </a>
                                                 @endif
                                             </td>
-                                            <td>{{ $item->address }}</td>
-                                            <td>{{ $item->premise }}</td>
-                                            <td class="table-warning">{{ $item->city?->city_name ?? 'N/A' }}</td>
-                                            <td>{{ $item->rent }} Thd</td>
-                                            <td class="table-info">{{ $item->availability }}</td>
-                                            <td class="table-primary">{{ $item->condition }}</td>
-                                            <td class="table-success">{{ $item->sqFt_sqyd }}</td>
-                                            <td>{{ $item->key }}</td>
-                                            <td>{{ $item->brokerage }}</td>
-                                            <td>{{ $item->property_status }}</td>
-                                            <td>{{ $item->description_1 }}</td>
-                                            <td>{{ $item->description_2 }}</td>
+                                            <td>{{ $cartItem->property->address }}</td>
+                                            <td>{{ $cartItem->property->premise }}</td>
+                                            <td class="table-warning">{{ $cartItem->property->city?->city_name ?? 'N/A' }}</td>
+                                            <td>{{ $cartItem->property->rent }} Thd</td>
+                                            <td class="table-info">{{ $cartItem->property->availability }}</td>
+                                            <td class="table-primary">{{ $cartItem->property->condition }}</td>
+                                            <td class="table-success">{{ $cartItem->property->sqFt_sqyd }}</td>
+                                            <td>{{ $cartItem->property->key }}</td>
+                                            <td>{{ $cartItem->property->brokerage }}</td>
+                                            <td>{{ $cartItem->property->property_status }}</td>
+                                            <td>{{ $cartItem->property->description_1 }}</td>
+                                            <td>{{ $cartItem->property->description_2 }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -97,12 +80,12 @@
                                 @foreach($items as $item)
                                 <div class="card card-body mb-3">
                                     <div class="card-body">
-                                        <h5 class="card-title">#{{$i++}} - {{ $item->special_note ?? 'N/A' }}</h5>
+                                        <h5 class="card-title">#{{$i++}} - {{ $cartItem->property->special_note ?? 'N/A' }}</h5>
                                         <p class="card-text"><strong>Date:</strong>
-                                            {{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</p>
+                                            {{ \Carbon\Carbon::parse($cartItem->property->date)->format('d-m-Y') }}</p>
                                         <p class="card-text"><strong>Name:</strong>
                                             @if($p_status && $p_status->payment_status == 'completed')
-                                            {{ $item->owner_name }}
+                                            {{ $cartItem->property->owner_name }}
                                             @else
                                             <a type="button" class="btn btn-inverse-warning btn-fw"
                                                 href="{{route('subscribe')}}"> Get Contact Info </a>
@@ -110,32 +93,32 @@
                                         </p>
                                         <p class="card-text"><strong>Contact:</strong>
                                             @if($p_status && $p_status->payment_status == 'completed')
-                                            <a href="tel:{{ $item->contact_number }}">{{ $item->contact_number }}
+                                            <a href="tel:{{ $cartItem->property->contact_number }}">{{ $cartItem->property->contact_number }}
                                             </a>
                                             @else
                                             <a type="button" class="btn btn-inverse-warning btn-fw"
                                                 href="{{route('subscribe')}}"> Get Contact Info </a>
                                             @endif
                                         </p>
-                                        <p class="card-text"><strong>Address:</strong> {{ $item->address }}</p>
-                                        <p class="card-text"><strong>Premise:</strong> {{ $item->premise }}</p>
+                                        <p class="card-text"><strong>Address:</strong> {{ $cartItem->property->address }}</p>
+                                        <p class="card-text"><strong>Premise:</strong> {{ $cartItem->property->premise }}</p>
                                         <p class="card-text"><strong>Area:</strong>
-                                            {{ $item->city?->city_name ?? 'N/A' }}</p>
-                                        <p class="card-text"><strong>Rent:</strong> {{ $item->rent }} Thd</p>
+                                            </p>
+                                        <p class="card-text"><strong>Rent:</strong> {{ $cartItem->property->rent }} Thd</p>
                                         <p class="card-text"><strong>Availability:</strong>
-                                            {{ $item->availability }}
+                                            {{ $cartItem->property->availability }}
                                         </p>
-                                        <p class="card-text"><strong>Condition:</strong> {{ $item->condition }}</p>
-                                        <p class="card-text"><strong>SqFt/Sqyd:</strong> {{ $item->sqFt_sqyd }}</p>
-                                        <p class="card-text"><strong>Key:</strong> {{ $item->key }}</p>
-                                        <p class="card-text"><strong>Brokerage:</strong> {{ $item->brokerage }}</p>
-                                        <p class="card-text"><strong>Status:</strong> {{ $item->property_status }}
+                                        <p class="card-text"><strong>Condition:</strong> {{ $cartItem->property->condition }}</p>
+                                        <p class="card-text"><strong>SqFt/Sqyd:</strong> {{ $cartItem->property->sqFt_sqyd }}</p>
+                                        <p class="card-text"><strong>Key:</strong> {{ $cartItem->property->key }}</p>
+                                        <p class="card-text"><strong>Brokerage:</strong> {{ $cartItem->property->brokerage }}</p>
+                                        <p class="card-text"><strong>Status:</strong> {{ $cartItem->property->property_status }}
                                         </p>
                                         <p class="card-text"><strong>Description 1:</strong>
-                                            {{ $item->description_1 }}
+                                            {{ $cartItem->property->description_1 }}
                                         </p>
                                         <p class="card-text"><strong>Description 2:</strong>
-                                            {{ $item->description_2 }}
+                                            {{ $cartItem->property->description_2 }}
                                         </p>
                                     </div>
                                 </div>

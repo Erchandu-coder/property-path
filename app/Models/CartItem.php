@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CartItem extends Model
 {
@@ -10,4 +11,16 @@ class CartItem extends Model
         'user_id',
         'property_id',
     ];
+    public function property(): BelongsTo
+    {
+        return $this->belongsTo(Property::class, 'property_id');
+    }
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+    public function propertype(): BelongsTo
+    {
+        return $this->belongsTo(PropertyType::class, 'property_type_id');
+    }
 }

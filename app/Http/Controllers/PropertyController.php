@@ -9,6 +9,8 @@ use App\Models\PropertyType;
 use App\Models\City;
 use App\Models\Subscription;
 use App\Models\CartItem;
+use Illuminate\Support\Facades\DB;
+
 
 
 class PropertyController extends Controller
@@ -241,7 +243,14 @@ class PropertyController extends Controller
     }
     public function favouriteProperty()
     {
-        return view('user-admin.favourite-property');
+        $user = Auth::user();
+        $p_status = Subscription::where('user_id', $user->id)->first();
+        $items = CartItem::with('property.city','property.propertype')
+                ->with('city') // not 'properties'
+                ->where('user_id', $user->id)
+                ->paginate(10);
+                
+        return view('user-admin.favourite-property', compact('user', 'items', 'p_status'));
     }
 
 }

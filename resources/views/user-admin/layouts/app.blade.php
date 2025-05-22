@@ -139,8 +139,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                            <i class="mdi mdi-playlist-plus menu-icon"></i>
+                            <a class="nav-link" href="{{route('favouriteProperty')}}">
+                            <i class="mdi mdi-bookmark-outline menu-icon"></i>
                             <span class="menu-title">Favourite Property</span>
                             </a>
                         </li>
