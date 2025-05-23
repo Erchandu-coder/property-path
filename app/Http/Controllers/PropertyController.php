@@ -252,5 +252,19 @@ class PropertyController extends Controller
                 
         return view('user-admin.favourite-property', compact('user', 'items', 'p_status'));
     }
+    public function removeCart(Request $request)
+    {
+        $user = Auth::user();
+        $propertyId = decrypt_id($request->property_id);    
+        $cartItem = CartItem::where('user_id', $user->id)
+                            ->where('id', $propertyId)
+                            ->delete();
+
+        if ($cartItem) {
+            return response()->json(['message' => 'Removed from Favourite Property successfully']);
+        } else {
+            return response()->json(['error' => 'Something went wrong!']);
+        }        
+    }
 
 }

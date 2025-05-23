@@ -23,8 +23,8 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="../admin-assets/css/demo_2/style.css" />
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../admin-assets/images/favicon.png" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/img/favicon.png" />
+    <link href="../assets/css/toastr.min.css" rel="stylesheet">
     <style>
         #fixedWhatsAppIcon {
         display: block;
@@ -59,18 +59,18 @@
                             <span class="font-12 d-block font-weight-light">Ultimate property solutions </span>
                         </a>
                         <a class="navbar-brand brand-logo-mini" href="{{route('dashboard')}}"><img
-                                src="../admin-assets/images/logo-mini.svg" alt="logo" /></a>
+                                src="../admin-assets/images/logo-mini.png" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                         <ul class="navbar-nav mr-lg-1">
                             <li class="nav-item nav-search d-none d-lg-block">
-                                <div class="input-group">
+                                <div class="input-group" style="display:none;">
                                     <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
                                         <span class="input-group-text" id="search">
                                             <i class="mdi mdi-magnify"></i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control" id="navbar-search-input"
+                                    <input type="hidden" class="form-control" id="navbar-search-input"
                                         placeholder="Search" aria-label="search" aria-describedby="search" />
                                 </div>
                             </li>
@@ -80,7 +80,7 @@
                                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown"
                                     aria-expanded="false">
                                     <div class="nav-profile-img">
-                                        <img src="../admin-assets/images/faces/face1.jpg" alt="image" />
+                                        <img src="../admin-assets/images/user.png" alt="image" />
                                     </div>
                                     <div class="nav-profile-text">
                                         <p class="text-black font-weight-semibold m-0"> {{$user->name}} </p>
@@ -140,7 +140,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('favouriteProperty')}}">
-                            <i class="mdi mdi-bookmark-outline menu-icon"></i>
+                            <i class="mdi mdi mdi-bookmark menu-icon"></i>
                             <span class="menu-title">Favourite Property</span>
                             </a>
                         </li>
@@ -235,7 +235,7 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="../admin-assets/js/dashboard.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../assets/js/toastr.min.js"></script>
     <!-- End custom js for this page -->
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
@@ -274,6 +274,43 @@
             }
             });
         });
+        $(document).on('click', '.remove-to-cart', function(){
+            const btn = $(this);
+            const propertyId = btn.data('pid'); 
+            $.ajax({
+                url: "{{ route('removeCart') }}",
+                method: 'POST',
+                data: {
+                    property_id: propertyId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    toastr.options = {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                        timeOut: "5000"
+                    };
+                    toastr.success(response.message, 'Success');
+
+                    // Hide the row containing this button:
+                    const row = btn.closest('tr');
+                    if (row.length) {
+                        row.fadeOut(300, function(){ $(this).remove() });
+                        return;
+                    }
+
+                    const card = btn.closest('.cart-remove');
+                    if (card.length) {
+                        card.fadeOut(300, function(){ $(this).remove() });
+                    }
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.error || 'Something went wrong');
+                }
+            });
+        });
+
     </script>
 </body>
 

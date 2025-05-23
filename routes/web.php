@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::get('subscribe/plane-details', [OrderController::class, 'subScriptionDetails'])->name('subScriptionDetails');
     Route::post('add-to-property', [PropertyController::class, 'addCart'])->name('addCart');
     Route::get('favourite-property', [PropertyController::class, 'favouriteProperty'])->name('favouriteProperty');
+    Route::post('remove-to-property', [PropertyController::class, 'removeCart'])->name('removeCart');
+
 });
 
 require __DIR__.'/auth.php';

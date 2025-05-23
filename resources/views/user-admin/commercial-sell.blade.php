@@ -116,7 +116,7 @@
                                     </thead>
                                     <tbody>
                                         @php $i=1; @endphp
-                                        @foreach($items as $item)
+                                        @forelse($items as $item)
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>
@@ -151,17 +151,25 @@
                                             <td>{{ $item->description_1 }}</td>
                                             <td>{{ $item->description_2 }}</td>
                                         </tr>
-                                        @endforeach
+                                        @empty
+                                        <tr>
+                                            <td colspan="17" class="text-center">No records found.</td>
+                                        </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
                             <!-- Cards for mobile -->
                             <div class="d-block d-md-none stretch-card">
                                 @php $i=1; @endphp
-                                @foreach($items as $item)
+                                @forelse($items as $item)
                                 <div class="card card-body mb-3">
                                     <div class="card-body">
                                         <h5 class="card-title">#{{$i++}} - {{ $item->special_note ?? 'N/A' }}</h5>
+                                        <p class="card-text"><strong>Imp:</strong>&nbsp;&nbsp;<button type="button" class="btn btn-inverse-info btn-icon add-to-cart {{ in_array($item->id, $cartPropertyIds) ? 'active' : '' }}"
+                                            data-pid="{{encrypt_id($item->id)}}">
+                                                <i class="mdi mdi-bookmark-outline"></i>
+                                        </button></p>
                                         <p class="card-text"><strong>Date:</strong>
                                             {{ \Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</p>
                                             <p class="card-text"><strong>Name:</strong>
@@ -199,7 +207,13 @@
                                         </p>
                                     </div>
                                 </div>
-                                @endforeach
+                                @empty
+                                <div class="card card-body mb-3 cart-remove">
+                                    <div class="card-body">
+                                        <h5 class="card-title">No records found.</h5>                              
+                                    </div>
+                                </div>
+                                @endforelse
                             </div>
                             <div class="d-flex mt-4">
                                 {{ $items->links() }}

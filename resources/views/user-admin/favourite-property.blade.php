@@ -16,7 +16,7 @@
                                 <table class="table table-bordered">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th>S.No</th>
+                                            <th>Remove Item</th>
                                             <th>Type</th>
                                             <th>Date</th>
                                             <th>Name & Contact</th>
@@ -36,10 +36,10 @@
                                     </thead>
                                     <tbody>
                                         @php $i=1; @endphp
-                                        @foreach($items as $cartItem)
+                                        @forelse($items as $cartItem)
                                         <tr>
                                             <td>
-                                                <button type="button" class="btn btn-danger btn-icon add-to-cart"
+                                                <button type="button" class="btn btn-danger btn-icon remove-to-cart"
                                                     data-pid="{{encrypt_id($cartItem->id)}}">
                                                         <i class="mdi mdi-close-box"></i>
                                                 </button>
@@ -70,16 +70,25 @@
                                             <td>{{ $cartItem->property->description_1 }}</td>
                                             <td>{{ $cartItem->property->description_2 }}</td>
                                         </tr>
-                                        @endforeach
+                                        @empty
+                                        <tr>
+                                            <td colspan="17" class="text-center">No records found.</td>
+                                        </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
                             <!-- Cards for mobile -->
                             <div class="d-block d-md-none stretch-card">
                                 @php $i=1; @endphp
-                                @foreach($items as $item)
-                                <div class="card card-body mb-3">
+                                @forelse($items as $item)
+                                <div class="card card-body mb-3 cart-remove">
                                     <div class="card-body">
+                                        <p class="card-text"><strong>Remove Item:</strong>&nbsp;&nbsp;<button type="button" class="btn btn-danger btn-icon remove-to-cart"
+                                            data-pid="{{encrypt_id($cartItem->id)}}">
+                                                <i class="mdi mdi-close-box"></i>
+                                        </button></p>
+                                        <p class="card-text"><strong>Type:</strong>{{$cartItem->property->propertype->property_name}}</p>
                                         <h5 class="card-title">#{{$i++}} - {{ $cartItem->property->special_note ?? 'N/A' }}</h5>
                                         <p class="card-text"><strong>Date:</strong>
                                             {{ \Carbon\Carbon::parse($cartItem->property->date)->format('d-m-Y') }}</p>
@@ -122,7 +131,13 @@
                                         </p>
                                     </div>
                                 </div>
-                                @endforeach
+                                @empty
+                                <div class="card card-body mb-3 cart-remove">
+                                    <div class="card-body">
+                                        <h5 class="card-title">No records found.</h5>                              
+                                    </div>
+                                </div>
+                                @endforelse
                             </div>
                             <div class="d-flex mt-4">
                                 {{ $items->links() }}
