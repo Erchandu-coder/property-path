@@ -6,8 +6,9 @@
             <div class="page-header flex-wrap">
                 <h3 class="page-title">All Property List</h3>
                 <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
-                    <a href="{{route('admin.create')}}"><button type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                        <i class="mdi mdi-plus-circle"></i> Add Property </button></a>
+                    <a href="{{route('admin.create')}}"><button type="button"
+                            class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
+                            <i class="mdi mdi-plus-circle"></i> Add Property </button></a>
                 </div>
             </div>
             <div class="row">
@@ -15,10 +16,10 @@
                     <div class="">
                         <div class="">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table id="example" class="table table-bordered table-striped">
                                     <thead class="table-dark">
                                         <tr>
-                                        <th>S.No</th>
+                                            <th>S.No</th>
                                             <th>Special Note</th>
                                             <th>Date</th>
                                             <th>Name</th>
@@ -54,12 +55,18 @@
                                             <td>{{ $result->sqFt_sqyd }}</td>
                                             <td>{{ $result->key }}</td>
                                             <td>{{ $result->brokerage }}</td>
-                                            <td><label class="{{ $result->status == 1 ? 'badge badge-success' : 'badge badge-danger'}}">{{ $result->status == '1' ? 'Enable' : 'Disable' }}</label></td>
+                                            <td><label
+                                                    class="{{ $result->status == 1 ? 'badge badge-success' : 'badge badge-danger'}}">{{ $result->status == '1' ? 'Enable' : 'Disable' }}</label>
+                                            </td>
                                             <td>
-                                                <a href="{{ route('admin.editProperty', ['id' => $result->id]) }}"><button type="button" class="btn btn-primary btn-rounded btn-icon">
-                                                    <i class="mdi mdi mdi-pencil"></i></a>
+                                                <a href="{{ route('admin.editProperty', ['id' => $result->id]) }}"><button
+                                                        type="button" class="btn btn-primary btn-rounded btn-icon">
+                                                        <i class="mdi mdi mdi-pencil"></i></a>
                                                 </button>
-                                                <form action="{{ route('admin.deleteProperty', ['id' => $result->id]) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                <form
+                                                    action="{{ route('admin.deleteProperty', ['id' => $result->id]) }}"
+                                                    method="POST" style="display:inline-block;"
+                                                    onsubmit="return confirm('Are you sure you want to delete this user?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-rounded btn-icon">
@@ -72,14 +79,22 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="d-flex mt-4">
-                                {{ $results->links() }}
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    new DataTable('#example', {
+        layout: {
+            topStart: {
+                buttons: ['csv', 'excel']
+            }
+        }
+    });
+</script>
+@endpush

@@ -14,7 +14,7 @@ class PropertyListController extends Controller
 {
     public function propertyList()
     {
-        $results = Property::with('city')->paginate(10);
+        $results = Property::with('city')->get();
         return view('admin.property-list', compact('results'));
     }
     public function create()
