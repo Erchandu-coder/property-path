@@ -21,7 +21,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('admin-assets/css/demo_1/style.css')}}" />
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{asset('admin-assets/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('assets/img/favicon.png')}}" />
     <!-- Enable/Disable Toggle button CSS-->
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                 <li class="nav-item nav-profile border-bottom">
                     <a href="#" class="nav-link flex-column">
                         <div class="nav-profile-image">
-                            <img src="{{asset('admin-assets/images/faces/face1.jpg')}}" alt="profile" />
+                            <img src="{{asset('admin-assets/images/user.png')}}" alt="profile" />
                             <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
@@ -49,8 +49,8 @@
                 </li>
                 <li class="nav-item pt-3">
                     <a class="nav-link d-block" href="{{route('admin.dashboard')}}">
-                        <img class="sidebar-brand-logo" src="{{asset('admin-assets/images/logo.svg')}}" alt="" />
-                        <img class="sidebar-brand-logomini" src="{{asset('admin-assets/images/logo-mini.svg')}}" alt="" />
+                        <img class="sidebar-brand-logo" src="{{asset('admin-assets/images/logo.png')}}" alt="" width="150px;"/>
+                        <img class="sidebar-brand-logomini" src="{{asset('admin-assets/images/logo-mini.png')}}" alt="" />
                     </a>
                 </li>
                 <li class="nav-item">

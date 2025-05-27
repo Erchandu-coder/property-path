@@ -81,7 +81,7 @@
                             <!-- Cards for mobile -->
                             <div class="d-block d-md-none stretch-card">
                                 @php $i=1; @endphp
-                                @forelse($items as $item)
+                                @forelse($items as $cartItem)
                                 <div class="card card-body mb-3 cart-remove">
                                     <div class="card-body">
                                         <p class="card-text"><strong>Remove Item:</strong>&nbsp;&nbsp;<button type="button" class="btn btn-danger btn-icon remove-to-cart"
