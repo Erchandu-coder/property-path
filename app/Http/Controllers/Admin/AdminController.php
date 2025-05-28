@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Subscription;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+
 
 class AdminController extends Controller
 {
@@ -22,7 +24,7 @@ class AdminController extends Controller
     
     public function showUser()
     {
-        $results = User::paginate(10);
+        $results = User::all();
         return view('admin.all-user-list', compact('results'));
     }
     
@@ -84,7 +86,7 @@ class AdminController extends Controller
     }
     public function orderIndex()
     {
-        $results = Subscription::with('user')->orderBy('id', 'DESC')->paginate(10);
+        $results = Subscription::with('user')->orderBy('id', 'DESC')->get();
         return view('admin.orderlist', compact('results'));
     }
 
@@ -110,5 +112,37 @@ class AdminController extends Controller
         }
 
         return response()->json(['message' => 'Item not found.'], 404);
+    }
+    public function trailSubscribe(Request $request)
+    {
+        $userId = $request->user_id;
+        $trail_day = (int) $request->trail_day;
+        $now_date = Carbon::now()->toDateString();
+        $existingSubscription = Subscription::where('user_id', $userId)
+        ->where('payment_status', 'completed')
+        ->where('plan_expire_date', '>=', $now_date)
+        ->first();
+
+        if ($existingSubscription) {
+            return redirect()->back()->with('message', 'You already have an active subscription.');
+        }
+
+        $orderId = 'Trail-'.$userId.now()->format('YmdHis').strtoupper(Str::random(4)).rand(1000, 9999);
+        $pstatus = Subscription::create([
+            'user_id'=>$request->user_id,
+            'order_id' => $orderId,
+            'mobile_number' => '',
+            'payment_receipt' => '',
+            'plan_renew_date' => Carbon::now(),
+            'plan_expire_date' => Carbon::now()->addDays($trail_day)->toDateString(),
+            'payment_status' => 'completed'
+        ]);
+            
+        if ($pstatus) {
+            return redirect()->back()->with('message', "Trail Successfully created.");
+        } else {
+            return redirect()->back()->with('error', 'Something went wrong!');
+        } 
+
     }
 }

@@ -16,7 +16,7 @@
                     <div class="">
                         <div class="">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table id="example" class="table table-bordered table-striped">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>S.No</th>
@@ -104,9 +104,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex mt-4">
-                                {{ $results->links() }}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,6 +120,6 @@
         $('#payment_id').val(id);
         $('#payment_status').val(payment_status);
 
-    });
-</script>    
+    });  
+</script> 
 @endpush

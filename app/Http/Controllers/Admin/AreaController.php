@@ -49,7 +49,7 @@ class AreaController extends Controller
     public function createCity()
     {
         $items = State::where('status', 1)->get(); 
-        $cities = City::paginate(10);      
+        $cities = City::all();      
         return view('admin.cities', compact(['items', 'cities']));
     }
 

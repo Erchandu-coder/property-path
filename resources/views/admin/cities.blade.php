@@ -74,7 +74,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="example" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
@@ -108,9 +108,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="d-flex mt-4">
-                            {{ $cities->links() }}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -118,7 +115,7 @@
     </div>
     </div>    
     @endsection
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     @push('scripts')
     <script>
     $(document).ready(function() {

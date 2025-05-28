@@ -10,6 +10,8 @@ use App\Models\City;
 use App\Models\Subscription;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 
 
@@ -19,7 +21,8 @@ class PropertyController extends Controller
     {
         $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
-        $p_status = Subscription::where('user_id', $user->id)->first();
+        $now_date = Carbon::now()->toDateString();
+        $p_status = Subscription::where('user_id', $user->id)->where('plan_expire_date', '>=', $now_date)->first();
         $cities = City::where('status', 1)->get();
         $cartPropertyIds = [];
 
@@ -63,7 +66,8 @@ class PropertyController extends Controller
     {
         $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
-        $p_status = Subscription::where('user_id', $user->id)->first();
+        $now_date = Carbon::now()->toDateString();
+        $p_status = Subscription::where('user_id', $user->id)->where('plan_expire_date', '>=', $now_date)->first();
         $cities = City::where('status', 1)->get();
         $cartPropertyIds = [];
 
@@ -107,7 +111,8 @@ class PropertyController extends Controller
     {
         $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
-        $p_status = Subscription::where('user_id', $user->id)->first();
+        $now_date = Carbon::now()->toDateString();
+        $p_status = Subscription::where('user_id', $user->id)->where('plan_expire_date', '>=', $now_date)->first();
         $cities = City::where('status', 1)->get();
         $cartPropertyIds = [];
         if ($user) {
@@ -151,7 +156,8 @@ class PropertyController extends Controller
     {
         $city_ids = decrypt_id($request->input('city_id'));
         $user = Auth::user();
-        $p_status = Subscription::where('user_id', $user->id)->first();
+        $now_date = Carbon::now()->toDateString();
+        $p_status = Subscription::where('user_id', $user->id)->where('plan_expire_date', '>=', $now_date)->first();
         $cities = City::where('status', 1)->get();
         $cartPropertyIds = [];
         if ($user) {
@@ -191,7 +197,8 @@ class PropertyController extends Controller
     public function totalProperty(Request $request)
     {
         $user = Auth::user();
-        $p_status = Subscription::where('user_id', $user->id)->first();
+        $now_date = Carbon::now()->toDateString();
+        $p_status = Subscription::where('user_id', $user->id)->where('plan_expire_date', '>=', $now_date)->first();
         $ptypes = PropertyType::get();
         $cities = City::where('status', 1)->get();
         $cartPropertyIds = [];

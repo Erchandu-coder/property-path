@@ -87,14 +87,3 @@
     </div>
 </div>
 @endsection
-@push('scripts')
-<script>
-    new DataTable('#example', {
-        layout: {
-            topStart: {
-                buttons: ['csv', 'excel']
-            }
-        }
-    });
-</script>
-@endpush

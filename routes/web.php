@@ -71,6 +71,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::post('user/list-property/update-property', [PropertyListController::class, 'updateProperty'])->name('updateProperty');
     Route::delete('user/list-property/delete-property/{id}', [PropertyListController::class, 'deleteProperty'])->name('deleteProperty');
     Route::post('user/status-update', [AdminController::class, 'updateUserStatus'])->name('updateUserStatus');
-     
-    
+    Route::post('trail/trailsubscribe', [AdminController::class, 'trailSubscribe'])->name('trailSubscribe');    
 });

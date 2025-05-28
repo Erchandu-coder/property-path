@@ -15,7 +15,7 @@
                     <div class="">
                         <div class="">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table id="example" class="table table-bordered table-striped">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>S.No</th>
@@ -25,6 +25,7 @@
                                             <th>Address</th>
                                             <th>Status</th>
                                             <th>Action</th>
+                                            <th>Trail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,13 +56,19 @@
                                                 </form>
 
                                             </td>
+                                            <td class="table-info">
+                                                
+                                                <form method="post" action="{{route('admin.trailSubscribe')}}">
+                                                    @csrf
+                                                    <input type="hidden" name="user_id" value="{{$result->id}}">
+                                                    <input type="number" name="trail_day" min="1" max="7" required>
+                                                    <button type="submit" class="btn-sm btn-warning">Trail</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="d-flex mt-4">
-                                {{ $results->links() }}
                             </div>
                         </div>
                     </div>
@@ -71,7 +78,7 @@
     </div>
 </div>
 @endsection
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     @push('scripts')
     <script>
     $(document).ready(function() {
@@ -113,6 +120,6 @@
                 }
             });
         });
-    });
-    </script>
-    @endpush
+    });  
+</script> 
+@endpush

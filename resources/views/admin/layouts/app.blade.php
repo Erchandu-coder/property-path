@@ -253,6 +253,30 @@
         toastr.error("{{ session('error') }}");
         @endif
         });
+        $(document).ready(function () {
+            var table = $('#example').DataTable();
+
+            // Initial toggle activation
+            initToggle();
+
+            // Reinitialize toggles on table redraw (pagination, sorting, etc.)
+            table.on('draw', function () {
+                initToggle();
+            });
+
+            function initToggle() {
+                $('.user-toggle').bootstrapToggle(); // or whatever plugin you're using
+                $('.city-toggle').bootstrapToggle();
+
+            }
+        });
+        new DataTable('#example', {
+        layout: {
+            topStart: {
+                buttons: ['csv', 'excel']
+            }
+        }
+    }); 
     </script>    
     @stack('scripts')
 </body>
