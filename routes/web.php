@@ -5,15 +5,15 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-use App\http\Controllers\PropertyController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\PropertyListController;
 
 
-Route::get('/welcome', function () {
-    return view('index');
-});
+// Route::get('/welcome', function () {
+//     return view('index');
+// });
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::post('/get-city', [HomeController::class, 'getCity'])->name('getCity');
 Route::post('/guest-add-property', [HomeController::class, 'guestAddProperty'])->name('guestAddProperty');
@@ -73,3 +73,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
     Route::post('user/status-update', [AdminController::class, 'updateUserStatus'])->name('updateUserStatus');
     Route::post('trail/trailsubscribe', [AdminController::class, 'trailSubscribe'])->name('trailSubscribe');    
 });
+
+
+
+
