@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PropertyListController;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::post('/get-city', [HomeController::class, 'getCity'])->name('getCity');
 Route::post('/guest-add-property', [HomeController::class, 'guestAddProperty'])->name('guestAddProperty');
+Route::post('/add-contact', [HomeController::class, 'addContact'])->name('addContact');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'userDashboard'])->name('dashboard');

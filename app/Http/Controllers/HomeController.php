@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\PropertyType;
 use App\Models\Property;
 use Carbon\Carbon;
+use App\Models\ContactUs;
 
 class HomeController extends Controller
 {
@@ -111,6 +112,27 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with('error', 'Something went wrong!');
         }
+    }
+    public function addContact(Request $request)
+    {
+            $validatedData = $request->validate([
+                'name' => 'required|max:255|regex:/^[a-zA-Z\s\-\.]+$/',
+                'email' => 'required|email',
+                'phone_number' => 'required|regex:/^[0-9\-\+\s\(\)]+$/',
+                'message' => 'required|max:1000',
+            ]);
+
+            // Sanitize input to prevent XSS
+            $sanitized = [
+                'name' => strip_tags($validatedData['name']),
+                'email' => strip_tags($validatedData['email']),
+                'phone_number' => strip_tags($validatedData['phone_number']),
+                'message' => htmlspecialchars($validatedData['message'], ENT_QUOTES, 'UTF-8'),
+            ];
+
+            // Insert into the database
+            ContactUs::create($sanitized);
+            return redirect()->back()->with(['message' => 'Send Information successfully.']);
     }
     
 }

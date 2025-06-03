@@ -28,7 +28,7 @@
 
     <!-- Main Stylesheet File -->
     <link href="assets/css/style.css" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     <!-- =======================================================
     Theme Name: NewBiz
     Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
@@ -313,6 +313,7 @@
 
     <!-- JavaScript Libraries -->
     <script src="assets/lib/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- <script src="assets/lib/jquery/jquery-migrate.min.js"></script> -->
     <script src="assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="assets/lib/easing/easing.min.js"></script> -->
@@ -351,6 +352,22 @@
                 }
             })
         });
+    });
+    $(document).ready(function(){
+        toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000", // 5 seconds
+        "extendedTimeOut": "1000"
+        };
+        @if(session('message'))
+            toastr.success("{{ session('message') }}");
+        @endif
+
+        @if(session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
     });
     </script>
 </body>
