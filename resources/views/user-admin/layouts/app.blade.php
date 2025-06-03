@@ -310,7 +310,31 @@
                 }
             });
         });
+document.addEventListener('DOMContentLoaded', function () {
+        const planType = document.getElementById('plan_type');
+        const price = document.getElementById('price');
 
+        const priceOptions = {
+            6: [{ value: 10000, label: '10000/- Rs.' }],
+            12: [{ value: 17000, label: '17000/- Rs.' }]
+        };
+
+        planType.addEventListener('change', function () {
+            const selectedPlan = this.value;
+
+            // Clear existing options
+            price.innerHTML = '<option value="">Select Price</option>';
+
+            if (priceOptions[selectedPlan]) {
+                priceOptions[selectedPlan].forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option.value;
+                    opt.textContent = option.label;
+                    price.appendChild(opt);
+                });
+            }
+        });
+    });
     </script>
 </body>
 

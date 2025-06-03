@@ -24,7 +24,7 @@
     ============================-->
 <section id="about-us">
     <div class="container">
-        <header class="section-header">
+        <header class="section-header" style="padding: 50px;">
             <h3>About Us</h3>
         </header>
         <div class="row about-extra">
@@ -57,7 +57,7 @@
 <section id="add-property">
     <div class="container-fluid">
 
-        <div class="section-header">
+        <div class="section-header" style="padding: 50px;">
             <h3>Add Property</h3>
         </div>
 

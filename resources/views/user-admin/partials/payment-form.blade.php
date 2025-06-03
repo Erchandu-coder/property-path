@@ -4,14 +4,34 @@
         <div class="form-row">
             <input type="hidden" class="form-control" name="user_id" value="{{$user->id}}">
             <div class="form-group col-md-6">
-                <label for="inputEmail4">Mobile Number</label>
-                <input type="number" class="form-control" name="mobile_number" placeholder="Mobile Number">
-                @error('mobile')
+                <label>Choose Your Plan</label>
+                <select class="form-control" name="plan_type" id="plan_type">
+                    <option value="">Select Your Plane</option>
+                    <option value="6">6 Month</option>
+                    <option value="12">1 Year</option>
+                </select>
+                @error('plan_type')
                 <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-group col-md-6">
-                <label for="inputPassword4">Upload Receipt</label>
+                <label>Price</label>
+                <select class="form-control" name="price" id="price">
+                    <option value="">Select Price</option>
+                </select>
+                @error('price')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label>Mobile Number</label>
+                <input type="number" class="form-control" name="mobile_number" placeholder="Mobile Number">
+                @error('mobile_number')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label>Upload Receipt</label>
                 <input type="file" class="form-control file-upload-browse" name="payment_receipt">
                 @error('payment_receipt')
                 <p class="text-danger">{{ $message }}</p>

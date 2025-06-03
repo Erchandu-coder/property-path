@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
+    <link href="../assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -271,8 +271,8 @@
                             <!-- A108 Adam Street <br>
                             New York, NY 535022<br> -->
                             <strong>Office Address:</strong> B-5 DEEP BULDING GROUND FLOOR BEHIND D-MART KALYAN WEST-421301 MUMBAI<br>
-                            <strong>Phone:</strong> +91 9227015296<br>
-                            <strong>Email:</strong> support@propertyscroller.com<br>
+                            <strong>Phone:</strong> <a href="tel:+919227015296">+91 9227015296</a><br>
+                            <strong>Email:</strong> <a href="mailto:support@propertyscroller.com">support@propertyscroller.com</a><br>
                             <strong>Working Hours:</strong> Monday to Saturday, 10 AM - 7 PM<br> 
                         </p>
 

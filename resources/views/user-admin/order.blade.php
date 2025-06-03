@@ -18,13 +18,26 @@
                             class="px-3 py-4 border border-primary border-2 rounded mt-4 d-flex justify-content-between">
                             <div class="d-flex flex-row align-items-center">
                                 <div class="d-flex flex-column ms-4">
-                                    <span class="h5 mb-1">Small Business</span>
-                                    <span class="small text-muted">CHANGE PLAN</span>
+                                    <span class="h5 mb-1">Half Yearly Plan</span>
                                 </div>
                             </div>
                             <div class="d-flex flex-row align-items-center">
                                 <sup class="dollar font-weight-bold text-muted">&#8377;</sup>
-                                <span class="h2 mx-1 mb-0">5000</span>
+                                <span class="h2 mx-1 mb-0">10000/- Rs</span>
+                                <span class="text-muted font-weight-bold mt-2">/ 6 Month</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="px-3 py-4 border border-primary border-2 rounded mt-4 d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="d-flex flex-column ms-4">
+                                    <span class="h5 mb-1">Yearly Plan</span>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <sup class="dollar font-weight-bold text-muted">&#8377;</sup>
+                                <span class="h2 mx-1 mb-0">17000/- Rs</span>
                                 <span class="text-muted font-weight-bold mt-2">/ year</span>
                             </div>
                         </div>

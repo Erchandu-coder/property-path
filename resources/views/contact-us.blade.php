@@ -21,11 +21,11 @@
                     </div>
                     <div class="col-md-4 info">
                         <i class="ion-ios-email-outline"></i>
-                        <p>support@propertyscroller.com</p>
+                        <p><a href="mailto:support@propertyscroller.com">support@propertyscroller.com</a></p>
                     </div>
                     <div class="col-md-3 info">
                         <i class="ion-ios-telephone-outline"></i>
-                        <p>+91-9227015296</p>
+                        <p><a href="tel:+919227015296">+91-9227015296</a></p>
                     </div>
                 </div>
                 <div class="form">

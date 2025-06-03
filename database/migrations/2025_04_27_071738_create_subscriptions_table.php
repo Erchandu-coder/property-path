@@ -17,6 +17,8 @@ return new class extends Migration
             $table->uuid('order_id')->unique();
             $table->string('mobile_number');
             $table->string('payment_receipt');
+            $table->string('plan_type');
+            $table->string('price');
             $table->date('plan_renew_date');
             $table->date('plan_expire_date');
             $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending'); // Payment status
