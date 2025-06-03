@@ -318,7 +318,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="card wow bounceInUp">
                     <div class="card-body">
-                        <h1>#8193</h1>
+                        <h1>#{{$total_count}}</h1>
                         <h5 class="card-title">Total Property</h5>
                     </div>
                 </div>
@@ -326,7 +326,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="card wow bounceInUp">
                     <div class="card-body">
-                        <h1>#1042</h1>
+                        <h1>#{{$rr_count}}</h1>
                         <h5 class="card-title">Residential Rent</h5>
                     </div>
                 </div>
@@ -334,7 +334,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="card wow bounceInUp">
                     <div class="card-body">
-                        <h1>#4437</h1>
+                        <h1>#{{$rs_count}}</h1>
                         <h5 class="card-title">Residential Sell</h5>
                     </div>
                 </div>
@@ -344,16 +344,16 @@
             <div class="col-lg-4 mb-4">
                 <div class="card wow bounceInUp">
                     <div class="card-body">
-                        <h1>#1331</h1>
+                        <h1>#{{$cr_count}}</h1>
                         <h5 class="card-title">Commercial Rent</h5>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card wow bounceInUp">
-                    <i class="fa fa-language"></i>
+                    <!-- <i class="fa fa-language"></i> -->
                     <div class="card-body">
-                        <h1>#1383</h1>
+                        <h1>#{{$cs_count}}</h1>
                         <h5 class="card-title">Commercial Sell</h5>
                     </div>
                 </div>

@@ -16,7 +16,13 @@ class HomeController extends Controller
     {
         $states = State::where('status', 1)->get();
         $ptypes = PropertyType::get();
-        return view('index', compact(['states', 'ptypes']));
+        $total_count = Property::where('status', 1)->count();
+        $rr_count = Property::where('status', 1)->where('property_type_id', 1)->count();
+        $rs_count = Property::where('status', 1)->where('property_type_id', 2)->count();
+        $cr_count = Property::where('status', 1)->where('property_type_id', 3)->count();
+        $cs_count = Property::where('status', 1)->where('property_type_id', 4)->count();
+        // dd($total_count, $rr_count, $rs_count, $cr_count, $cs_count);
+        return view('index', compact(['states', 'ptypes', 'total_count', 'rr_count', 'rs_count', 'cr_count', 'cs_count']));
     }
     public function register()
     {

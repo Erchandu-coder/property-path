@@ -270,8 +270,8 @@
                         <p>
                             <!-- A108 Adam Street <br>
                             New York, NY 535022<br> -->
-                            <strong>Office Address:</strong> [Insert office location, if applicable]<br>
-                            <strong>Phone:</strong> +91-XXXXXXXXXX<br>
+                            <strong>Office Address:</strong> B-5 DEEP BULDING GROUND FLOOR BEHIND D-MART KALYAN WEST-421301 MUMBAI<br>
+                            <strong>Phone:</strong> +91 9227015296<br>
                             <strong>Email:</strong> support@propertyscroller.com<br>
                             <strong>Working Hours:</strong> Monday to Saturday, 10 AM - 7 PM<br> 
                         </p>
@@ -305,7 +305,7 @@
             <!-- </div> -->
         </div>
     </footer><!-- #footer -->
-    <a href="https://api.whatsapp.com/send?phone=919000000000&text=Hello!%20Got%20your%20reference%20from%20Website..."
+    <a href="https://api.whatsapp.com/send?phone=919227015296&text=Hello,%20Welcome%20in%20property%20Scroller!%20How%20May%20I%20Help%20You..."
         id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa fa-whatsapp"></i></a>
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- Uncomment below i you want to use a preloader -->
