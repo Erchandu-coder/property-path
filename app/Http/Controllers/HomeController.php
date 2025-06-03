@@ -124,7 +124,7 @@ class HomeController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required|max:255|regex:/^[a-zA-Z\s\-\.]+$/',
                 'email' => 'required|email',
-                'phone_number' => 'required|regex:/^[0-9\-\+\s\(\)]+$/',
+                'phone_number' => 'required|digits:10|regex:/^[0-9\-\+\s\(\)]+$/',
                 'message' => 'required|max:1000',
             ]);
 
