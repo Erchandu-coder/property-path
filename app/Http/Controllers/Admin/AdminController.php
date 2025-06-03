@@ -9,7 +9,8 @@ use App\Models\User;
 use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-
+use App\Models\Property;
+use App\Models\ContactUs;
 
 class AdminController extends Controller
 {
@@ -18,8 +19,18 @@ class AdminController extends Controller
     {
         $current = Carbon::now('Asia/Kolkata');
         $formatted = $current->format('d-m-Y h:i A');
-        
-        return view('admin.dashboard', compact('formatted'));
+        $total_user = User::count();
+        $active_user = User::where('status', 1)->count();
+        $total_value = Subscription::where('payment_status', 'completed')
+                           ->whereNotNull('price')
+                           ->sum('price');
+        $total_count = Property::where('status', 1)->count();
+        $rr_count = Property::where('status', 1)->where('property_type_id', 1)->count();
+        $rs_count = Property::where('status', 1)->where('property_type_id', 2)->count();
+        $cr_count = Property::where('status', 1)->where('property_type_id', 3)->count();
+        $cs_count = Property::where('status', 1)->where('property_type_id', 4)->count();
+        $contact_data = ContactUs::orderBy('created_at', 'desc')->get();
+        return view('admin.dashboard', compact(['formatted', 'total_user', 'active_user', 'total_value', 'total_count', 'rr_count', 'rs_count', 'cr_count', 'cs_count', 'contact_data']));
     }
     
     public function showUser()

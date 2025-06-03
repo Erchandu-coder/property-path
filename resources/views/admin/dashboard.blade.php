@@ -81,30 +81,39 @@
         </div> -->
         <!-- chart row starts here -->
         <div class="row">
-            <div class="col-sm-6 stretch-card grid-margin">
+            <div class="col-sm-4 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <div class="card-title"> Customers
+                            <div class="card-title"> Total Earning
                             </div>
                         </div>
-                        <h3 class="font-weight-bold mb-0"> 2,409
+                        <h3 class="font-weight-bold mb-0"> Rs. {{$total_value}}
                         </h3>
-                        <span class="text-muted font-13">Avg customers/Day</span>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 stretch-card grid-margin">
+            <div class="col-sm-4 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <div class="card-title"> Conversions
+                            <div class="card-title"> Total User
                             </div>
                         </div>
-                        <h3 class="font-weight-bold mb-0"> 0.40
+                        <h3 class="font-weight-bold mb-0"> {{$total_user}}
                         </h3>
-                        <span class="text-muted font-13">Avg customers/Day</span>
-                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-title"> Active User
+                            </div>
+                        </div>
+                        <h3 class="font-weight-bold mb-0"> {{$active_user}}
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -114,198 +123,84 @@
                 <div class="card stretch-card mb-3">
                     <div class="card-body d-flex flex-wrap justify-content-between">
                         <div>
-                            <h4 class="font-weight-semibold mb-1 text-black"> Member Profit </h4>
-                            <h6 class="text-muted">Average Weekly Profit</h6>
+                            <h4 class="font-weight-semibold mb-1 text-black"> Total Property </h4>
                         </div>
-                        <h3 class="text-success font-weight-bold">+168.900</h3>
+                        <h3 class="text-success font-weight-bold">+{{$total_count}}</h3>
                     </div>
                 </div>
                 <div class="card stretch-card mb-3">
                     <div class="card-body d-flex flex-wrap justify-content-between">
                         <div>
-                            <h4 class="font-weight-semibold mb-1 text-black"> Total Profit </h4>
-                            <h6 class="text-muted">Weekly Customer Orders</h6>
+                            <h4 class="font-weight-semibold mb-1 text-black"> Residential Rent </h4>
                         </div>
-                        <h3 class="text-success font-weight-bold">+6890.00</h3>
+                        <h3 class="text-success font-weight-bold">+{{$rr_count}}</h3>
                     </div>
                 </div>
                 <div class="card mt-3">
                     <div class="card-body d-flex flex-wrap justify-content-between">
                         <div>
-                            <h4 class="font-weight-semibold mb-1 text-black"> Issue Reports </h4>
-                            <h6 class="text-muted">System bugs and issues</h6>
+                            <h4 class="font-weight-semibold mb-1 text-black"> Residential Sell </h4>
                         </div>
-                        <h3 class="text-danger font-weight-bold">-8380.00</h3>
+                        <h3 class="text-success font-weight-bold">+{{$rs_count}}</h3>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body d-flex flex-wrap justify-content-between">
+                        <div>
+                            <h4 class="font-weight-semibold mb-1 text-black"> Commercial Rent </h4>
+                        </div>
+                        <h3 class="text-success font-weight-bold">+{{$cr_count}}</h3>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body d-flex flex-wrap justify-content-between">
+                        <div>
+                            <h4 class="font-weight-semibold mb-1 text-black"> Commercial Sell </h4>
+                        </div>
+                        <h3 class="text-success font-weight-bold">+{{$cs_count}}</h3>
                     </div>
                 </div>
             </div>
             <div class="col-xl-8 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body pb-0">
-                        <h4 class="card-title mb-0">Financial management review</h4>
+                        <h4 class="card-title mb-0">Contact User Review</h4>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table custom-table text-dark">
+                            <table id="example" class="table custom-table text-dark">
                                 <thead>
                                     <tr>
+                                        <th>S.No</th>
                                         <th>Name</th>
-                                        <th>Sale Rate</th>
-                                        <th>Actual</th>
-                                        <th>Variance</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Message</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $i=1; @endphp
+                                    @foreach($contact_data as $contact_datas)
                                     <tr>
+                                        <td>{{$i++}}</td>
                                         <td>
-                                            <img src="../admin-assets/images/faces/face2.jpg" class="mr-2"
-                                                alt="image" /> Jacob Jensen
+                                            {{$contact_datas->name}}
                                         </td>
                                         <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">85%</span>
-                                                <select id="star-1" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
+                                           {{$contact_datas->email}} 
                                         </td>
-                                        <td>32,435</td>
-                                        <td>40,234</td>
+                                        <td>{{$contact_datas->phone_number}}</td>
+                                        <td>{{$contact_datas->message}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../admin-assets/images/faces/face3.jpg" class="mr-2"
-                                                alt="image" /> Cecelia Bradley
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">55%</span>
-                                                <select id="star-2" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>4,36780</td>
-                                        <td>765728</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../admin-assets/images/faces/face4.jpg" class="mr-2"
-                                                alt="image" /> Leah Sherman
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">23%</span>
-                                                <select id="star-3" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>2300</td>
-                                        <td>22437</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../admin-assets/images/faces/face5.jpg" class="mr-2"
-                                                alt="image" /> Ina Curry
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">44%</span>
-                                                <select id="star-4" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>53462</td>
-                                        <td>1,75938</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../admin-assets/images/faces/face7.jpg" class="mr-2"
-                                                alt="image" /> Lida Fitzgerald
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">65%</span>
-                                                <select id="star-5" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>67453</td>
-                                        <td>765377</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../admin-assets/images/faces/face2.jpg" class="mr-2"
-                                                alt="image" /> Stella Johnson
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">49%</span>
-                                                <select id="star-6" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>43662</td>
-                                        <td>96535</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../admin-assets/images/faces/face9.jpg" class="mr-2"
-                                                alt="image" /> Maria Ortiz
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <span class="pr-2 d-flex align-items-center">65%</span>
-                                                <select id="star-7" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>76555</td>
-                                        <td>258546</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        <a class="text-black font-13 d-block pt-2 pb-2 pb-lg-0 font-weight-bold pl-4" href="#">Show
-                            more</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
@@ -453,7 +348,7 @@
                     </div>
                 </div>
             </div>
-       </div>
+       </div> -->
     </div>
 </div>    
     @endsection
