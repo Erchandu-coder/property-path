@@ -144,6 +144,8 @@ class AdminController extends Controller
             'order_id' => $orderId,
             'mobile_number' => '',
             'payment_receipt' => '',
+            'plan_type' => '',
+            'price' => '',
             'plan_renew_date' => Carbon::now(),
             'plan_expire_date' => Carbon::now()->addDays($trail_day)->toDateString(),
             'payment_status' => 'completed'
