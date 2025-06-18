@@ -26,7 +26,7 @@
     <link rel="shortcut icon" href="../assets/img/favicon.png" />
     <link href="../assets/css/toastr.min.css" rel="stylesheet">
     <style>
-        #fixedWhatsAppIcon {
+    #fixedWhatsAppIcon {
         display: block;
         position: fixed;
         right: 20px;
@@ -40,10 +40,11 @@
         border-radius: 50%;
         font-size: 24px;
         z-index: 9999;
-        }
-        #fixedWhatsAppIcon:hover {
+    }
+
+    #fixedWhatsAppIcon:hover {
         background-color: #339933;
-        }
+    }
     </style>
 </head>
 
@@ -140,8 +141,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('favouriteProperty')}}">
-                            <i class="mdi mdi mdi-bookmark menu-icon"></i>
-                            <span class="menu-title">Favourite Property</span>
+                                <i class="mdi mdi mdi-bookmark menu-icon"></i>
+                                <span class="menu-title">Favourite Property</span>
                             </a>
                         </li>
                         <li>
@@ -197,21 +198,22 @@
         </div>
         <!-- partial -->
         @yield('content')
-    <footer class="footer">
-        <div class="container">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                    propertyscroller.com 2025</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by <a
-                        href="#" target="_blank">propertyscroller</a> from
+        <footer class="footer">
+            <div class="container">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                        propertyscroller.com 2025</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by <a href="#"
+                            target="_blank">propertyscroller</a> from
                         propertyscroller.com</span>
+                </div>
             </div>
-        </div>
-    </footer>
-    <a href="https://api.whatsapp.com/send?phone=919000000000&text=Hello!%20Got%20your%20reference%20from%20Website..." id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa fa-whatsapp"></i></a>
+        </footer>
+        <a href="https://api.whatsapp.com/send?phone=919000000000&text=Hello!%20Got%20your%20reference%20from%20Website..."
+            id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa fa-whatsapp"></i></a>
     </div>
     <!-- main-panel ends -->
-</div>
+    </div>
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -246,80 +248,94 @@
         new DataTable('#example');
     </script>     -->
     <script>
-        $(document).on('click', '.add-to-cart', function(){
-            const btn = $(this);
-            const propertyId = btn.data('pid'); 
-            $.ajax({
-                url:"{{route('addCart')}}",
-                method:'Post',
-                data:{
-                    property_id: propertyId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function (response) {
+    $(document).on('click', '.add-to-cart', function() {
+        const btn = $(this);
+        const propertyId = btn.data('pid');
+        $.ajax({
+            url: "{{route('addCart')}}",
+            method: 'Post',
+            data: {
+                property_id: propertyId,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
                 // alert(response.status);
                 if (response.status === 'exists' || response.status === 'added') {
                     btn.addClass('active'); // Apply 'active' class
                 }
                 toastr.options = {
-                        "closeButton": true,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "timeOut": "5000"
-                    };
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "timeOut": "5000"
+                };
                 toastr.success(response.message, 'message');
             },
-            error: function (xhr) {
+            error: function(xhr) {
                 alert(xhr.responseJSON.error || 'Something went wrong');
             }
-            });
         });
-        $(document).on('click', '.remove-to-cart', function(){
-            const btn = $(this);
-            const propertyId = btn.data('pid'); 
-            $.ajax({
-                url: "{{ route('removeCart') }}",
-                method: 'POST',
-                data: {
-                    property_id: propertyId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function (response) {
-                    toastr.options = {
-                        closeButton: true,
-                        progressBar: true,
-                        positionClass: "toast-top-right",
-                        timeOut: "5000"
-                    };
-                    toastr.success(response.message, 'Success');
+    });
+    $(document).on('click', '.remove-to-cart', function() {
+        const btn = $(this);
+        const propertyId = btn.data('pid');
+        $.ajax({
+            url: "{{ route('removeCart') }}",
+            method: 'POST',
+            data: {
+                property_id: propertyId,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: "5000"
+                };
+                toastr.success(response.message, 'Success');
 
-                    // Hide the row containing this button:
-                    const row = btn.closest('tr');
-                    if (row.length) {
-                        row.fadeOut(300, function(){ $(this).remove() });
-                        return;
-                    }
-
-                    const card = btn.closest('.cart-remove');
-                    if (card.length) {
-                        card.fadeOut(300, function(){ $(this).remove() });
-                    }
-                },
-                error: function (xhr) {
-                    alert(xhr.responseJSON.error || 'Something went wrong');
+                // Hide the row containing this button:
+                const row = btn.closest('tr');
+                if (row.length) {
+                    row.fadeOut(300, function() {
+                        $(this).remove()
+                    });
+                    return;
                 }
-            });
+
+                const card = btn.closest('.cart-remove');
+                if (card.length) {
+                    card.fadeOut(300, function() {
+                        $(this).remove()
+                    });
+                }
+            },
+            error: function(xhr) {
+                alert(xhr.responseJSON.error || 'Something went wrong');
+            }
         });
-document.addEventListener('DOMContentLoaded', function () {
+    });
+    document.addEventListener('DOMContentLoaded', function() {
         const planType = document.getElementById('plan_type');
         const price = document.getElementById('price');
 
         const priceOptions = {
-            6: [{ value: 10000, label: '10000/- Rs.' }],
-            12: [{ value: 17000, label: '17000/- Rs.' }]
+            6: [{
+                value: 10000,
+                label: '10000/- Rs.'
+            }],
+            12: [{
+                value: 17000,
+                label: '17000/- Rs.'
+            }],
+            3: [{
+                value: 0,
+                label: '0/- Rs.'
+            }]
         };
 
-        planType.addEventListener('change', function () {
+        planType.addEventListener('change', function() {
             const selectedPlan = this.value;
 
             // Clear existing options

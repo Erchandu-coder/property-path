@@ -24,13 +24,30 @@
                         </div>
 
                         <h4 class="mt-5">Payment details</h4>
-                        <h6 class="h5 mb-1">Order Id: {{$p_status->order_id}}</h6>
+                        <h6 class="h5 mb-1">Order Id: 
+                            @if($p_status)
+                                {{ $p_status->order_id }}
+                            @else
+                                N/A
+                            @endif</h6>
                         <div class="mt-4 d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-row align-items-center">
                                 <div class="d-flex flex-column ms-3">
                                     <span class="h5 mb-1">Plane Date:</span>
-                                    <span class="small text-muted">Plane Renew Date: {{$p_status->plan_renew_date}}</span>
-                                    <span class="small text-muted">Plane Expire Date: {{$p_status->plan_expire_date}}</span>
+                                    <span class="small text-muted">Plane Renew Date: 
+                                        @if($p_status)
+                                            {{ $p_status->plan_renew_date }}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </span>
+                                    <span class="small text-muted">Plane Expire Date: 
+                                        @if($p_status)
+                                            {{ $p_status->plan_expire_date }}
+                                        @else
+                                            N/A
+                                        @endif    
+                                    </span>
                                 </div>
                             </div>
                         </div>

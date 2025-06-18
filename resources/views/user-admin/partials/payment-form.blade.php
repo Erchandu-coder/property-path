@@ -9,6 +9,7 @@
                     <option value="">Select Your Plane</option>
                     <option value="6">6 Month</option>
                     <option value="12">1 Year</option>
+                    <option value="3">3 Days Trial</option>
                 </select>
                 @error('plan_type')
                 <p class="text-danger">{{ $message }}</p>

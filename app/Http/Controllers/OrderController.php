@@ -23,19 +23,52 @@ class OrderController extends Controller
     {
         
         $userId = $request->user_id;
-        $request->validate([
+        // if($request->plan_type == 3)
+        // {
+        //         $request->validate([
+        //         'plan_type' => ['required', 'numeric'],
+        //         'price' => ['required', 'numeric'],
+        //         'mobile_number' => ['required', 'digits:10'],
+        //     ]);
+        // }else{
+        //         $request->validate([
+        //         'plan_type' => ['required', 'numeric'],
+        //         'price' => ['required', 'numeric'],
+        //         'mobile_number' => ['required', 'digits:10'],
+        //         'payment_receipt' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        //     ]);
+            
+        // }
+        $rules = [
             'plan_type' => ['required', 'numeric'],
             'price' => ['required', 'numeric'],
             'mobile_number' => ['required', 'digits:10'],
-            'payment_receipt' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        ]);
+        ];
+
+        if ($request->plan_type != 3) {
+            $rules['payment_receipt'] = 'required|file|mimes:jpg,jpeg,png,pdf|max:2048';
+        }
+
+        $request->validate($rules);
+        
         if ($request->file('payment_receipt')) {
             $file = $request->file('payment_receipt');
 
             $fileName = time().'_'.$file->getClientOriginalName(); // Unique file name
             $filePath = $file->storeAs('uploads', $fileName, 'public');
             // Step 3: Save file name in DB
-            $orderId = 'ORD-'.$userId.now()->format('YmdHis').strtoupper(Str::random(4)).rand(1000, 9999);
+        }
+            if($request->plan_type == 3)
+            {
+                $orderId = 'Trail-'.$userId.now()->format('YmdHis').strtoupper(Str::random(4)).rand(1000, 9999);            
+
+            }else{
+                $orderId = 'ORD-'.$userId.now()->format('YmdHis').strtoupper(Str::random(4)).rand(1000, 9999);
+
+            }   
+            if ($request->plan_type == 3) {
+                $expire_date = \Carbon\Carbon::now()->addDays(3)->toDateString();
+            }
             if($request->plan_type == 6)
             {
                 $expire_date = Carbon::now()->addMonths(6)->toDateString();
@@ -44,6 +77,7 @@ class OrderController extends Controller
             {
                 $expire_date = Carbon::now()->addYear()->toDateString();
             }
+
             $pstatus = Subscription::create([
                 'user_id'=>$request->user_id,
                 'order_id' => $orderId,
@@ -60,7 +94,6 @@ class OrderController extends Controller
             } else {
                 return redirect()->back()->with('error', 'Something went wrong!');
             } 
-        }
 
     }
     public function subScriptionDetails()
